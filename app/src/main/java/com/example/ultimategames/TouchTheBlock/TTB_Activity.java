@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Display;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.graphics.Color;
 
@@ -28,8 +29,23 @@ public class TTB_Activity extends AppCompatActivity {
         Log.e("Width", "" + width);
         Log.e("height", "" + height);
         // Todo: Make Layout Ready and set on Click Listener to Block and to the game canvas
-        Button butn = findViewById(R.id.bt_block);
-        butn.setHeight(height/2);
-        butn.setWidth(width/2);
+
+        Button btn = (Button)findViewById(R.id.bt_block);
+
+        ViewGroup.LayoutParams params = btn.getLayoutParams();
+        params.height = height/2;
+        params.width = width/2;
+        btn.setLayoutParams(params);
+
+        /*Button button = new Button(this);
+
+
+        button.setWidth(10);
+        button.setHeight(100);
+
+
+        mMenuContainer.addView(button, mMenuItemLayoutParamters);*/
+
+
     }
 }

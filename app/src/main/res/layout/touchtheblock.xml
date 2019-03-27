@@ -24,11 +24,16 @@
         android:gravity="center"
         android:orientation="vertical" >
 
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <Button
             android:id="@+id/bt_block"
-            android:layout_width="100"
-            android:layout_height="100"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
             android:background="#000000"/>
-    </LinearLayout>
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -20,7 +20,7 @@ package com.example.ultimategames;
 @RunWith(AndroidJUnit4.class)
 public class TTBEspressoTest {
     @Rule
-    public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<TTB_Activity> activityTestRule = new ActivityTestRule<>(TTB_Activity.class);
 
     @Test
     public void testButtonsVisible() {
