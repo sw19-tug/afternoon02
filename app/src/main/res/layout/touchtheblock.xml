@@ -21,15 +21,14 @@
         android:id="@+id/bt_Backround"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        android:gravity="center"
+        android:orientation="vertical" >
 
         <Button
             android:id="@+id/bt_block"
             android:layout_width="100"
             android:layout_height="100"
-            android:background="#000000"
-            tools:layout_editor_absoluteX="174dp"
-            tools:layout_editor_absoluteY="302dp" />
+            android:background="#000000"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
