@@ -15,6 +15,7 @@ package com.example.ultimategames;
         import static android.support.test.espresso.matcher.ViewMatchers.withId;
         import static android.support.test.espresso.matcher.ViewMatchers.withText;
         import static org.hamcrest.Matchers.not;
+        import com.example.ultimategames.TouchTheBlock.TTB_Activity;
 
 @RunWith(AndroidJUnit4.class)
 public class TTBEspressoTest {
