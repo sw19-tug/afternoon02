@@ -1,4 +1,4 @@
-package com.example.ultimategames;
+package com.example.TicTacToe;
 
 import java.util.ArrayList;
 
@@ -10,18 +10,20 @@ public class TicTacToe {
     public TicTacToe(){
         numberOfFields = 0;
         matrix = new ArrayList<ArrayList<Integer>>(3);
-        for(int i = 0; i < matrix.size(); i++) {
+        for(int i = 0; i < 3; i++) {
             matrix.add(new ArrayList<Integer>(3));
-            for(int j = 0; j < matrix.get(i).size(); j++){
-                matrix.get(i).set(j,0);
+            for(int j = 0; j < 3; j++){
+                matrix.get(i).add(0);
             }
         }
     }
-    public void changeField(int x, int y, int value){
-        if(matrix.get(x).get(y) != 0) {
+    public int changeField(int x, int y, int value){
+        if(matrix.get(x).get(y) == 0) {
             matrix.get(x).set(y, value);
             numberOfFields++;
+            return checkIfGameIsDone();
         }
+        return -1;
     }
     private int checkIfGameIsDone(){
         boolean same = true;
@@ -34,19 +36,19 @@ public class TicTacToe {
                 }
             }
             if(same){
-                return matrix.get(i).get(0);
+                return matrix.get(i).get(0) != 0 ? matrix.get(i).get(0) : -1;
             }
         }
         for(int i = 0; i < matrix.size(); i++){
             same = true;
             for(int j = 0; j < matrix.get(i).size(); j++){
-                if(matrix.get(j).get(0) != matrix.get(j).get(i)){
+                if(matrix.get(0).get(i) != matrix.get(j).get(i)){
                     same = false;
                     break;
                 }
             }
             if(same){
-                return matrix.get(i).get(0);
+                return matrix.get(0).get(i) != 0 ? matrix.get(0).get(i) : -1;
             }
         }
         same = true;
@@ -57,16 +59,16 @@ public class TicTacToe {
             }
         }
         if(same){
-            return matrix.get(0).get(0);
+            return matrix.get(0).get(0) != 0 ? matrix.get(0).get(0) : -1;
         }
         for(int i = 0; i < matrix.size(); i++){
-            if(matrix.get(i).get(2-i) != matrix.get(0).get(2)){
+            if(matrix.get(i).get(matrix.size()-1-i) != matrix.get(0).get(matrix.size()-1)){
                 same=false;
                 break;
             }
         }
         if(same){
-            return matrix.get(0).get(2);
+            return matrix.get(0).get(2) != 0 ? matrix.get(0).get(2) : -1;
         }
         return numberOfFields < 9 ? -1 : 0;
     }
