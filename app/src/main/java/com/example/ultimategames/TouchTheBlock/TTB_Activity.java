@@ -14,5 +14,6 @@ public class TTB_Activity extends AppCompatActivity {
         // Set the game activity content view!
         setContentView(R.layout.touchtheblock);
         // Todo: Make Layout Ready and set on Click Listener to Block and to the game canvas
+
     }
 }
