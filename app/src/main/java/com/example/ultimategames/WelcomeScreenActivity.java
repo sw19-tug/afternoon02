@@ -25,15 +25,14 @@ public class WelcomeScreenActivity extends AppCompatActivity {
 
         game_hangman = new Intent(this, GameHangman.class);
 
-        buttonTicTacToe = (Button) findViewById(R.id.btn_tictactoe);
-        buttonHangman = (Button) findViewById(R.id.btn_hangman);
-        buttonTouchBlock = (Button) findViewById(R.id.btn_block);
+        buttonTicTacToe = findViewById(R.id.btn_tictactoe);
+        buttonHangman = findViewById(R.id.btn_hangman);
+        buttonTouchBlock = findViewById(R.id.btn_block);
 
         buttonTicTacToe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Tic Tac Toe selected.", Toast.LENGTH_LONG).show();
-                startActivity(game_hangman);
             }
         });
 
@@ -41,6 +40,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Hangman selected.", Toast.LENGTH_LONG).show();
+                startActivity(game_hangman);
             }
         });
 
