@@ -1,5 +1,6 @@
 package com.example.ultimategames;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,8 @@ public class WelcomeScreenActivity extends AppCompatActivity {
 
     public int global_score = 0;
 
+    private Intent game_hangman;
+
     Button buttonTicTacToe;
     Button buttonHangman;
     Button buttonTouchBlock;
@@ -20,6 +23,8 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen);
 
+        game_hangman = new Intent(this, GameHangman.class);
+
         buttonTicTacToe = (Button) findViewById(R.id.btn_tictactoe);
         buttonHangman = (Button) findViewById(R.id.btn_hangman);
         buttonTouchBlock = (Button) findViewById(R.id.btn_block);
@@ -28,6 +33,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Tic Tac Toe selected.", Toast.LENGTH_LONG).show();
+                startActivity(game_hangman);
             }
         });
 

@@ -3,4 +3,6 @@
     <string name="welcome">Welcome!</string>
     <string name="score">Your score: </string>
     <string name="select_game">Please select the game you want to play:</string>
+    <string name="hangman_title">Hangman</string>
+    <string name="move_number">Your moves: </string>
 </resources>
