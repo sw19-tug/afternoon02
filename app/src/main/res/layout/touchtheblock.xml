@@ -27,6 +27,7 @@
 
     </LinearLayout>
     <RelativeLayout
+        android:id="@+id/Rel_Backround"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <Button
