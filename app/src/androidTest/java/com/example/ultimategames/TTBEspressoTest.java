@@ -1,5 +1,6 @@
 package com.example.ultimategames;
 
+        import android.support.test.espresso.ViewAction;
         import android.support.test.rule.ActivityTestRule;
         import android.support.test.runner.AndroidJUnit4;
         import android.widget.TextView;
@@ -11,6 +12,7 @@ package com.example.ultimategames;
         import static android.support.test.espresso.Espresso.onView;
         import static android.support.test.espresso.action.ViewActions.click;
         import static android.support.test.espresso.assertion.ViewAssertions.matches;
+        import static android.support.test.espresso.matcher.ViewMatchers.isClickable;
         import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
         import static android.support.test.espresso.matcher.ViewMatchers.withId;
         import static android.support.test.espresso.matcher.ViewMatchers.withText;
@@ -24,9 +26,18 @@ public class TTBEspressoTest {
 
     @Test
     public void testButtonsVisible() {
+
+        onView(withId(R.id.bt_Backround)).check(matches(isDisplayed()));
+    }
+    @Test
+    public void testVisibility(){
         onView(withId(R.id.bt_block)).check(matches(isDisplayed()));
         onView(withId(R.id.bt_Backround)).check(matches(isDisplayed()));
     }
-
-
+    @Test
+    public void testButtonMovment()
+    {
+        onView(withId(R.id.bt_block)).check(matches(isClickable()));
+        onView(withId(R.id.bt_block)).perform(click()).check(matches(isDisplayed()));
+    }
 }
