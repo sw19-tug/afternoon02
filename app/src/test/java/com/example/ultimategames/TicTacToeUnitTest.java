@@ -64,14 +64,13 @@ public class TicTacToeUnitTest {
     }
 
     @Test
-    public void test() {
+    public void testForColumnWin() {
         int result;
-        ticTacToe.changeField(0,0,1);
-        ticTacToe.changeField(0,1,2);
-        ticTacToe.changeField(1,0,1);
-        ticTacToe.changeField(1,1,2);
-        ticTacToe.changeField(1,2,1);
-        result = ticTacToe.changeField(2,1,2);
-
+        ticTacToe.changeField(0,1,1);
+        ticTacToe.changeField(0,2,2);
+        ticTacToe.changeField(1,1,1);
+        ticTacToe.changeField(1,2,2);
+        result = ticTacToe.changeField(2,1,1);
+        Assert.assertEquals(1,result);
     }
 }
