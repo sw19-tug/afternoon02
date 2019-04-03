@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.graphics.Color;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.ultimategames.R;
 
@@ -21,6 +22,8 @@ public class TTB_Activity extends AppCompatActivity {
 
     // todo: use the Global Var after merge!
     public int testcounter = 0;
+
+    boolean gameover = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +55,12 @@ public class TTB_Activity extends AppCompatActivity {
         btn.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 //Do stuff here
-                resizeBtn(v);
-                realignBtn(v);
-                addPoints();
-
-
+                if(!gameover)
+                {
+                    resizeBtn(v);
+                    realignBtn(v);
+                    addPoints();
+                }
             }
         });
 
@@ -68,6 +72,10 @@ public class TTB_Activity extends AppCompatActivity {
                 btn.setBackgroundColor(Color.RED);
                 final Button btn = (Button)findViewById(R.id.bt_block);
                 deductPoints();
+                TextView txtView = (TextView)findViewById(R.id.textView);
+                String hello = "Sorry you lost!";
+                txtView.setText(hello);
+                gameover = true;
             }
         });
 
