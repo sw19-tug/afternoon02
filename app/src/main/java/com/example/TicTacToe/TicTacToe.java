@@ -61,6 +61,7 @@ public class TicTacToe {
         if(same){
             return matrix.get(0).get(0) != 0 ? matrix.get(0).get(0) : -1;
         }
+        same = true;
         for(int i = 0; i < matrix.size(); i++){
             if(matrix.get(i).get(matrix.size()-1-i) != matrix.get(0).get(matrix.size()-1)){
                 same=false;
