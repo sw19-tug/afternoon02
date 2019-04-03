@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".GameHangman"
+            android:parentActivityName=".WelcomeScreenActivity"></activity>
+        <activity
             android:name="com.example.TicTacToe.TicTacToe_WelcomeScreen"
             android:label="@string/title_activity_tic_tac_toe__welcome_screen"
             android:theme="@style/AppTheme.NoActionBar"></activity>

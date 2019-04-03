@@ -14,6 +14,8 @@ public class WelcomeScreenActivity extends AppCompatActivity {
 
     public int global_score = 0;
 
+    private Intent game_hangman;
+
     Button buttonTicTacToe;
     Button buttonHangman;
     Button buttonTouchBlock;
@@ -23,9 +25,11 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen);
 
-        buttonTicTacToe = (Button) findViewById(R.id.btn_tictactoe);
-        buttonHangman = (Button) findViewById(R.id.btn_hangman);
-        buttonTouchBlock = (Button) findViewById(R.id.btn_block);
+        game_hangman = new Intent(this, GameHangman.class);
+
+        buttonTicTacToe = findViewById(R.id.btn_tictactoe);
+        buttonHangman = findViewById(R.id.btn_hangman);
+        buttonTouchBlock = findViewById(R.id.btn_block);
 
         buttonTicTacToe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +45,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Hangman selected.", Toast.LENGTH_LONG).show();
+                startActivity(game_hangman);
             }
         });
 
