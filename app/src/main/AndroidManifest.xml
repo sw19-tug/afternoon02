@@ -12,12 +12,16 @@
         <activity android:name=".HangmanSelScreen"></activity>
         <activity
             android:name=".GameHangman"
-            android:parentActivityName=".HangmanSelScreen" />
+            android:parentActivityName=".HangmanSelScreen" 
+            android:label="@string/title_activity_hangman_welcome_screen"
+            ></activity>
         <activity
             android:name="com.example.TicTacToe.TicTacToe_WelcomeScreen"
             android:label="@string/title_activity_tic_tac_toe__welcome_screen"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name="com.example.TicTacToe.TicTacToePvP_Activity" />
+            android:parentActivityName=".WelcomeScreenActivity"></activity>
+        <activity android:name="com.example.TicTacToe.TicTacToePvP_Activity"
+            android:label="@string/title_activity_tic_tac_toe_pvp"
+            android:parentActivityName="com.example.TicTacToe.TicTacToe_WelcomeScreen"/>
         <activity
             android:name=".WelcomeScreenActivity"
             android:parentActivityName=".MainActivity" />
