@@ -213,4 +213,16 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/restartGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:layout_marginTop="20sp"
+        android:layout_marginBottom="50sp"
+        android:text="@string/restartTicTacToe"
+        android:visibility="invisible" />
+
 </RelativeLayout>
