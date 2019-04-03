@@ -2,6 +2,7 @@ package com.example.ultimategames;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
@@ -87,6 +88,8 @@ public class GameHangman extends AppCompatActivity implements View.OnClickListen
         } else if (id == R.id.button_z) {
             clicked.setEnabled(false);
         }
+
+        Log.d("MYLOG", "Button Clicked "+keyvalues.get(id));
     }
 
     private void initButtons()
