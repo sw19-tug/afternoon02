@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.TicTacToe.TicTacToe_Activity;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -16,9 +18,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         Intent intent = new Intent(this, WelcomeScreenActivity.class);
-        startActivity(intent);
+        if(intent.resolveActivity(getPackageManager())!=null){
+            MainActivity.this.startActivity(intent);
+        }
     }
 
 
