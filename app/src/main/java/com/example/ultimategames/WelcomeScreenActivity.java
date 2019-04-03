@@ -23,7 +23,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen);
 
-        game_hangman = new Intent(this, GameHangman.class);
+        game_hangman = new Intent(this, HangmanSelScreen.class);
 
         buttonTicTacToe = findViewById(R.id.btn_tictactoe);
         buttonHangman = findViewById(R.id.btn_hangman);
