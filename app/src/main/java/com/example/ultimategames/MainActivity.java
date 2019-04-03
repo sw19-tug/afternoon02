@@ -6,16 +6,15 @@ import android.os.Bundle;
 
 
 public class MainActivity extends AppCompatActivity {
-
-    private Intent welcome_screen;
-
+  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        welcome_screen = new Intent(this, WelcomeScreenActivity.class);
-        startActivity(welcome_screen);
+        Intent intent = new Intent(this, WelcomeScreenActivity.class);
+        if(intent.resolveActivity(getPackageManager())!=null){
+            MainActivity.this.startActivity(intent);
+        }
     }
 
 

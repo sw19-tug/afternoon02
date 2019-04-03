@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.TicTacToe.TicTacToe_WelcomeScreen;
+
 public class WelcomeScreenActivity extends AppCompatActivity {
 
     public int global_score = 0;
@@ -32,7 +34,10 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         buttonTicTacToe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Tic Tac Toe selected.", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(WelcomeScreenActivity.this, TicTacToe_WelcomeScreen.class);
+                if(intent.resolveActivity(getPackageManager())!=null){
+                    WelcomeScreenActivity.this.startActivity(intent);
+                }
             }
         });
 
