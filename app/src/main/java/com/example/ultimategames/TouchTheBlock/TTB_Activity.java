@@ -46,21 +46,26 @@ public class TTB_Activity extends AppCompatActivity {
         btn.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 //Do stuff here
-                RelativeLayout gameLayout =  findViewById(R.id.Rel_Backround);
-                int Layoutwidth  = gameLayout.getWidth();
-                int Layoutheight = gameLayout.getHeight();
-
-                Button btn = (Button)v ;
-                Random buttonPlace = new Random();
-                // Random Number in Bound
-                int buttonY = buttonPlace.nextInt(Layoutwidth-btn.getWidth());
-                int buttonX = buttonPlace.nextInt(Layoutheight-btn.getHeight());
-                btn.setX(buttonX);
-                btn.setY(buttonY);
+                realignBtn(v);
             }
         });
 
 
 
+
+    }
+
+    public void realignBtn(View v){
+        RelativeLayout gameLayout =  findViewById(R.id.Rel_Backround);
+        int Layoutwidth  = gameLayout.getWidth();
+        int Layoutheight = gameLayout.getHeight();
+
+        Button btn = (Button)v ;
+        Random buttonPlace = new Random();
+        // Random Number in Bound
+        int buttonY = buttonPlace.nextInt(Layoutwidth-btn.getWidth());
+        int buttonX = buttonPlace.nextInt(Layoutheight-btn.getHeight());
+        btn.setX(buttonX);
+        btn.setY(buttonY);
     }
 }
