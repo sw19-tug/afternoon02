@@ -35,6 +35,7 @@ public class TTBEspressoTest {
         onView(withId(R.id.bt_block)).check(matches(isDisplayed()));
         onView(withId(R.id.bt_Backround)).check(matches(isDisplayed()));
     }
+
     @Test
     public void testButtonMovment()
     {
@@ -61,5 +62,4 @@ public class TTBEspressoTest {
             onView(withId(R.id.bt_Backround)).perform(click());
             onView(withId(R.id.txt_Lost)).check(matches(isDisplayed()));
     }
-
 }

@@ -47,6 +47,7 @@ public class TTB_Activity extends AppCompatActivity {
         params.width = width/2;
         btn.setLayoutParams(params);
 
+
         btn.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 //Do stuff here
@@ -75,8 +76,8 @@ public class TTB_Activity extends AppCompatActivity {
         Button btn = (Button)v;
         Random buttonPlace = new Random();
         // Random Number in Bound
-        int buttonY = buttonPlace.nextInt(Layoutwidth-btn.getWidth());
-        int buttonX = buttonPlace.nextInt(Layoutheight-btn.getHeight());
+        int buttonX = buttonPlace.nextInt(Layoutwidth-btn.getWidth());
+        int buttonY = buttonPlace.nextInt(Layoutheight-btn.getHeight());
         btn.setX(buttonX);
         btn.setY(buttonY);
     }
