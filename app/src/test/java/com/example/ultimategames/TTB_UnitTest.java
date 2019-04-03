@@ -21,13 +21,18 @@ public class TTB_UnitTest {
     @Test
     public void pointsShouldBeIncreased() {
 
+        int OldPoints = ttb.testcounter;
+        ttb.addPoints();
+        assert (OldPoints < ttb.testcounter);
 
     }
 
     @Test
     public void pointsShouldBeDecreased() {
 
-
+        int OldPoints = ttb.testcounter;
+        ttb.deductPoints();
+        assert (OldPoints > ttb.testcounter);
     }
 
 }

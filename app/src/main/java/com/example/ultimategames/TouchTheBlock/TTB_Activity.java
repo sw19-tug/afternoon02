@@ -19,7 +19,8 @@ public class TTB_Activity extends AppCompatActivity {
 
     RelativeLayout rel_Backround;
 
-    int testcounter = 0;
+    // todo: use the Global Var after merge!
+    public int testcounter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,8 @@ public class TTB_Activity extends AppCompatActivity {
                 //Do stuff here
                 resizeBtn(v);
                 realignBtn(v);
+                addPoints();
+
 
             }
         });
@@ -64,6 +67,7 @@ public class TTB_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 btn.setBackgroundColor(Color.RED);
                 final Button btn = (Button)findViewById(R.id.bt_block);
+                deductPoints();
             }
         });
 
@@ -90,5 +94,17 @@ public class TTB_Activity extends AppCompatActivity {
         params.width = btn.getWidth()/2;
         btn.setLayoutParams(params);
         testcounter++;
+    }
+
+    // made Public for Unit Testing!
+
+    public void addPoints(){
+
+        testcounter += 5;
+    }
+
+    public void deductPoints(){
+
+        testcounter -= 5;
     }
 }
