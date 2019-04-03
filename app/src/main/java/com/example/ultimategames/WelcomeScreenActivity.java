@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.TicTacToe.TicTacToe_WelcomeScreen;
+import com.example.ultimategames.TouchTheBlock.TTB_Activity;
 
 public class WelcomeScreenActivity extends AppCompatActivity {
 
@@ -51,7 +52,10 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         buttonTouchBlock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Touch the Block selected.", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(WelcomeScreenActivity.this, TTB_Activity.class);
+                if(intent.resolveActivity(getPackageManager())!=null){
+                    WelcomeScreenActivity.this.startActivity(intent);
+                }
             }
         });
 

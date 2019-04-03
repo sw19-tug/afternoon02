@@ -58,8 +58,7 @@ public class TTBEspressoTest {
     public void LostMessageShouldBeDisplayed()
     {
         // After Clicking the Button should Stay Visible and not disapear
-
             onView(withId(R.id.bt_Backround)).perform(click());
-            onView(withId(R.id.txt_Lost)).check(matches(isDisplayed()));
+            onView(withId(R.id.textView)).check(matches(isDisplayed()));
     }
 }
