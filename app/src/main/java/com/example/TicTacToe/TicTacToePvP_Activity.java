@@ -1,16 +1,15 @@
 package com.example.TicTacToe;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.ultimategames.R;
 
-import java.util.ArrayList;
-
-public class TicTacToe_Activity extends AppCompatActivity {
+public class TicTacToePvP_Activity extends AppCompatActivity {
     TextView textView00;
     TextView textView01;
     TextView textView02;
@@ -21,6 +20,7 @@ public class TicTacToe_Activity extends AppCompatActivity {
     TextView textView21;
     TextView textView22;
     TextView result;
+    Button restartGame;
     String[] strings = {"X", "O"};
     int switchPlayer = 1;
     TicTacToe ticTacToe = new TicTacToe();
@@ -28,7 +28,8 @@ public class TicTacToe_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tic_tac_toe);
+        setContentView(R.layout.tic_tac_toe_pvp);
+        restartGame = findViewById(R.id.restartGame);
         textView00 = (TextView) findViewById(R.id.b00);
         textView01 = (TextView) findViewById(R.id.b01);
         textView02 = (TextView) findViewById(R.id.b02);
@@ -47,15 +48,18 @@ public class TicTacToe_Activity extends AppCompatActivity {
                 textView00.setText(strings[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
                 if(resultOfGame == 1){
-                    result.setText("Player one WON!");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.playerOneWon);
                     removeListeners();
                 }
                 else if(resultOfGame == 2){
-                    result.setText("Player two WON!");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.playerTwoWon);
                     removeListeners();
                 }
                 else if(resultOfGame == 0){
-                    result.setText("DRAW");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.draw);
                     removeListeners();
                 }
             }
@@ -69,15 +73,18 @@ public class TicTacToe_Activity extends AppCompatActivity {
                 textView01.setText(strings[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
                 if(resultOfGame == 1){
-                    result.setText("Player one WON!");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.playerOneWon);
                     removeListeners();
                 }
                 else if(resultOfGame == 2){
-                    result.setText("Player two WON!");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.playerTwoWon);
                     removeListeners();
                 }
                 else if(resultOfGame == 0){
-                    result.setText("DRAW");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.draw);
                     removeListeners();
                 }
             }
@@ -91,15 +98,18 @@ public class TicTacToe_Activity extends AppCompatActivity {
                 textView02.setText(strings[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
                 if(resultOfGame == 1){
-                    result.setText("Player one WON!");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.playerOneWon);
                     removeListeners();
                 }
                 else if(resultOfGame == 2){
-                    result.setText("Player two WON!");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.playerTwoWon);
                     removeListeners();
                 }
                 else if(resultOfGame == 0){
-                    result.setText("DRAW");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.draw);
                     removeListeners();
                 }
             }
@@ -113,13 +123,19 @@ public class TicTacToe_Activity extends AppCompatActivity {
                 textView10.setText(strings[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
                 if(resultOfGame == 1){
-                    result.setText("Player one WON!");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.playerOneWon);
+                    removeListeners();
                 }
                 else if(resultOfGame == 2){
-                    result.setText("Player two WON!");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.playerTwoWon);
+                    removeListeners();
                 }
                 else if(resultOfGame == 0){
-                    result.setText("DRAW");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.draw);
+                    removeListeners();
                 }
             }
         });
@@ -132,15 +148,18 @@ public class TicTacToe_Activity extends AppCompatActivity {
                 textView11.setText(strings[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
                 if(resultOfGame == 1){
-                    result.setText("Player one WON!");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.playerOneWon);
                     removeListeners();
                 }
                 else if(resultOfGame == 2){
-                    result.setText("Player two WON!");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.playerTwoWon);
                     removeListeners();
                 }
                 else if(resultOfGame == 0){
-                    result.setText("DRAW");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.draw);
                     removeListeners();
                 }
             }
@@ -154,15 +173,18 @@ public class TicTacToe_Activity extends AppCompatActivity {
                 textView12.setText(strings[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
                 if(resultOfGame == 1){
-                    result.setText("Player one WON!");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.playerOneWon);
                     removeListeners();
                 }
                 else if(resultOfGame == 2){
-                    result.setText("Player two WON!");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.playerTwoWon);
                     removeListeners();
                 }
                 else if(resultOfGame == 0){
-                    result.setText("DRAW");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.draw);
                     removeListeners();
                 }
             }
@@ -176,15 +198,18 @@ public class TicTacToe_Activity extends AppCompatActivity {
                 textView20.setText(strings[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
                 if(resultOfGame == 1){
-                    result.setText("Player one WON!");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.playerOneWon);
                     removeListeners();
                 }
                 else if(resultOfGame == 2){
-                    result.setText("Player two WON!");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.playerTwoWon);
                     removeListeners();
                 }
                 else if(resultOfGame == 0){
-                    result.setText("DRAW");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.draw);
                     removeListeners();
                 }
             }
@@ -198,15 +223,18 @@ public class TicTacToe_Activity extends AppCompatActivity {
                 textView21.setText(strings[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
                 if(resultOfGame == 1){
-                    result.setText("Player one WON!");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.playerOneWon);
                     removeListeners();
                 }
                 else if(resultOfGame == 2){
-                    result.setText("Player two WON!");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.playerTwoWon);
                     removeListeners();
                 }
                 else if(resultOfGame == 0){
-                    result.setText("DRAW");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.draw);
                     removeListeners();
                 }
             }
@@ -220,17 +248,29 @@ public class TicTacToe_Activity extends AppCompatActivity {
                 textView22.setText(strings[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
                 if(resultOfGame == 1){
-                    result.setText("Player one WON!");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.playerOneWon);
                     removeListeners();
                 }
                 else if(resultOfGame == 2){
-                    result.setText("Player two WON!");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.playerTwoWon);
                     removeListeners();
                 }
                 else if(resultOfGame == 0){
-                    result.setText("DRAW");
+                    restartGame.setVisibility(View.VISIBLE);
+                    result.setText(R.string.draw);
                     removeListeners();
                 }
+            }
+        });
+
+        restartGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(getIntent());
+                finish();
+                overridePendingTransition(0,0);
             }
         });
 
