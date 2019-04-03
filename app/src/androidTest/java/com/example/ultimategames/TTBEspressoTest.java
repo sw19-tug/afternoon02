@@ -47,7 +47,19 @@ public class TTBEspressoTest {
     {
         // After Clicking the Button should Stay Visible and not disapear
 
-        onView(withId(R.id.bt_block)).perform(click());
-        onView(withId(R.id.bt_block)).perform(click()).check(matches(isDisplayed()));
+        for (int i = 0; i < 5; i++) {
+            onView(withId(R.id.bt_block)).perform(click());
+            onView(withId(R.id.bt_block)).perform(click()).check(matches(isDisplayed()));
+        }
     }
+
+    @Test
+    public void LostMessageShouldBeDisplayed()
+    {
+        // After Clicking the Button should Stay Visible and not disapear
+
+            onView(withId(R.id.bt_Backround)).perform(click());
+            onView(withId(R.id.txt_Lost)).check(matches(isDisplayed()));
+    }
+
 }
