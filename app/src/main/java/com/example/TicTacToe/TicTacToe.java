@@ -30,7 +30,7 @@ public class TicTacToe {
         for(int i = 0; i < matrix.size(); i++){
             same = true;
             for(int j = 0; j < matrix.get(i).size(); j++){
-                if(matrix.get(i).get(0) != matrix.get(i).get(j)){
+                if(matrix.get(i).get(j) == 0 || matrix.get(i).get(0) != matrix.get(i).get(j)){
                     same = false;
                     break;
                 }
@@ -42,7 +42,7 @@ public class TicTacToe {
         for(int i = 0; i < matrix.size(); i++){
             same = true;
             for(int j = 0; j < matrix.get(i).size(); j++){
-                if(matrix.get(0).get(i) != matrix.get(j).get(i)){
+                if(matrix.get(0).get(i) != matrix.get(j).get(i) || matrix.get(j).get(i) == 0){
                     same = false;
                     break;
                 }
