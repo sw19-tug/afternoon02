@@ -3,6 +3,7 @@ package com.example.ultimategames;
         import android.support.test.espresso.ViewAction;
         import android.support.test.rule.ActivityTestRule;
         import android.support.test.runner.AndroidJUnit4;
+        import android.widget.Button;
         import android.widget.TextView;
 
         import org.junit.Rule;
@@ -38,6 +39,15 @@ public class TTBEspressoTest {
     public void testButtonMovment()
     {
         onView(withId(R.id.bt_block)).check(matches(isClickable()));
+        onView(withId(R.id.bt_block)).perform(click()).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void ButtonShouldStayVisible()
+    {
+        // After Clicking the Button should Stay Visible and not disapear
+
+        onView(withId(R.id.bt_block)).perform(click());
         onView(withId(R.id.bt_block)).perform(click()).check(matches(isDisplayed()));
     }
 }
