@@ -17,6 +17,10 @@ import java.util.Random;
 
 public class TTB_Activity extends AppCompatActivity {
 
+    RelativeLayout rel_Backround;
+
+    int testcounter = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -34,38 +38,56 @@ public class TTB_Activity extends AppCompatActivity {
         Log.e("height", "" + height);
         // Todo: Make Layout Ready and set on Click Listener to Block and to the game canvas
 
-        Button btn = (Button)findViewById(R.id.bt_block);
+        final Button btn = (Button)findViewById(R.id.bt_block);
+
+        btn.setBackgroundColor(Color.GREEN);
 
         ViewGroup.LayoutParams params = btn.getLayoutParams();
         params.height = height/2;
         params.width = width/2;
         btn.setLayoutParams(params);
 
-
-
         btn.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 //Do stuff here
+                resizeBtn(v);
                 realignBtn(v);
+
             }
         });
 
+        rel_Backround = (RelativeLayout) findViewById (R.id.Rel_Backround);
 
-
+        rel_Backround.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn.setBackgroundColor(Color.RED);
+                final Button btn = (Button)findViewById(R.id.bt_block);
+            }
+        });
 
     }
-
     public void realignBtn(View v){
         RelativeLayout gameLayout =  findViewById(R.id.Rel_Backround);
         int Layoutwidth  = gameLayout.getWidth();
         int Layoutheight = gameLayout.getHeight();
 
-        Button btn = (Button)v ;
+        Button btn = (Button)v;
         Random buttonPlace = new Random();
         // Random Number in Bound
         int buttonY = buttonPlace.nextInt(Layoutwidth-btn.getWidth());
         int buttonX = buttonPlace.nextInt(Layoutheight-btn.getHeight());
         btn.setX(buttonX);
         btn.setY(buttonY);
+    }
+    public void resizeBtn(View v)
+    {
+        Button btn = (Button)v;
+
+        ViewGroup.LayoutParams params = btn.getLayoutParams();
+        params.height = btn.getHeight()/2;
+        params.width = btn.getWidth()/2;
+        btn.setLayoutParams(params);
+        testcounter++;
     }
 }

@@ -26,15 +26,26 @@
 
 
     </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/Rel_Backround"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <Button
             android:id="@+id/bt_block"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:background="#000000"/>
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:background="#000000"
+            tools:layout_editor_absoluteX="105dp"
+            tools:layout_editor_absoluteY="265dp" />
+
+
+
+
     </RelativeLayout>
+
+
+
 
 </android.support.constraint.ConstraintLayout>
