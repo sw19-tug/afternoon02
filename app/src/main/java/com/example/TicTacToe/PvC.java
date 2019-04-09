@@ -1,5 +1,6 @@
 package com.example.TicTacToe;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,10 +23,14 @@ public class PvC extends AppCompatActivity {
 
     int result;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tictactoepvc);
+
+        Assign_Sign_Player();
 
         b00 = findViewById(R.id.b00);
         b00.setOnClickListener(new View.OnClickListener() {
@@ -38,7 +43,7 @@ public class PvC extends AppCompatActivity {
                     Show_Result(result);
                     player = 3 - player;
                     index_lock[0] = 1;
-                    Computer_Turn();
+                    Computer_Turn(false, 0, 0);
                 }
             }
         });
@@ -54,7 +59,7 @@ public class PvC extends AppCompatActivity {
                     Show_Result(result);
                     player = 3 - player;
                     index_lock[1] = 1;
-                    Computer_Turn();
+                    Computer_Turn(false, 0, 0);
                 }
             }
         });
@@ -69,7 +74,7 @@ public class PvC extends AppCompatActivity {
                     Show_Result(result);
                     player = 3 - player;
                     index_lock[2] = 1;
-                    Computer_Turn();
+                    Computer_Turn(false, 0, 0);
                 }
             }
         });
@@ -84,7 +89,7 @@ public class PvC extends AppCompatActivity {
                     Show_Result(result);
                     player = 3 - player;
                     index_lock[3] = 1;
-                    Computer_Turn();
+                    Computer_Turn(false, 0, 0);
                 }
             }
         });
@@ -99,7 +104,7 @@ public class PvC extends AppCompatActivity {
                     Show_Result(result);
                     player = 3 - player;
                     index_lock[4] = 1;
-                    Computer_Turn();
+                    Computer_Turn(false, 0, 0);
                 }
             }
         });
@@ -114,7 +119,7 @@ public class PvC extends AppCompatActivity {
                     Show_Result(result);
                     player = 3 - player;
                     index_lock[5] = 1;
-                    Computer_Turn();
+                    Computer_Turn(false, 0, 0);
                 }
             }
         });
@@ -129,7 +134,7 @@ public class PvC extends AppCompatActivity {
                     Show_Result(result);
                     player = 3 - player;
                     index_lock[6] = 1;
-                    Computer_Turn();
+                    Computer_Turn(false, 0, 0);
                 }
             }
         });
@@ -144,7 +149,7 @@ public class PvC extends AppCompatActivity {
                     Show_Result(result);
                     player = 3 - player;
                     index_lock[7] = 1;
-                    Computer_Turn();
+                    Computer_Turn(false, 0, 0);
                 }
             }
         });
@@ -159,32 +164,123 @@ public class PvC extends AppCompatActivity {
                     Show_Result(result);
                     player = 3 - player;
                     index_lock[8] = 1;
-                    Computer_Turn();
+                    Computer_Turn(false, 0, 0);
                 }
             }
         });
     }
 
-    public void Assign_Sign_Player_1 (String s) {
-        signs[0] = s;
+    public void Assign_Sign_Player () {
+
+        signs[0] = "X";
+        signs[1] = "0";
     }
 
-    public void Assign_Sign_Player_2 (String s) {
-        signs[1] = s;
-    }
+    public int Computer_Turn (boolean test, int a, int b) {
 
-    public int Computer_Turn () {
+        if (test) {
+            index_lock[a] = 1;
+            index_lock[b] = 1;
+        }
 
-        Random rand = new Random();
-        int i;
+        int i = 0;
+        int j = 0;
+        boolean found = false;
 
+        // Horizontal
         while (true) {
-            i = rand.nextInt(8);
-            if (index_lock[i] == 0) {
+            if (j == 9) {
                 break;
             }
+            if (index_lock[j] == 1 && index_lock[j + 1] == 1) {
+                i = j + 2;
+                found = true;
+                break;
+            }
+            j += 3;
         }
-        index_lock[i] = 1;
+
+        j = 0;
+        while (true) {
+            if (j == 9) {
+                break;
+            }
+            if (index_lock[j] == 1 && index_lock[j + 2] == 1) {
+                i = j + 1;
+                found = true;
+                break;
+            }
+            j += 3;
+        }
+        j = 0;
+        while (true) {
+            if (j == 9) {
+                break;
+            }
+            if (index_lock[j+1] == 1 && index_lock[j + 2] == 1) {
+                i = j;
+                found = true;
+                break;
+            }
+            j += 3;
+        }
+
+        //Verticle
+        j = 0;
+        while (true) {
+            if (j == 3) {
+                break;
+            }
+            if (index_lock[j] == 1 && index_lock[j + 3*1] == 1) {
+                i = j + 3*2;
+                found = true;
+                break;
+            }
+            j += 1;
+        }
+        j = 0;
+        while (true) {
+            if (j == 3) {
+                break;
+            }
+            if (index_lock[j] == 1 && index_lock[j + 3*2] == 1) {
+                i = j + 3*1;
+                found = true;
+                break;
+            }
+            j += 1;
+        }
+        j = 0;
+        while (true) {
+            if (j == 3) {
+                break;
+            }
+            if (index_lock[j+3] == 1 && index_lock[j + 3*2] == 1) {
+                i = j;
+                found = true;
+                break;
+            }
+            j += 1;
+        }
+
+        if (found && test) {
+            return i;
+        }
+
+
+        if (found == false) {
+            Random rand = new Random();
+
+
+            while (true) {
+                i = rand.nextInt(8);
+                if (index_lock[i] == 0) {
+                    break;
+                }
+            }
+            index_lock[i] = 1;
+        }
+
 
         int x = 0, y = 0;
 
@@ -198,13 +294,13 @@ public class PvC extends AppCompatActivity {
             y = 2;
         }
 
-        if (i%3 == 0) {
+        if (i % 3 == 0) {
             x = 0;
         }
-        if (i%3 == 1) {
+        if (i % 3 == 1) {
             x = 1;
         }
-        if (i%3 == 2) {
+        if (i % 3 == 2) {
             x = 2;
         }
 
@@ -215,6 +311,13 @@ public class PvC extends AppCompatActivity {
 
     void Show_Result (int result) {
 
+        Collecting_User_Points collecting_user_points = new Collecting_User_Points();
+
+        //SharedPreferences sharedPreferences = getSharedPreferences("tictactoepoints", MODE_PRIVATE);
+        //SharedPreferences.Editor editor = getSharedPreferences("tictactoepoints", MODE_PRIVATE).edit();
+
+
+
         if (result == -1) {
             // Unifinished
         }
@@ -224,10 +327,12 @@ public class PvC extends AppCompatActivity {
         }
 
         if (result == 1) {
+            collecting_user_points.playerWinstictactoe(this);
             Toast.makeText(this,"Player 1 Won !!",Toast.LENGTH_LONG);
         }
 
         if (result == 2) {
+            collecting_user_points.playerLoosetictactoe(this);
             Toast.makeText(this,"Player 2 Won !!",Toast.LENGTH_LONG);
         }
     }
