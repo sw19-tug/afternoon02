@@ -41,7 +41,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         buttonHangman.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(WelcomeScreenActivity.this, GameHangman.class);
+                Intent intent = new Intent(WelcomeScreenActivity.this, HangmanSelScreen.class);
                 if(intent.resolveActivity(getPackageManager())!=null){
                     WelcomeScreenActivity.this.startActivity(intent);
                 }

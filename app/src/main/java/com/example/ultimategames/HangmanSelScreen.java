@@ -12,7 +12,7 @@ public class HangmanSelScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hangman_sel_screen);
+        setContentView(R.layout.activity_hangman_selscreen);
 
         Button playHMBtn = findViewById(R.id.playHMBtn);
         final Intent playHangman = new Intent(this, GameHangman.class);
