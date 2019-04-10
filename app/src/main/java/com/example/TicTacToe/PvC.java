@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,10 @@ public class PvC extends AppCompatActivity {
 
     int result;
 
+    TextView result_text;
+
+    Button restartGame;
+
 
 
     @Override
@@ -31,7 +36,19 @@ public class PvC extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tictactoepvc);
 
+        result_text = findViewById(R.id.result);
+
         Assign_Sign_Player();
+
+        restartGame = findViewById(R.id.restartGame);
+        restartGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(getIntent());
+                finish();
+                overridePendingTransition(0,0);
+            }
+        });
 
         b00 = findViewById(R.id.b00);
         b00.setOnClickListener(new View.OnClickListener() {
@@ -324,15 +341,19 @@ public class PvC extends AppCompatActivity {
         }
 
         if (result == 0) {
-            Toast.makeText(this,"It's a draw game.",Toast.LENGTH_LONG);
+            restartGame.setVisibility(View.VISIBLE);
+            result_text.setText(R.string.draw);
+
         }
 
         if (result == 1) {
-            Toast.makeText(this,"Player 1 Won !!",Toast.LENGTH_LONG);
+            restartGame.setVisibility(View.VISIBLE);
+            result_text.setText(R.string.playerOneWon);
         }
 
         if (result == 2) {
-            Toast.makeText(this,"Player 2 Won !!",Toast.LENGTH_LONG);
+            restartGame.setVisibility(View.VISIBLE);
+            result_text.setText(R.string.playerTwoWon);
         }
     }
 }

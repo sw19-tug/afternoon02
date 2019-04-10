@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context="com.example.TicTacToe.PvC">
 
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="300dp"
+        android:layout_height="46dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35pt"
+        android:textAlignment="center"
+        android:textSize="35sp"
+        />
+
     <LinearLayout
         android:layout_centerInParent="true"
         android:layout_width="match_parent"
@@ -185,5 +195,17 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/restartGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:layout_marginTop="20sp"
+        android:layout_marginBottom="50sp"
+        android:text="@string/restartTicTacToe"
+        android:visibility="invisible" />
 
 </RelativeLayout>
