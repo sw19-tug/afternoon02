@@ -103,7 +103,7 @@ public class PvC extends AppCompatActivity {
             public void onClick(View view) {
                 if (index_lock[3] == 0) {
                     b10.setText(signs[player-1]);
-                    result = ticTacToe.changeField(0,1, player);
+                    result = ticTacToe.changeField(1,0, player);
                     Show_Result(result);
                     player = 3 - player;
                     index_lock[3] = 1;
@@ -133,7 +133,7 @@ public class PvC extends AppCompatActivity {
             public void onClick(View view) {
                 if (index_lock[5] == 0) {
                     b12.setText(signs[player-1]);
-                    result = ticTacToe.changeField(2,1, player);
+                    result = ticTacToe.changeField(1,2, player);
                     Show_Result(result);
                     player = 3 - player;
                     index_lock[5] = 1;
@@ -148,7 +148,7 @@ public class PvC extends AppCompatActivity {
             public void onClick(View view) {
                 if (index_lock[6] == 0) {
                     b20.setText(signs[player-1]);
-                    result = ticTacToe.changeField(0,2, player);
+                    result = ticTacToe.changeField(2,0, player);
                     Show_Result(result);
                     player = 3 - player;
                     index_lock[6] = 1;
@@ -163,7 +163,7 @@ public class PvC extends AppCompatActivity {
             public void onClick(View view) {
                 if (index_lock[7] == 0) {
                     b21.setText(signs[player-1]);
-                    result = ticTacToe.changeField(1,2, player);
+                    result = ticTacToe.changeField(2,1, player);
                     Show_Result(result);
                     player = 3 - player;
                     index_lock[7] = 1;
@@ -215,6 +215,7 @@ public class PvC extends AppCompatActivity {
         int j = 0;
         boolean found = false;
 
+        /*
         // Horizontal
         while (true) {
             if (j == 9) {
@@ -290,7 +291,7 @@ public class PvC extends AppCompatActivity {
             }
             j += 1;
         }
-
+        */
         if (found && test) {
             return i;
         }
@@ -313,23 +314,23 @@ public class PvC extends AppCompatActivity {
         int x = 0, y = 0;
 
         if (i <= 2) {
-            y = 0;
+            x = 0;
         }
         else if (i <= 5) {
-            y = 1;
+            x = 1;
         }
         else if (i <= 8) {
-            y = 2;
+            x = 2;
         }
 
         if (i % 3 == 0) {
-            x = 0;
+            y = 0;
         }
         if (i % 3 == 1) {
-            x = 1;
+            y = 1;
         }
         if (i % 3 == 2) {
-            x = 2;
+            y = 2;
         }
         box[i].setText(signs[player-1]);
         int r = ticTacToe.changeField(x, y, player);
@@ -337,6 +338,7 @@ public class PvC extends AppCompatActivity {
         return r;
     }
     void Show_Result (int result) {
+
         if (result == -1) {
         }
 
