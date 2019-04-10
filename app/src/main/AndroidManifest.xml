@@ -9,10 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".HangmanSelScreen"
+            android:parentActivityName=".WelcomeScreenActivity"></activity>
         <activity
             android:name=".GameHangman"
+            android:parentActivityName=".HangmanSelScreen" 
             android:label="@string/title_activity_hangman_welcome_screen"
-            android:parentActivityName=".WelcomeScreenActivity"></activity>
+            ></activity>
         <activity
             android:name="com.example.TicTacToe.TicTacToe_WelcomeScreen"
             android:label="@string/title_activity_tic_tac_toe__welcome_screen"
@@ -22,7 +25,7 @@
             android:parentActivityName="com.example.TicTacToe.TicTacToe_WelcomeScreen"/>
         <activity
             android:name=".WelcomeScreenActivity"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
