@@ -1,23 +1,15 @@
 package com.example.ultimategames;
 
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.util.Dictionary;
+import android.widget.Toast;
 import java.util.HashMap;
 
 public class GameHangman extends AppCompatActivity implements View.OnClickListener {
-
-    private int move_count = 0;
 
     private Button btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnJ, btnK, btnL, btnM,
                    btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnV, btnW, btnX, btnY, btnZ;
@@ -37,8 +29,6 @@ public class GameHangman extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
-        // Apparently button IDs are not guaranteed to be constant at runtime, that's why
-        // if statements are recommended over switch case
 
         int id = view.getId();
         Button clicked = findViewById(id);
@@ -98,8 +88,6 @@ public class GameHangman extends AppCompatActivity implements View.OnClickListen
         } else if (id == R.id.button_z) {
             clicked.setEnabled(false);
         }
-
-        Log.d("MYLOG", "Button Clicked "+keyvalues.get(id));
     }
 
     private void initButtons()
@@ -227,5 +215,25 @@ public class GameHangman extends AppCompatActivity implements View.OnClickListen
         LinearLayout word = findViewById(R.id.word);
         TextView character = (TextView)word.getChildAt(position);
         character.setText(letter);
+    }
+
+    public void UpdateStats(int score, int wrong)
+    {
+        TextView tvScore = (TextView) findViewById(R.id.hangman_score);
+        TextView tvWrong = (TextView) findViewById(R.id.hangman_wrong);
+        String textScore = Integer.toString(score);
+        String textWrong = Integer.toString(wrong);
+        tvScore.setText(textScore);
+        tvWrong.setText(textWrong);
+    }
+
+    public void Win()
+    {
+        Toast.makeText(this, "You win!", Toast.LENGTH_SHORT).show();
+    }
+
+    public void Lose()
+    {
+        Toast.makeText(this, "You lose!", Toast.LENGTH_SHORT).show();
     }
 }
