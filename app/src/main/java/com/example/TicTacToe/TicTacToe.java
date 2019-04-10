@@ -30,7 +30,7 @@ public class TicTacToe {
         for(int i = 0; i < matrix.size(); i++){
             same = true;
             for(int j = 0; j < matrix.get(i).size(); j++){
-                if(matrix.get(i).get(0) != matrix.get(i).get(j)){
+                if(matrix.get(i).get(j) == 0 || matrix.get(i).get(0) != matrix.get(i).get(j)){
                     same = false;
                     break;
                 }
@@ -42,13 +42,13 @@ public class TicTacToe {
         for(int i = 0; i < matrix.size(); i++){
             same = true;
             for(int j = 0; j < matrix.get(i).size(); j++){
-                if(matrix.get(0).get(i) != matrix.get(j).get(i)){
+                if(matrix.get(0).get(i) != matrix.get(j).get(i) || matrix.get(j).get(i) == 0){
                     same = false;
                     break;
                 }
             }
             if(same){
-                return matrix.get(i).get(0) != 0 ? matrix.get(i).get(0) : -1;
+                return matrix.get(0).get(i) != 0 ? matrix.get(0).get(i) : -1;
             }
         }
         same = true;
@@ -61,6 +61,7 @@ public class TicTacToe {
         if(same){
             return matrix.get(0).get(0) != 0 ? matrix.get(0).get(0) : -1;
         }
+        same = true;
         for(int i = 0; i < matrix.size(); i++){
             if(matrix.get(i).get(matrix.size()-1-i) != matrix.get(0).get(matrix.size()-1)){
                 same=false;
@@ -72,5 +73,4 @@ public class TicTacToe {
         }
         return numberOfFields < 9 ? -1 : 0;
     }
-
 }

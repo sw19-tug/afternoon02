@@ -14,6 +14,7 @@ import java.util.Random;
 public class PvC extends AppCompatActivity {
 
     TextView b00, b01, b02, b10, b11, b12, b20, b21, b22 = null;
+    TextView box[] = new TextView[9];
     TicTacToe ticTacToe = new TicTacToe();
     int index_lock[] = {0,0,0,0,0,0,0,0,0};
 
@@ -168,6 +169,16 @@ public class PvC extends AppCompatActivity {
                 }
             }
         });
+
+        box[0] = b00;
+        box[1] = b01;
+        box[2] = b02;
+        box[3] = b10;
+        box[4] = b11;
+        box[5] = b12;
+        box[6] = b20;
+        box[7] = b21;
+        box[8] = b22;
     }
 
     public void Assign_Sign_Player () {
@@ -287,10 +298,10 @@ public class PvC extends AppCompatActivity {
         if (i <= 2) {
             y = 0;
         }
-        if (i <= 5) {
+        else if (i <= 5) {
             y = 1;
         }
-        if (i <= 8) {
+        else if (i <= 8) {
             y = 2;
         }
 
@@ -303,23 +314,13 @@ public class PvC extends AppCompatActivity {
         if (i % 3 == 2) {
             x = 2;
         }
-
+        box[i].setText(signs[player-1]);
         int r = ticTacToe.changeField(x, y, player);
         player = 3 - player;
         return r;
     }
-
     void Show_Result (int result) {
-
-        Collecting_User_Points collecting_user_points = new Collecting_User_Points();
-
-        //SharedPreferences sharedPreferences = getSharedPreferences("tictactoepoints", MODE_PRIVATE);
-        //SharedPreferences.Editor editor = getSharedPreferences("tictactoepoints", MODE_PRIVATE).edit();
-
-
-
         if (result == -1) {
-            // Unifinished
         }
 
         if (result == 0) {
@@ -327,12 +328,10 @@ public class PvC extends AppCompatActivity {
         }
 
         if (result == 1) {
-            collecting_user_points.playerWinstictactoe(this);
             Toast.makeText(this,"Player 1 Won !!",Toast.LENGTH_LONG);
         }
 
         if (result == 2) {
-            collecting_user_points.playerLoosetictactoe(this);
             Toast.makeText(this,"Player 2 Won !!",Toast.LENGTH_LONG);
         }
     }
