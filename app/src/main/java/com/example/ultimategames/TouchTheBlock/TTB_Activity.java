@@ -2,6 +2,7 @@ package com.example.ultimategames.TouchTheBlock;
 
 import android.graphics.Point;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Display;
@@ -22,6 +23,12 @@ public class TTB_Activity extends AppCompatActivity {
 
     // todo: use the Global Var after merge!
     public int testcounter = 0;
+    private TextView countDown;
+
+
+    private CountDownTimer timer;
+    private long time_left_ = 10000;
+    private boolean start;
 
     boolean gameover = false;
 
@@ -31,6 +38,7 @@ public class TTB_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // Set the game activity content view!
         setContentView(R.layout.touchtheblock);
+        countDown = findViewById(R.id.countdown_text);
 
 
         Display display = getWindowManager().getDefaultDisplay();
