@@ -2,37 +2,38 @@ package com.example.ultimategames;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
-
-import java.util.Dictionary;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 import java.util.HashMap;
 
 public class GameHangman extends AppCompatActivity implements View.OnClickListener {
-
-    private int move_count = 0;
 
     private Button btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnJ, btnK, btnL, btnM,
                    btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnV, btnW, btnX, btnY, btnZ;
 
     private HashMap<Integer, String> keyvalues = new HashMap<Integer, String>(26);
+    private HangmanLogic hangman_logic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_hangman);
 
+        hangman_logic = new HangmanLogic(this);
+
         initButtons();
     }
 
     @Override
     public void onClick(View view) {
-        // Apparently button IDs are not guaranteed to be constant at runtime, that's why
-        // if statements are recommended over switch case
 
         int id = view.getId();
         Button clicked = findViewById(id);
+
+        hangman_logic.checkLetter(keyvalues.get(id));
 
         if (id == R.id.button_a) {
             clicked.setEnabled(false);
@@ -170,5 +171,69 @@ public class GameHangman extends AppCompatActivity implements View.OnClickListen
         keyvalues.put(R.id.button_x, "X");
         keyvalues.put(R.id.button_y, "Y");
         keyvalues.put(R.id.button_z, "Z");
+    }
+
+    public void ResetView()
+    {
+        LinearLayout word = findViewById(R.id.word);
+        for (int i = 0; i < word.getChildCount(); i++)
+        {
+            TextView letter = (TextView)word.getChildAt(i);
+            letter.setText("_");
+        }
+
+        btnA.setEnabled(true);
+        btnB.setEnabled(true);
+        btnC.setEnabled(true);
+        btnD.setEnabled(true);
+        btnE.setEnabled(true);
+        btnF.setEnabled(true);
+        btnG.setEnabled(true);
+        btnH.setEnabled(true);
+        btnI.setEnabled(true);
+        btnJ.setEnabled(true);
+        btnK.setEnabled(true);
+        btnL.setEnabled(true);
+        btnM.setEnabled(true);
+        btnN.setEnabled(true);
+        btnO.setEnabled(true);
+        btnP.setEnabled(true);
+        btnQ.setEnabled(true);
+        btnR.setEnabled(true);
+        btnS.setEnabled(true);
+        btnT.setEnabled(true);
+        btnU.setEnabled(true);
+        btnV.setEnabled(true);
+        btnW.setEnabled(true);
+        btnX.setEnabled(true);
+        btnY.setEnabled(true);
+        btnZ.setEnabled(true);
+    }
+
+    public void ShowLetterAtPosition(String letter, int position)
+    {
+        LinearLayout word = findViewById(R.id.word);
+        TextView character = (TextView)word.getChildAt(position);
+        character.setText(letter);
+    }
+
+    public void UpdateStats(int score, int wrong)
+    {
+        TextView tvScore = (TextView) findViewById(R.id.hangman_score);
+        TextView tvWrong = (TextView) findViewById(R.id.hangman_wrong);
+        String textScore = Integer.toString(score);
+        String textWrong = Integer.toString(wrong);
+        tvScore.setText(textScore);
+        tvWrong.setText(textWrong);
+    }
+
+    public void Win()
+    {
+        Toast.makeText(this, "You win!", Toast.LENGTH_SHORT).show();
+    }
+
+    public void Lose()
+    {
+        Toast.makeText(this, "You lose!", Toast.LENGTH_SHORT).show();
     }
 }

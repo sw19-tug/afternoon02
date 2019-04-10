@@ -61,7 +61,8 @@ public class PvC extends AppCompatActivity {
                     Show_Result(result);
                     player = 3 - player;
                     index_lock[0] = 1;
-                    Computer_Turn(false, 0, 0);
+                    result = Computer_Turn(false, 0, 0);
+                    if(result!=3) Show_Result(result);
                 }
             }
         });
@@ -73,11 +74,12 @@ public class PvC extends AppCompatActivity {
 
                 if (index_lock[1] == 0) {
                     b01.setText(signs[player-1]);
-                    result = ticTacToe.changeField(1,0, player);
+                    result = ticTacToe.changeField(0,1, player);
                     Show_Result(result);
                     player = 3 - player;
                     index_lock[1] = 1;
-                    Computer_Turn(false, 0, 0);
+                    result = Computer_Turn(false, 0, 0);
+                    if(result!=3) Show_Result(result);
                 }
             }
         });
@@ -88,11 +90,12 @@ public class PvC extends AppCompatActivity {
             public void onClick(View view) {
                 if (index_lock[2] == 0) {
                     b02.setText(signs[player-1]);
-                    result = ticTacToe.changeField(2,0, player);
+                    result = ticTacToe.changeField(0,2, player);
                     Show_Result(result);
                     player = 3 - player;
                     index_lock[2] = 1;
-                    Computer_Turn(false, 0, 0);
+                    result = Computer_Turn(false, 0, 0);
+                    if(result!=3) Show_Result(result);
                 }
             }
         });
@@ -107,7 +110,8 @@ public class PvC extends AppCompatActivity {
                     Show_Result(result);
                     player = 3 - player;
                     index_lock[3] = 1;
-                    Computer_Turn(false, 0, 0);
+                    result = Computer_Turn(false, 0, 0);
+                    if(result!=3) Show_Result(result);
                 }
             }
         });
@@ -122,7 +126,8 @@ public class PvC extends AppCompatActivity {
                     Show_Result(result);
                     player = 3 - player;
                     index_lock[4] = 1;
-                    Computer_Turn(false, 0, 0);
+                    result = Computer_Turn(false, 0, 0);
+                    if(result!=3) Show_Result(result);
                 }
             }
         });
@@ -137,7 +142,8 @@ public class PvC extends AppCompatActivity {
                     Show_Result(result);
                     player = 3 - player;
                     index_lock[5] = 1;
-                    Computer_Turn(false, 0, 0);
+                    result = Computer_Turn(false, 0, 0);
+                    if(result!=3) Show_Result(result);
                 }
             }
         });
@@ -152,7 +158,8 @@ public class PvC extends AppCompatActivity {
                     Show_Result(result);
                     player = 3 - player;
                     index_lock[6] = 1;
-                    Computer_Turn(false, 0, 0);
+                    result = Computer_Turn(false, 0, 0);
+                    Show_Result(result);
                 }
             }
         });
@@ -167,7 +174,8 @@ public class PvC extends AppCompatActivity {
                     Show_Result(result);
                     player = 3 - player;
                     index_lock[7] = 1;
-                    Computer_Turn(false, 0, 0);
+                    result = Computer_Turn(false, 0, 0);
+                    if(result!=3) Show_Result(result);
                 }
             }
         });
@@ -182,7 +190,8 @@ public class PvC extends AppCompatActivity {
                     Show_Result(result);
                     player = 3 - player;
                     index_lock[8] = 1;
-                    Computer_Turn(false, 0, 0);
+                    result = Computer_Turn(false, 0, 0);
+                    if(result!=3) Show_Result(result);
                 }
             }
         });
@@ -303,6 +312,14 @@ public class PvC extends AppCompatActivity {
 
             while (true) {
                 i = rand.nextInt(8);
+                boolean isLast=true;
+                for (int counter =0;counter<9;counter++){
+                    if(index_lock[counter]==0){
+                        isLast=false;
+                        break;
+                    }
+                }
+                if(isLast==true) return 3;
                 if (index_lock[i] == 0) {
                     break;
                 }
@@ -336,6 +353,7 @@ public class PvC extends AppCompatActivity {
         int r = ticTacToe.changeField(x, y, player);
         player = 3 - player;
         return r;
+
     }
     void Show_Result (int result) {
 
