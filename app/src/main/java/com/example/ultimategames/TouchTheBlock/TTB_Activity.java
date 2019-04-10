@@ -54,7 +54,6 @@ public class TTB_Activity extends AppCompatActivity {
 
         btn.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                //Do stuff here
                 if(!gameover)
                 {
                     resizeBtn(v);
@@ -104,7 +103,6 @@ public class TTB_Activity extends AppCompatActivity {
         testcounter++;
     }
 
-    // made Public for Unit Testing!
 
     public void addPoints(){
 
