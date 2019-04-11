@@ -19,22 +19,22 @@ public class HangmanLogic
         mGameHangman = game;
 
         mWord_collection = new ArrayList<>();
-        mWord_collection.add("AAHS");
-        mWord_collection.add("AALS");
-        mWord_collection.add("ABAC");
-        mWord_collection.add("ABAS");
+        mWord_collection.add("WHAT");
+        mWord_collection.add("TAKE");
+        mWord_collection.add("BASTARD");
+        mWord_collection.add("YOU");
 
         setRandomWord();
         mGameHangman.UpdateStats(mPoints, mFailCounter);
+        mGameHangman.CreateWordView(mSolution.length());
     }
 
     private void setRandomWord()
     {
         int randomNumber = (int) (Math.random() * mWord_collection.size());
 
-        String randomWord = mWord_collection.get(randomNumber);
-        mSolution = randomWord;
-        mWord = randomWord.split("(?!^)");
+        mSolution = mWord_collection.get(randomNumber);
+        mWord = mSolution.split("(?!^)");
     }
 
     public void checkLetter(String guessed_letter)
@@ -79,9 +79,10 @@ public class HangmanLogic
         mFailCounter++;
         mGameHangman.UpdateStats(mPoints, mFailCounter);
 
-        // Game Over after 6 failed guesses
-        if (mFailCounter >= 6)
+        // Game Over after 8 failed guesses
+        if (mFailCounter >= 8)
         {
+            mPoints -= 2;
             mGameHangman.Lose();
             (new Handler()).postDelayed(new Runnable() {
                 @Override
@@ -100,5 +101,6 @@ public class HangmanLogic
         mWord = null;
         setRandomWord();
         mGameHangman.UpdateStats(mPoints, mFailCounter);
+        mGameHangman.CreateWordView(mSolution.length());
     }
 }
