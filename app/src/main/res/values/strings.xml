@@ -15,6 +15,8 @@
     <string name="btn_need_hint">Need a hint? (Cost: 3 Points)</string>
     <string name="title_activity_tic_tac_toe__welcome_screen">Tic-Tac-Toe</string>
     <string name="title_activity_tic_tac_toe_pvp">Tic-Tac-Toe PvP</string>
+    <string name="title_activity_tic_tac_toe_pvc">Tic-Tac-Toe PvC</string>
+    <string name="title_activity_touch_the_block">Touch The Block</string>
     <string name="title_activity_hangman_welcome_screen">Hangman</string>
     <string name="hangman_wrong">Wrong guesses:</string>
 </resources>

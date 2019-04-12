@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name="com.example.TicTacToe.PvC"
+            android:label="@string/title_activity_tic_tac_toe_pvc"
+            android:parentActivityName="com.example.TicTacToe.TicTacToe_WelcomeScreen"/>
         <activity android:name=".HangmanSelScreen"
             android:parentActivityName=".WelcomeScreenActivity"></activity>
         <activity
@@ -34,7 +37,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".TouchTheBlock.TTB_Activity">
+        <activity android:name=".TouchTheBlock.TTB_Activity"
+
+            android:label="@string/title_activity_touch_the_block"
+            android:parentActivityName=".WelcomeScreenActivity">
             <intent-filter>
                 <action android:name=".TouchTheBlock.TTB_Activity" />
 
