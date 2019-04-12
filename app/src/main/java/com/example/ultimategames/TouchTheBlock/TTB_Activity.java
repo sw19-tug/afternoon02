@@ -42,7 +42,7 @@ public class TTB_Activity extends AppCompatActivity {
 
         final Button btn = (Button)findViewById(R.id.bt_block);
 
-        btn.setBackgroundColor(Color.GREEN);
+        btn.setBackgroundColor(Color.BLACK);
 
         ViewGroup.LayoutParams params = btn.getLayoutParams();
         params.height = height/2;
