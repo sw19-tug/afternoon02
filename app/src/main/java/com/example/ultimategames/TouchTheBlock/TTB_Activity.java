@@ -20,7 +20,6 @@ public class TTB_Activity extends AppCompatActivity {
 
     RelativeLayout rel_Backround;
 
-    // todo: use the Global Var after merge!
     public int testcounter = 0;
 
     boolean gameover = false;
@@ -40,7 +39,6 @@ public class TTB_Activity extends AppCompatActivity {
         int height = size.y;
         Log.e("Width", "" + width);
         Log.e("height", "" + height);
-        // Todo: Make Layout Ready and set on Click Listener to Block and to the game canvas
 
         final Button btn = (Button)findViewById(R.id.bt_block);
 
@@ -54,7 +52,7 @@ public class TTB_Activity extends AppCompatActivity {
 
         btn.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                //Do stuff here
+
                 if(!gameover)
                 {
                     resizeBtn(v);
@@ -104,7 +102,6 @@ public class TTB_Activity extends AppCompatActivity {
         testcounter++;
     }
 
-    // made Public for Unit Testing!
 
     public void addPoints(){
 
