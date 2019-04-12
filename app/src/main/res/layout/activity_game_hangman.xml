@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameHangman"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/word"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+        android:id="@+id/letter1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:text="_"
+        android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/letter2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:text="_"
+            android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/letter3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:text="_"
+            android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/letter4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:text="_"
+            android:textSize="36sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="left"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="3dp"
+                android:textSize="14sp"
+                android:text="@string/score"/>
+
+            <TextView
+                android:id="@+id/hangman_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                tools:text="@tools:sample/date/hhmm" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="right"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="3dp"
+                android:textSize="14sp"
+                android:text="@string/hangman_wrong"/>
+
+            <TextView
+                android:id="@+id/hangman_wrong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                tools:text="@tools:sample/date/hhmm" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/hangman" />
+
+    </LinearLayout>
+
+<!--
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="@string/btn_need_hint" />
+    </LinearLayout>
+-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableRow
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button_a"
+                    style="@style/CharacterButton"
+                    android:text="A" />
+
+                <Button
+                    android:id="@+id/button_b"
+                    style="@style/CharacterButton"
+                    android:text="B" />
+
+                <Button
+                    android:id="@+id/button_c"
+                    style="@style/CharacterButton"
+                    android:text="C" />
+
+                <Button
+                    android:id="@+id/button_d"
+                    style="@style/CharacterButton"
+                    android:text="D" />
+
+                <Button
+                    android:id="@+id/button_e"
+                    style="@style/CharacterButton"
+                    android:text="E" />
+
+                <Button
+                    android:id="@+id/button_f"
+                    style="@style/CharacterButton"
+                    android:text="F" />
+
+                <Button
+                    android:id="@+id/button_g"
+                    style="@style/CharacterButton"
+                    android:text="G" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button_h"
+                    style="@style/CharacterButton"
+                    android:text="H" />
+
+                <Button
+                    android:id="@+id/button_i"
+                    style="@style/CharacterButton"
+                    android:text="I" />
+
+                <Button
+                    android:id="@+id/button_j"
+                    style="@style/CharacterButton"
+                    android:text="J" />
+
+                <Button
+                    android:id="@+id/button_k"
+                    style="@style/CharacterButton"
+                    android:text="K" />
+
+                <Button
+                    android:id="@+id/button_l"
+                    style="@style/CharacterButton"
+                    android:text="L" />
+
+                <Button
+                    android:id="@+id/button_m"
+                    style="@style/CharacterButton"
+                    android:text="M" />
+
+                <Button
+                    android:id="@+id/button_n"
+                    style="@style/CharacterButton"
+                    android:text="N" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button_o"
+                    style="@style/CharacterButton"
+                    android:text="O" />
+
+                <Button
+                    android:id="@+id/button_p"
+                    style="@style/CharacterButton"
+                    android:text="P" />
+
+                <Button
+                    android:id="@+id/button_q"
+                    style="@style/CharacterButton"
+                    android:text="Q" />
+
+                <Button
+                    android:id="@+id/button_r"
+                    style="@style/CharacterButton"
+                    android:text="R" />
+
+                <Button
+                    android:id="@+id/button_s"
+                    style="@style/CharacterButton"
+                    android:text="S" />
+
+                <Button
+                    android:id="@+id/button_t"
+                    style="@style/CharacterButton"
+                    android:text="T" />
+
+                <Button
+                    android:id="@+id/button_u"
+                    style="@style/CharacterButton"
+                    android:text="U" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:weightSum="7">
+
+                <Button
+                    android:id="@+id/button_v"
+                    style="@style/CharacterButton"
+                    android:text="V" />
+
+                <Button
+                    android:id="@+id/button_w"
+                    style="@style/CharacterButton"
+                    android:text="W" />
+
+                <Button
+                    android:id="@+id/button_x"
+                    style="@style/CharacterButton"
+                    android:layout_height="match_parent"
+                    android:text="X" />
+
+                <Button
+                    android:id="@+id/button_y"
+                    style="@style/CharacterButton"
+                    android:text="Y" />
+
+                <Button
+                    android:id="@+id/button_z"
+                    style="@style/CharacterButton"
+                    android:text="Z" />
+
+            </TableRow>
+
+        </TableLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
