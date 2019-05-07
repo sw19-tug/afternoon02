@@ -9,19 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HangmanSelScreen"></activity>
+        <activity android:name=".ExtendWords"></activity>
+        <activity android:name=".HangmanSelScreen" />
         <activity
             android:name=".GameHangman"
-            android:parentActivityName=".HangmanSelScreen" 
             android:label="@string/title_activity_hangman_welcome_screen"
-            ></activity>
+            android:parentActivityName=".HangmanSelScreen" />
         <activity
             android:name="com.example.TicTacToe.TicTacToe_WelcomeScreen"
             android:label="@string/title_activity_tic_tac_toe__welcome_screen"
-            android:parentActivityName=".WelcomeScreenActivity"></activity>
-        <activity android:name="com.example.TicTacToe.TicTacToePvP_Activity"
+            android:parentActivityName=".WelcomeScreenActivity" />
+        <activity
+            android:name="com.example.TicTacToe.TicTacToePvP_Activity"
             android:label="@string/title_activity_tic_tac_toe_pvp"
-            android:parentActivityName="com.example.TicTacToe.TicTacToe_WelcomeScreen"/>
+            android:parentActivityName="com.example.TicTacToe.TicTacToe_WelcomeScreen" />
         <activity
             android:name=".WelcomeScreenActivity"
             android:parentActivityName=".MainActivity" />
@@ -32,7 +33,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".TouchTheBlock.TTB_Activity">
             <intent-filter>
                 <action android:name=".TouchTheBlock.TTB_Activity" />
