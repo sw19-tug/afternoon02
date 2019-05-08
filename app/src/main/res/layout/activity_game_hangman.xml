@@ -16,40 +16,25 @@
         android:orientation="horizontal">
 
         <TextView
-        android:id="@+id/letter1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
-        android:text="_"
-        android:textSize="36sp" />
+            android:id="@+id/letter1"
+            android:text="_"
+            style="@style/CharacterTextView"/>
 
         <TextView
             android:id="@+id/letter2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
             android:text="_"
-            android:textSize="36sp" />
+            style="@style/CharacterTextView"/>
 
         <TextView
             android:id="@+id/letter3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
             android:text="_"
-            android:textSize="36sp" />
+            style="@style/CharacterTextView"/>
 
         <TextView
             android:id="@+id/letter4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
             android:text="_"
-            android:textSize="36sp" />
+            style="@style/CharacterTextView"/>
+
     </LinearLayout>
 
     <LinearLayout
