@@ -35,4 +35,16 @@ public class TTB_UnitTest {
         assert (OldPoints > ttb.testcounter);
     }
 
+    public void timerShouldbeReset() throws InterruptedException {
+        ttb.timer();
+
+        // wait for some time till the counter is incremented
+        Thread.sleep(2000);
+
+        assert(Time == 0);
+
+
+
+    }
+
 }
