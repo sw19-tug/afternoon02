@@ -18,6 +18,7 @@ import com.example.ultimategames.R;
 
 public class TicTacToe_ColorSelection_Activity extends AppCompatActivity implements OnItemSelectedListener{
 
+    private String character_one, character_two;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,27 +26,25 @@ public class TicTacToe_ColorSelection_Activity extends AppCompatActivity impleme
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         Button buttonContinue = (Button) findViewById(R.id.buttonContinue);
 
-        // Spinner click listener
+
         spinner.setOnItemSelectedListener(this);
 
-        // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
         categories.add("X");
         categories.add("O");
 
-        // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
 
-        // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
         buttonContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TicTacToe_ColorSelection_Activity.this, PvC.class);
                 if(intent.resolveActivity(getPackageManager())!=null){
+                    String[] strings = {character_one, character_two};
+                    intent.putExtra("characters",strings);
                     TicTacToe_ColorSelection_Activity.this.startActivity(intent);
                 }
             }
@@ -54,14 +53,12 @@ public class TicTacToe_ColorSelection_Activity extends AppCompatActivity impleme
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        // On selecting a spinner item
-        String item = parent.getItemAtPosition(position).toString();
-
-        // Showing selected spinner item
-        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+        character_one = parent.getItemAtPosition(position).toString();
+        character_two = parent.getItemAtPosition((position + 1)%parent.getCount()).toString();
     }
     public void onNothingSelected(AdapterView<?> arg0) {
-        // TODO Auto-generated method stub
+        character_one = arg0.getItemAtPosition(0).toString();
+        character_two = arg0.getItemAtPosition(1).toString();
     }
 
 

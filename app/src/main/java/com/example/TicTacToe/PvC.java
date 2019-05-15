@@ -21,7 +21,7 @@ public class PvC extends AppCompatActivity {
 
     int player = 1;
 
-    String[] signs = {"X","O"};
+    String[] signs;
 
     int result;
 
@@ -36,9 +36,9 @@ public class PvC extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tictactoepvc);
 
+        signs = getIntent().getStringArrayExtra("characters");
         result_text = findViewById(R.id.result);
 
-        Assign_Sign_Player();
 
         restartGame = findViewById(R.id.restartGame);
         restartGame.setOnClickListener(new View.OnClickListener() {
@@ -236,8 +236,6 @@ public class PvC extends AppCompatActivity {
 
     public void Assign_Sign_Player () {
 
-        signs[0] = "X";
-        signs[1] = "0";
     }
 
     public int Computer_Turn (boolean test, int a, int b) {
