@@ -80,13 +80,7 @@ public class TTB_Activity extends AppCompatActivity {
         rel_Backround.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btn.setBackgroundColor(Color.RED);
-                final Button btn = (Button)findViewById(R.id.bt_block);
-                deductPoints();
-                TextView txtView = (TextView)findViewById(R.id.textView);
-                String hello = "Sorry you lost!";
-                txtView.setText(hello);
-                gameover = true;
+                gameOver();
             }
         });
 
@@ -128,9 +122,11 @@ public class TTB_Activity extends AppCompatActivity {
     }
 
     public void timer(){
+
         countDown = findViewById(R.id.countdown_text);
 
-        new CountDownTimer(30000, 10){
+        new CountDownTimer(30000, 10)
+        {
             public void onTick(long millisUntilFinished){
                 DecimalFormat df = new DecimalFormat("#.##");
                 countDown.setText(String.valueOf(df.format(time)));
