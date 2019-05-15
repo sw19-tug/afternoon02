@@ -59,6 +59,9 @@ public class PvC extends AppCompatActivity {
                     b00.setText(signs[player-1]);
                     result = ticTacToe.changeField(0,0, player);
                     Show_Result(result);
+                    if(result != -1){
+                        return;
+                    }
                     player = 3 - player;
                     index_lock[0] = 1;
                     result = Computer_Turn(false, 0, 0);
@@ -76,6 +79,9 @@ public class PvC extends AppCompatActivity {
                     b01.setText(signs[player-1]);
                     result = ticTacToe.changeField(0,1, player);
                     Show_Result(result);
+                    if(result != -1){
+                        return;
+                    }
                     player = 3 - player;
                     index_lock[1] = 1;
                     result = Computer_Turn(false, 0, 0);
@@ -92,6 +98,9 @@ public class PvC extends AppCompatActivity {
                     b02.setText(signs[player-1]);
                     result = ticTacToe.changeField(0,2, player);
                     Show_Result(result);
+                    if(result != -1){
+                        return;
+                    }
                     player = 3 - player;
                     index_lock[2] = 1;
                     result = Computer_Turn(false, 0, 0);
@@ -108,6 +117,9 @@ public class PvC extends AppCompatActivity {
                     b10.setText(signs[player-1]);
                     result = ticTacToe.changeField(1,0, player);
                     Show_Result(result);
+                    if(result != -1){
+                        return;
+                    }
                     player = 3 - player;
                     index_lock[3] = 1;
                     result = Computer_Turn(false, 0, 0);
@@ -124,6 +136,9 @@ public class PvC extends AppCompatActivity {
                     b11.setText(signs[player-1]);
                     result = ticTacToe.changeField(1,1, player);
                     Show_Result(result);
+                    if(result != -1){
+                        return;
+                    }
                     player = 3 - player;
                     index_lock[4] = 1;
                     result = Computer_Turn(false, 0, 0);
@@ -140,6 +155,9 @@ public class PvC extends AppCompatActivity {
                     b12.setText(signs[player-1]);
                     result = ticTacToe.changeField(1,2, player);
                     Show_Result(result);
+                    if(result != -1){
+                        return;
+                    }
                     player = 3 - player;
                     index_lock[5] = 1;
                     result = Computer_Turn(false, 0, 0);
@@ -156,6 +174,9 @@ public class PvC extends AppCompatActivity {
                     b20.setText(signs[player-1]);
                     result = ticTacToe.changeField(2,0, player);
                     Show_Result(result);
+                    if(result != -1){
+                        return;
+                    }
                     player = 3 - player;
                     index_lock[6] = 1;
                     result = Computer_Turn(false, 0, 0);
@@ -172,6 +193,9 @@ public class PvC extends AppCompatActivity {
                     b21.setText(signs[player-1]);
                     result = ticTacToe.changeField(2,1, player);
                     Show_Result(result);
+                    if(result != -1){
+                        return;
+                    }
                     player = 3 - player;
                     index_lock[7] = 1;
                     result = Computer_Turn(false, 0, 0);
@@ -188,6 +212,9 @@ public class PvC extends AppCompatActivity {
                     b22.setText(signs[player-1]);
                     result = ticTacToe.changeField(2,2, player);
                     Show_Result(result);
+                    if(result != -1){
+                        return;
+                    }
                     player = 3 - player;
                     index_lock[8] = 1;
                     result = Computer_Turn(false, 0, 0);
@@ -225,31 +252,25 @@ public class PvC extends AppCompatActivity {
         boolean found = false;
 
 
-        if (found && test) {
-            return i;
-        }
+        Random rand = new Random();
 
 
-        if (found == false) {
-            Random rand = new Random();
-
-
-            while (true) {
-                i = rand.nextInt(8);
-                boolean isLast=true;
-                for (int counter =0;counter<9;counter++){
-                    if(index_lock[counter]==0){
-                        isLast=false;
-                        break;
-                    }
-                }
-                if(isLast==true) return 3;
-                if (index_lock[i] == 0) {
+        while (true) {
+            i = rand.nextInt(8);
+            boolean isLast=true;
+            for (int counter =0;counter<9;counter++){
+                if(index_lock[counter]==0){
+                    isLast=false;
                     break;
                 }
             }
-            index_lock[i] = 1;
+            if(isLast) return 3;
+            if (index_lock[i] == 0) {
+                break;
+            }
         }
+        index_lock[i] = 1;
+
 
 
         int x = 0, y = 0;
@@ -280,21 +301,14 @@ public class PvC extends AppCompatActivity {
 
     }
     void Show_Result (int result) {
-
-        if (result == -1) {
-        }
-
         if (result == 0) {
             restartGame.setVisibility(View.VISIBLE);
             result_text.setText(R.string.draw);
-
         }
-
         if (result == 1) {
             restartGame.setVisibility(View.VISIBLE);
             result_text.setText(R.string.playerOneWon);
         }
-
         if (result == 2) {
             restartGame.setVisibility(View.VISIBLE);
             result_text.setText(R.string.playerTwoWon);
