@@ -77,16 +77,33 @@ public class TicTacToe_ColorSelection_Activity extends AppCompatActivity impleme
         buttonContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TicTacToe_ColorSelection_Activity.this, PvC.class);
-                if(intent.resolveActivity(getPackageManager())!=null){
+                String activity = getIntent().getStringExtra("type_of_game");
+                if(activity.equals("PvP")){
+                    Intent intent = new Intent(TicTacToe_ColorSelection_Activity.this, TicTacToePvP_Activity.class);
+                    if(intent.resolveActivity(getPackageManager())!=null){
 
-                    String[] strings = {character_one, character_two};
-                    intent.putExtra("characters",strings);
+                        String[] strings = {character_one, character_two};
+                        intent.putExtra("characters",strings);
 
-                    String[] colors = {color_one, color_two};
-                    intent.putExtra("colors",colors);
+                        String[] colors = {color_one, color_two};
+                        intent.putExtra("colors",colors);
 
-                    TicTacToe_ColorSelection_Activity.this.startActivity(intent);
+                        TicTacToe_ColorSelection_Activity.this.startActivity(intent);
+                    }
+
+                }
+                else if(activity.equals("PvC")){
+                    Intent intent = new Intent(TicTacToe_ColorSelection_Activity.this, PvC.class);
+                    if(intent.resolveActivity(getPackageManager())!=null){
+
+                        String[] strings = {character_one, character_two};
+                        intent.putExtra("characters",strings);
+
+                        String[] colors = {color_one, color_two};
+                        intent.putExtra("colors",colors);
+
+                        TicTacToe_ColorSelection_Activity.this.startActivity(intent);
+                    }
                 }
             }
         });
