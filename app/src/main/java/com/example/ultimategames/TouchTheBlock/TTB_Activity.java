@@ -1,6 +1,7 @@
 package com.example.ultimategames.TouchTheBlock;
 
 import android.graphics.Point;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -134,13 +135,15 @@ public class TTB_Activity extends AppCompatActivity {
                 DecimalFormat df = new DecimalFormat("#.##");
                 countDown.setText(String.valueOf(df.format(time)));
                 time = time - 0.01;
+                double timer_buffer = time;
+                if(Math.abs(timer_buffer-1.0) <= 0.01)
+                {
+                    MediaPlayer ring = MediaPlayer.create(TTB_Activity.this,R.raw.bing_sound);
+                    ring.start();
+                    TextView txtView = (TextView)findViewById(R.id.textView);
+                }
                 if(time < 0.0)
                 {
-                    deductPoints();
-                    TextView txtView = (TextView)findViewById(R.id.textView);
-                    String hello = "Sorry you lost!";
-                    txtView.setText(hello);
-                    gameover = true;
                     gameOver();
                     return;
                 }
@@ -149,7 +152,6 @@ public class TTB_Activity extends AppCompatActivity {
                 countDown.setText("You lost");
             }
         }.start();
-
     }
 
     public void gameOver()
