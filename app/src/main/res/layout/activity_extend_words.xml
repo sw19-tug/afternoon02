@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ExtendWords">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="15sp"
         android:orientation="vertical">
 
@@ -18,22 +19,21 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15sp"
             android:gravity="center"
-            android:text="Enter a new Word"
+            android:text="@string/label_enter_new_word"
             android:textSize="36sp" />
 
         <TextView
             android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="(Länge max: 5)" />
+            android:text="@string/label_max_characters" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="237dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteY="494dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/newWord"
@@ -43,8 +43,8 @@
             android:ems="10"
             android:gravity="center"
             android:hint="New Word"
-            android:inputType="textPersonName"
-            android:maxLength="4"
+            android:inputType="text"
+            android:maxLength="8"
             android:textSize="36sp" />
 
         <Button
@@ -55,4 +55,4 @@
             android:text="Add Word" />
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

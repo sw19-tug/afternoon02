@@ -1,18 +1,7 @@
 package com.example.ultimategames;
 
-import android.content.Intent;
-import android.media.Image;
 import android.os.Handler;
-import android.provider.ContactsContract;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -33,68 +22,51 @@ public class HangmanLogic
         mDatabaseHelper = databaseHelper;
 
         mWord_collection = mDatabaseHelper.getAllWords();
-        mWord_collection.add("AAHS");
-        mWord_collection.add("AALS");
-        mWord_collection.add("ABAC");
-        mWord_collection.add("ABAS");
-
-        for (int i = 0; i < mWord_collection.size(); i++)
-        {
-            Log.d("WORD", mWord_collection.get(i));
-        }
+        mWord_collection.add("WHAT");
+        mWord_collection.add("TAKE");
+        mWord_collection.add("BASTARD");
+        mWord_collection.add("YOU");
 
         setRandomWord();
+        mGameHangman.UpdateStats(mPoints, mFailCounter);
+        mGameHangman.CreateWordView(mSolution.length());
     }
 
     private void setRandomWord()
     {
-        // Zufällig ein Wert aus der Wortliste auswählen
         int randomNumber = (int) (Math.random() * mWord_collection.size());
-        String randomWord = mWord_collection.get(randomNumber);
-        mSolution = randomWord;
-        mWord = randomWord.split("(?!^)");
-        Log.d("WORD", mWord[0] + " " + mWord[1] + " " + mWord[2] + " " + mWord[3]);
+
+        mSolution = mWord_collection.get(randomNumber);
+        mWord = mSolution.split("(?!^)");
     }
 
     public void checkLetter(String guessed_letter)
     {
-        // Flag for failed letter
         boolean letterGuessed = false;
 
-        // Check every entered letter
         for( int i = 0; i < mWord.length; i++)
         {
-            // Check if solution contains letter
             if(mWord[i].toUpperCase().equals(guessed_letter.toUpperCase()))
             {
-                Log.d("GUESS", "Solution: " + mSolution + "; Letter: " + guessed_letter + "; Position: " +i);
-
-                // Set flag on true
                 letterGuessed = true;
-
-                // show the correct guessed letters
                 mGameHangman.ShowLetterAtPosition(guessed_letter, i);
-
-                // Increase counter
                 mGuessedLetter++;
             }
         }
 
-        // Call Method for letter fails actions
         if(letterGuessed == false)
         {
             letterFailed();
         }
 
-        // Check if word wurde erraten
+        // Check if word was completed successfully
         if(mGuessedLetter == mWord.length)
         {
-            Log.d("WIN", "You win!");
-
-            // If user guessed a word - increment Points
             mPoints++;
+            mGameHangman.UpdateStats(mPoints, mFailCounter);
+            mGameHangman.Win();
 
-            // CLEAR THE PREV WORD
+            // Reset the game screen with small delay (allows for the tap to end)
             (new Handler()).postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -108,29 +80,30 @@ public class HangmanLogic
     {
         // Increment fail counter
         mFailCounter++;
+        mGameHangman.UpdateStats(mPoints, mFailCounter);
 
-        // Game Over after 6 failed guesses
-        // TODO: implement changing graphics
-        if (mFailCounter >= 6)
+        // Game Over after 8 failed guesses
+        if (mFailCounter >= 8)
         {
+            mPoints -= 2;
+            mGameHangman.Lose();
             (new Handler()).postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     Reset();
                 }
             }, 500);
-
-
-            // TODO GAME OVER
-            Log.d("GAMEOVER","Game Over!");
         }
     }
 
     private void Reset()
     {
         mGuessedLetter = 0;
+        mFailCounter = 0;
         mGameHangman.ResetView();
-        mWord= null;
+        mWord = null;
         setRandomWord();
+        mGameHangman.UpdateStats(mPoints, mFailCounter);
+        mGameHangman.CreateWordView(mSolution.length());
     }
 }
