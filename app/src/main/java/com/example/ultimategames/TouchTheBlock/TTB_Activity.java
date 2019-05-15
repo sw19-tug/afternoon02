@@ -12,12 +12,17 @@ import android.widget.Button;
 import android.graphics.Color;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.os.CountDownTimer;
 
 import com.example.ultimategames.R;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 
+
 public class TTB_Activity extends AppCompatActivity {
+
+    final double time_to_react = 3.0;
 
     RelativeLayout rel_Backround;
 
@@ -25,10 +30,7 @@ public class TTB_Activity extends AppCompatActivity {
     public int testcounter = 0;
     private TextView countDown;
 
-
-    private CountDownTimer timer;
-    private long time_left_ = 10000;
-    private boolean start;
+    public double time = time_to_react;
 
     boolean gameover = false;
 
@@ -64,6 +66,7 @@ public class TTB_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 if(!gameover)
                 {
+                    time = time_to_react;
                     resizeBtn(v);
                     realignBtn(v);
                     addPoints();
@@ -85,6 +88,8 @@ public class TTB_Activity extends AppCompatActivity {
                 gameover = true;
             }
         });
+
+        timer();
 
     }
     public void realignBtn(View v){
@@ -111,7 +116,6 @@ public class TTB_Activity extends AppCompatActivity {
         testcounter++;
     }
 
-
     public void addPoints(){
 
         testcounter += 5;
@@ -120,5 +124,43 @@ public class TTB_Activity extends AppCompatActivity {
     public void deductPoints(){
 
         testcounter -= 5;
+    }
+
+    public void timer(){
+        countDown = findViewById(R.id.countdown_text);
+
+        new CountDownTimer(30000, 10){
+            public void onTick(long millisUntilFinished){
+                DecimalFormat df = new DecimalFormat("#.##");
+                countDown.setText(String.valueOf(df.format(time)));
+                time = time - 0.01;
+                if(time < 0.0)
+                {
+                    deductPoints();
+                    TextView txtView = (TextView)findViewById(R.id.textView);
+                    String hello = "Sorry you lost!";
+                    txtView.setText(hello);
+                    gameover = true;
+                    gameOver();
+                    return;
+                }
+            }
+            public  void onFinish(){
+                countDown.setText("You lost");
+            }
+        }.start();
+
+    }
+
+    public void gameOver()
+    {
+        final Button btn = (Button)findViewById(R.id.bt_block);
+        btn.setBackgroundColor(Color.RED);
+        deductPoints();
+        TextView txtView = (TextView)findViewById(R.id.textView);
+        String hello = "Sorry you lost!";
+        txtView.setText(hello);
+        time = 0.0;
+        gameover = true;
     }
 }
