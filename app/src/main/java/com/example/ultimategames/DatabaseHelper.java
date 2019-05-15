@@ -2,17 +2,21 @@ package com.example.ultimategames;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "DatabaseHelper";
 
     private static final String TABLE_NAME = "people_table";
-    private static final String COL1 = "ID";
-    private static final String COL2 = "name";
+    private static final String COL_ID = "ID";
+    private static final String COL_NAME = "name";
     // private static final String COL3 = "word";
 
     public DatabaseHelper(Context context){
@@ -22,14 +26,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db){
         String createTable = "CREATE TABLE " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL2 + " TEXT)";
+                COL_NAME + " TEXT)";
         Log.d(TAG, "onCreate function!!");
         db.execSQL(createTable);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1){
-        db.execSQL("DROP IF TABLE EXISTS " + TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
     }
 
     public boolean addData(String item){
@@ -38,7 +42,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Then we declare a content value object which is going to help us to write to the database
         ContentValues contentValues = new ContentValues();
         // Then we add our first value to content value
-        contentValues.put(COL2, item);
+        contentValues.put(COL_NAME, item);
         // Just an Log
         Log.d(TAG, "addData: Adding " + item + " to " + TABLE_NAME);
 
@@ -52,6 +56,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         {
             return true;
         }
+    }
+
+    public ArrayList<String> getAllWords()
+    {
+        ArrayList wordList = new ArrayList<String>();
+        String selectQuery = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + COL_NAME + " DESC";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor query = db.rawQuery(selectQuery, null);
+
+        if (query.moveToFirst())
+        {
+            do
+            {
+                wordList.add(query.getString(1));
+            }
+            while (query.moveToNext());
+        }
+
+        return wordList;
     }
 
 }

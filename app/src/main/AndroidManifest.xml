@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ExtendWords"></activity>
-        <activity android:name=".HangmanSelScreen" />
+        <activity android:name=".ExtendWords"
+            android:parentActivityName=".HangmanSelScreen" />
+        <activity android:name=".HangmanSelScreen"
+            android:parentActivityName=".WelcomeScreenActivity"/>
         <activity
             android:name=".GameHangman"
             android:label="@string/title_activity_hangman_welcome_screen"

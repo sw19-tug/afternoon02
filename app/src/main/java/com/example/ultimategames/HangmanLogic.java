@@ -3,6 +3,7 @@ package com.example.ultimategames;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Handler;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 public class HangmanLogic
 {
     private GameHangman mGameHangman;
+    private DatabaseHelper mDatabaseHelper;
     private String mSolution;
     private String[] mWord;
     private ArrayList<String> mWord_collection;
@@ -25,15 +27,21 @@ public class HangmanLogic
     private int mGuessedLetter = 0;
     private int mPoints = 0; //Total Points user has scored
 
-    public HangmanLogic(GameHangman game)
+    public HangmanLogic(GameHangman game, DatabaseHelper databaseHelper)
     {
         mGameHangman = game;
+        mDatabaseHelper = databaseHelper;
 
-        mWord_collection = new ArrayList<>();
+        mWord_collection = mDatabaseHelper.getAllWords();
         mWord_collection.add("AAHS");
         mWord_collection.add("AALS");
         mWord_collection.add("ABAC");
         mWord_collection.add("ABAS");
+
+        for (int i = 0; i < mWord_collection.size(); i++)
+        {
+            Log.d("WORD", mWord_collection.get(i));
+        }
 
         setRandomWord();
     }
