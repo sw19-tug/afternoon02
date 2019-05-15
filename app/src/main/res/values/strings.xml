@@ -18,5 +18,6 @@
     <string name="title_activity_tic_tac_toe_pvc">Tic-Tac-Toe PvC</string>
     <string name="title_activity_touch_the_block">Touch The Block</string>
     <string name="title_activity_hangman_welcome_screen">Hangman</string>
+    <string name="title_activity_color_selection">Sign and Color selection</string>
     <string name="hangman_wrong">Wrong guesses:</string>
 </resources>

@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.TicTacToe.TicTacToe_ColorSelection_Activity"></activity>
+        <activity android:name="com.example.TicTacToe.TicTacToe_ColorSelection_Activity"
+            android:label="@string/title_activity_color_selection"
+            android:parentActivityName="com.example.TicTacToe.TicTacToe_WelcomeScreen">
+        </activity>
         <activity
             android:name="com.example.TicTacToe.PvC"
             android:label="@string/title_activity_tic_tac_toe_pvc"
