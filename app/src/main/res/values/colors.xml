@@ -8,4 +8,6 @@
     <color name="colorLightGrey">#cecece</color>
     <color name="colorDarkGrey">#666666</color>
     <color name="colorDefaultBlue">#4265f4</color>
+    <color name="hint_foreground_material_light">#00000000</color>
+    <color name="hint_foreground_material_dark">#00000000</color>
 </resources>

@@ -12,7 +12,9 @@ import android.graphics.Color;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.ultimategames.MainActivity;
 import com.example.ultimategames.R;
+import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -22,6 +24,8 @@ import java.util.Random;
 public class TTB_Activity extends AppCompatActivity {
 
     RelativeLayout rel_Backround;
+
+    int btnColor;
 
     public int testcounter = 0;
 
@@ -83,7 +87,7 @@ public class TTB_Activity extends AppCompatActivity {
 
         final Button btnColor = (Button)findViewById(R.id.bt_changeColor);
 
-        btnColor.setOnClickListener(new View.OnClickListener() {
+        btnColor.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
                 opencolorpicker();
@@ -96,26 +100,25 @@ public class TTB_Activity extends AppCompatActivity {
     }
 
     private void opencolorpicker() {
+        // source: https://stackoverflow.com/questions/6980906/android-color-picker
 
+        final ColorPicker cp = new ColorPicker(this);
 
+        cp.show();
 
+        Button okColor = (Button)cp.findViewById(R.id.okColorButton);
 
+        okColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        //final ColorPicker colorPicker = new ColorPicker(this);
-        ArrayList<String> colors = new ArrayList<>();
-        colors.add("#1A8B81");
-        colors.add("#FFFFFF");
-        colors.add("#000000");
-        colors.add("#3F51B5");
-        colors.add("#F44336");
-        colors.add("#4CAF50");
-        colors.add("#FFC107");
-        colors.add("#FF5722");
+                btnColor = cp.getColor();
+                final Button btn = (Button)findViewById(R.id.bt_block);
+                btn.setBackgroundColor(btnColor);
 
-
-
-
-
+                cp.dismiss();
+            }
+        });
     }
 
     public void realignBtn(View v){
