@@ -21,7 +21,8 @@ public class TicTacToePvP_Activity extends AppCompatActivity {
     TextView textView22;
     TextView result;
     Button restartGame;
-    String[] strings = {"X", "O"};
+    String[] strings,colors;
+    int[] color_ints = {0,0};
     int switchPlayer = 1;
     TicTacToe ticTacToe = new TicTacToe();
 
@@ -29,6 +30,10 @@ public class TicTacToePvP_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tic_tac_toe_pvp);
+        strings = getIntent().getStringArrayExtra("characters");
+        colors = getIntent().getStringArrayExtra("colors");
+        color_ints[0] = getResources().getColor(getResources().getIdentifier(colors[0],"color",getPackageName()));
+        color_ints[1] = getResources().getColor(getResources().getIdentifier(colors[1],"color",getPackageName()));
         restartGame = findViewById(R.id.restartGame);
         textView00 = (TextView) findViewById(R.id.b00);
         textView01 = (TextView) findViewById(R.id.b01);
@@ -46,6 +51,7 @@ public class TicTacToePvP_Activity extends AppCompatActivity {
                 textView00.setClickable(false);
                 int resultOfGame = ticTacToe.changeField(0,0,switchPlayer);
                 textView00.setText(strings[switchPlayer-1]);
+                textView00.setTextColor(color_ints[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
                 if(resultOfGame == 1){
                     restartGame.setVisibility(View.VISIBLE);
@@ -71,6 +77,7 @@ public class TicTacToePvP_Activity extends AppCompatActivity {
                 textView01.setClickable(false);
                 int resultOfGame = ticTacToe.changeField(0,1,switchPlayer);
                 textView01.setText(strings[switchPlayer-1]);
+                textView01.setTextColor(color_ints[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
                 if(resultOfGame == 1){
                     restartGame.setVisibility(View.VISIBLE);
@@ -96,6 +103,7 @@ public class TicTacToePvP_Activity extends AppCompatActivity {
                 textView02.setClickable(false);
                 int resultOfGame = ticTacToe.changeField(0,2,switchPlayer);
                 textView02.setText(strings[switchPlayer-1]);
+                textView02.setTextColor(color_ints[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
                 if(resultOfGame == 1){
                     restartGame.setVisibility(View.VISIBLE);
@@ -121,6 +129,7 @@ public class TicTacToePvP_Activity extends AppCompatActivity {
                 textView10.setClickable(false);
                 int resultOfGame = ticTacToe.changeField(1,0,switchPlayer);
                 textView10.setText(strings[switchPlayer-1]);
+                textView10.setTextColor(color_ints[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
                 if(resultOfGame == 1){
                     restartGame.setVisibility(View.VISIBLE);
@@ -146,6 +155,7 @@ public class TicTacToePvP_Activity extends AppCompatActivity {
                 textView11.setClickable(false);
                 int resultOfGame = ticTacToe.changeField(1,1,switchPlayer);
                 textView11.setText(strings[switchPlayer-1]);
+                textView11.setTextColor(color_ints[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
                 if(resultOfGame == 1){
                     restartGame.setVisibility(View.VISIBLE);
@@ -171,6 +181,7 @@ public class TicTacToePvP_Activity extends AppCompatActivity {
                 textView12.setClickable(false);
                 int resultOfGame = ticTacToe.changeField(1,2,switchPlayer);
                 textView12.setText(strings[switchPlayer-1]);
+                textView12.setTextColor(color_ints[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
                 if(resultOfGame == 1){
                     restartGame.setVisibility(View.VISIBLE);
@@ -196,6 +207,7 @@ public class TicTacToePvP_Activity extends AppCompatActivity {
                 textView20.setClickable(false);
                 int resultOfGame = ticTacToe.changeField(2,0,switchPlayer);
                 textView20.setText(strings[switchPlayer-1]);
+                textView20.setTextColor(color_ints[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
                 if(resultOfGame == 1){
                     restartGame.setVisibility(View.VISIBLE);
@@ -221,6 +233,7 @@ public class TicTacToePvP_Activity extends AppCompatActivity {
                 textView21.setClickable(false);
                 int resultOfGame = ticTacToe.changeField(2,1,switchPlayer);
                 textView21.setText(strings[switchPlayer-1]);
+                textView21.setTextColor(color_ints[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
                 if(resultOfGame == 1){
                     restartGame.setVisibility(View.VISIBLE);
@@ -246,6 +259,7 @@ public class TicTacToePvP_Activity extends AppCompatActivity {
                 textView22.setClickable(false);
                 int resultOfGame = ticTacToe.changeField(2,2,switchPlayer);
                 textView22.setText(strings[switchPlayer-1]);
+                textView22.setTextColor(color_ints[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
                 if(resultOfGame == 1){
                     restartGame.setVisibility(View.VISIBLE);

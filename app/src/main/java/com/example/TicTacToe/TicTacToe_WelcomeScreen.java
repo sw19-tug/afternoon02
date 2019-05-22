@@ -21,7 +21,8 @@ public class TicTacToe_WelcomeScreen extends AppCompatActivity {
         buttonTicTacToePvP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TicTacToe_WelcomeScreen.this, TicTacToePvP_Activity.class);
+                Intent intent = new Intent(TicTacToe_WelcomeScreen.this, TicTacToe_ColorSelection_Activity.class);
+                intent.putExtra("type_of_game","PvP");
                 if(intent.resolveActivity(getPackageManager())!=null){
                     TicTacToe_WelcomeScreen.this.startActivity(intent);
                 }
@@ -30,7 +31,8 @@ public class TicTacToe_WelcomeScreen extends AppCompatActivity {
         buttonTicTacToePvC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TicTacToe_WelcomeScreen.this, PvC.class);
+                Intent intent = new Intent(TicTacToe_WelcomeScreen.this, TicTacToe_ColorSelection_Activity.class);
+                intent.putExtra("type_of_game","PvC");
                 if(intent.resolveActivity(getPackageManager())!=null){
                     TicTacToe_WelcomeScreen.this.startActivity(intent);
                 }

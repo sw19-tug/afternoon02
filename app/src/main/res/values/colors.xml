@@ -8,4 +8,6 @@
     <color name="colorLightGrey">#cecece</color>
     <color name="colorDarkGrey">#666666</color>
     <color name="colorDefaultBlue">#4265f4</color>
+    <color name="Blue">#0500da</color>
+    <color name="Red">#ff1e1a</color>
 </resources>
