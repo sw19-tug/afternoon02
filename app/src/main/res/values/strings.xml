@@ -19,4 +19,5 @@
     <string name="title_activity_touch_the_block">Touch The Block</string>
     <string name="title_activity_hangman_welcome_screen">Hangman</string>
     <string name="hangman_wrong">Wrong guesses:</string>
+    <string name="ttb_changeBlockColor">Change Color!</string>
 </resources>

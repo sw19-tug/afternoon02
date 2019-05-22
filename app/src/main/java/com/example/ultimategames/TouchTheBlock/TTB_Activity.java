@@ -14,7 +14,10 @@ import android.widget.TextView;
 
 import com.example.ultimategames.R;
 
+import java.util.ArrayList;
 import java.util.Random;
+
+//import petrov.kristiyan.colorpicker.ColorPicker;
 
 public class TTB_Activity extends AppCompatActivity {
 
@@ -77,7 +80,44 @@ public class TTB_Activity extends AppCompatActivity {
             }
         });
 
+
+        final Button btnColor = (Button)findViewById(R.id.bt_changeColor);
+
+        btnColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                opencolorpicker();
+            }
+        });
+
+
+
+
     }
+
+    private void opencolorpicker() {
+
+
+
+
+
+        //final ColorPicker colorPicker = new ColorPicker(this);
+        ArrayList<String> colors = new ArrayList<>();
+        colors.add("#1A8B81");
+        colors.add("#FFFFFF");
+        colors.add("#000000");
+        colors.add("#3F51B5");
+        colors.add("#F44336");
+        colors.add("#4CAF50");
+        colors.add("#FFC107");
+        colors.add("#FF5722");
+
+
+
+
+
+    }
+
     public void realignBtn(View v){
         RelativeLayout gameLayout =  findViewById(R.id.Rel_Backround);
         int Layoutwidth  = gameLayout.getWidth();
