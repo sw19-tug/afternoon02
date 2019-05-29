@@ -42,7 +42,6 @@ public class TTB_Activity extends AppCompatActivity {
         setContentView(R.layout.touchtheblock);
         countDown = findViewById(R.id.countdown_text);
 
-
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
