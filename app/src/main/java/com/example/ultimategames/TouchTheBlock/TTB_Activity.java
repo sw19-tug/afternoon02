@@ -27,7 +27,6 @@ public class TTB_Activity extends AppCompatActivity {
 
     RelativeLayout rel_Backround;
 
-    // todo: use the Global Var after merge!
     public int testcounter = 0;
     private TextView countDown;
 
@@ -51,11 +50,10 @@ public class TTB_Activity extends AppCompatActivity {
         int height = size.y;
         Log.e("Width", "" + width);
         Log.e("height", "" + height);
-        // Todo: Make Layout Ready and set on Click Listener to Block and to the game canvas
 
         final Button btn = (Button)findViewById(R.id.bt_block);
 
-        btn.setBackgroundColor(Color.GREEN);
+        btn.setBackgroundColor(Color.BLACK);
 
         ViewGroup.LayoutParams params = btn.getLayoutParams();
         params.height = height/2;

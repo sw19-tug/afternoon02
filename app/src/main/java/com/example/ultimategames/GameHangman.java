@@ -2,91 +2,40 @@ package com.example.ultimategames;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.SparseArray;
+import android.util.DisplayMetrics;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
-
-import java.util.Dictionary;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 import java.util.HashMap;
 
 public class GameHangman extends AppCompatActivity implements View.OnClickListener {
-
-    private int move_count = 0;
 
     private Button btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnJ, btnK, btnL, btnM,
                    btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnV, btnW, btnX, btnY, btnZ;
 
     private HashMap<Integer, String> keyvalues = new HashMap<Integer, String>(26);
+    private HangmanLogic hangman_logic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_hangman);
 
+        hangman_logic = new HangmanLogic(this);
+
         initButtons();
     }
 
     @Override
     public void onClick(View view) {
-        // Apparently button IDs are not guaranteed to be constant at runtime, that's why
-        // if statements are recommended over switch case
 
         int id = view.getId();
         Button clicked = findViewById(id);
-
-        if (id == R.id.button_a) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_b) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_c) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_d) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_e) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_f) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_g) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_h) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_i) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_j) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_k) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_l) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_m) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_n) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_o) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_p) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_q) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_r) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_s) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_t) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_u) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_v) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_w) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_x) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_y) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_z) {
-            clicked.setEnabled(false);
-        }
+        clicked.setEnabled(false);
+        hangman_logic.checkLetter(keyvalues.get(id));
     }
 
     private void initButtons()
@@ -170,5 +119,83 @@ public class GameHangman extends AppCompatActivity implements View.OnClickListen
         keyvalues.put(R.id.button_x, "X");
         keyvalues.put(R.id.button_y, "Y");
         keyvalues.put(R.id.button_z, "Z");
+    }
+
+    public void ResetView()
+    {
+        btnA.setEnabled(true);
+        btnB.setEnabled(true);
+        btnC.setEnabled(true);
+        btnD.setEnabled(true);
+        btnE.setEnabled(true);
+        btnF.setEnabled(true);
+        btnG.setEnabled(true);
+        btnH.setEnabled(true);
+        btnI.setEnabled(true);
+        btnJ.setEnabled(true);
+        btnK.setEnabled(true);
+        btnL.setEnabled(true);
+        btnM.setEnabled(true);
+        btnN.setEnabled(true);
+        btnO.setEnabled(true);
+        btnP.setEnabled(true);
+        btnQ.setEnabled(true);
+        btnR.setEnabled(true);
+        btnS.setEnabled(true);
+        btnT.setEnabled(true);
+        btnU.setEnabled(true);
+        btnV.setEnabled(true);
+        btnW.setEnabled(true);
+        btnX.setEnabled(true);
+        btnY.setEnabled(true);
+        btnZ.setEnabled(true);
+    }
+
+    public void CreateWordView(int length)
+    {
+        LinearLayout word = findViewById(R.id.word);
+
+        // Remove existing TextViews
+        word.removeAllViews();
+
+        // Create new TextViews
+        for (int i = 0; i < length; i++)
+        {
+            TextView letter = (TextView)getLayoutInflater().inflate(R.layout.character_textview_template, null);
+            letter.setPadding(dpToPx(2), 0, dpToPx(2), 0);
+            word.addView(letter);
+        }
+    }
+
+    public int dpToPx(int dp) {
+        DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
+        return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+    }
+
+    public void ShowLetterAtPosition(String letter, int position)
+    {
+        LinearLayout word = findViewById(R.id.word);
+        TextView character = (TextView)word.getChildAt(position);
+        character.setText(letter);
+    }
+
+    public void UpdateStats(int score, int wrong)
+    {
+        TextView tvScore = (TextView) findViewById(R.id.hangman_score);
+        TextView tvWrong = (TextView) findViewById(R.id.hangman_wrong);
+        String textScore = Integer.toString(score);
+        String textWrong = Integer.toString(wrong);
+        tvScore.setText(textScore);
+        tvWrong.setText(textWrong);
+    }
+
+    public void Win()
+    {
+        Toast.makeText(this, "You win!", Toast.LENGTH_SHORT).show();
+    }
+
+    public void Lose()
+    {
+        Toast.makeText(this, "You lose!", Toast.LENGTH_SHORT).show();
     }
 }

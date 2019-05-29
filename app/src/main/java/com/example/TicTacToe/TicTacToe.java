@@ -17,9 +17,9 @@ public class TicTacToe {
             }
         }
     }
-    public int changeField(int x, int y, int value){
-        if(matrix.get(x).get(y) == 0) {
-            matrix.get(x).set(y, value);
+    public int changeField(int row, int column, int value){
+        if(matrix.get(row).get(column) == 0) {
+            matrix.get(row).set(column, value);
             numberOfFields++;
             return checkIfGameIsDone();
         }
@@ -27,33 +27,33 @@ public class TicTacToe {
     }
     private int checkIfGameIsDone(){
         boolean same = true;
-        for(int i = 0; i < matrix.size(); i++){
+        for(int row = 0; row < matrix.size(); row++){
             same = true;
-            for(int j = 0; j < matrix.get(i).size(); j++){
-                if(matrix.get(i).get(j) == 0 || matrix.get(i).get(0) != matrix.get(i).get(j)){
+            for(int column = 0; column < matrix.get(row).size(); column++){
+                if(matrix.get(row).get(column) == 0 || matrix.get(row).get(0) != matrix.get(row).get(column)){
                     same = false;
                     break;
                 }
             }
             if(same){
-                return matrix.get(i).get(0) != 0 ? matrix.get(i).get(0) : -1;
+                return matrix.get(row).get(0) != 0 ? matrix.get(row).get(0) : -1;
             }
         }
-        for(int i = 0; i < matrix.size(); i++){
+        for(int column = 0; column < matrix.size(); column++){
             same = true;
-            for(int j = 0; j < matrix.get(i).size(); j++){
-                if(matrix.get(0).get(i) != matrix.get(j).get(i) || matrix.get(j).get(i) == 0){
+            for(int row = 0; row < matrix.get(column).size(); row++){
+                if(matrix.get(0).get(column) != matrix.get(row).get(column) || matrix.get(row).get(column) == 0){
                     same = false;
                     break;
                 }
             }
             if(same){
-                return matrix.get(0).get(i) != 0 ? matrix.get(0).get(i) : -1;
+                return matrix.get(0).get(column) != 0 ? matrix.get(0).get(column) : -1;
             }
         }
         same = true;
-        for(int i = 0; i < matrix.size(); i++){
-            if(matrix.get(i).get(i) != matrix.get(0).get(0)){
+        for(int row = 0; row < matrix.size(); row++){
+            if(matrix.get(row).get(row) != matrix.get(0).get(0)){
                 same=false;
                 break;
             }
@@ -62,8 +62,8 @@ public class TicTacToe {
             return matrix.get(0).get(0) != 0 ? matrix.get(0).get(0) : -1;
         }
         same = true;
-        for(int i = 0; i < matrix.size(); i++){
-            if(matrix.get(i).get(matrix.size()-1-i) != matrix.get(0).get(matrix.size()-1)){
+        for(int row = 0; row < matrix.size(); row++){
+            if(matrix.get(row).get(matrix.size()-1-row) != matrix.get(0).get(matrix.size()-1)){
                 same=false;
                 break;
             }
