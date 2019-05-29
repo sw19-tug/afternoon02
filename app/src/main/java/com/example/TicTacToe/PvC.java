@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ultimategames.R;
+import com.example.ultimategames.WelcomeScreenActivity;
 
 import java.util.Random;
 
@@ -27,6 +28,8 @@ public class PvC extends AppCompatActivity {
 
     TextView result_text;
 
+    TextView textViewScore;
+
     Button restartGame;
 
 
@@ -35,6 +38,9 @@ public class PvC extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tictactoepvc);
+        textViewScore = findViewById(R.id.textViewScore);
+        String s = getString(R.string.score) + "  "  + WelcomeScreenActivity.global_score;
+        textViewScore.setText(s);
 
         signs = getIntent().getStringArrayExtra("characters");
         colors = getIntent().getStringArrayExtra("colors");
@@ -318,10 +324,15 @@ public class PvC extends AppCompatActivity {
         if (result == 1) {
             restartGame.setVisibility(View.VISIBLE);
             result_text.setText(R.string.playerOneWon);
+            WelcomeScreenActivity.global_score=WelcomeScreenActivity.global_score + 2;
         }
         if (result == 2) {
             restartGame.setVisibility(View.VISIBLE);
             result_text.setText(R.string.playerTwoWon);
+            WelcomeScreenActivity.global_score--;
         }
+
+        String s = getString(R.string.score) + "  "  + WelcomeScreenActivity.global_score;
+        textViewScore.setText(s);
     }
 }
