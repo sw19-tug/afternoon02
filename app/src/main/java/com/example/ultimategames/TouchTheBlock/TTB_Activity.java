@@ -20,7 +20,6 @@ import com.example.ultimategames.R;
 import java.text.DecimalFormat;
 import java.util.Random;
 
-
 public class TTB_Activity extends AppCompatActivity {
 
     final double time_to_react = 3.0;
@@ -33,6 +32,7 @@ public class TTB_Activity extends AppCompatActivity {
     public double time = time_to_react;
 
     boolean gameover = false;
+    boolean restart = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,6 +118,10 @@ public class TTB_Activity extends AppCompatActivity {
         testcounter -= 5;
     }
 
+    public void reStart(){
+
+    }
+
     public void timer(){
 
         countDown = findViewById(R.id.countdown_text);
@@ -153,9 +157,19 @@ public class TTB_Activity extends AppCompatActivity {
         btn.setBackgroundColor(Color.RED);
         deductPoints();
         TextView txtView = (TextView)findViewById(R.id.textView);
-        String hello = "Sorry you lost!";
+        String hello = "Sorry you lost! Press to try again";
         txtView.setText(hello);
         time = 0.0;
         gameover = true;
+
+        while (!restart)
+        {
+            if(txtView.isPressed())
+            {
+                restart = true;
+                gameover = false;
+                reStart();
+            }
+        }
     }
 }
