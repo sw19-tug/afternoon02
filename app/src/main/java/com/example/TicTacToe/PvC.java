@@ -324,7 +324,7 @@ public class PvC extends AppCompatActivity {
         if (result == 1) {
             restartGame.setVisibility(View.VISIBLE);
             result_text.setText(R.string.playerOneWon);
-            WelcomeScreenActivity.global_score=+2;
+            WelcomeScreenActivity.global_score=WelcomeScreenActivity.global_score + 2;
         }
         if (result == 2) {
             restartGame.setVisibility(View.VISIBLE);
