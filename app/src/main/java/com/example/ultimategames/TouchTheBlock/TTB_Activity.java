@@ -2,6 +2,7 @@ package com.example.ultimategames.TouchTheBlock;
 
 import android.graphics.Point;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Display;
@@ -85,7 +86,7 @@ public class TTB_Activity extends AppCompatActivity {
         });
 
 
-        final Button btnColor = (Button)findViewById(R.id.bt_changeColor);
+        final FloatingActionButton btnColor = findViewById(R.id.bt_changeColor);
 
         btnColor.setOnClickListener(new Button.OnClickListener() {
             @Override
