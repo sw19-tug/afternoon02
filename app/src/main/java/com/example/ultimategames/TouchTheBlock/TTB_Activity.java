@@ -1,8 +1,10 @@
 package com.example.ultimategames.TouchTheBlock;
 
 import android.graphics.Point;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Display;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.graphics.Color;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.os.CountDownTimer;
 
 import com.example.ultimategames.MainActivity;
 import com.example.ultimategames.R;
@@ -19,16 +22,21 @@ import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.text.DecimalFormat;
 
-//import petrov.kristiyan.colorpicker.ColorPicker;
 
 public class TTB_Activity extends AppCompatActivity {
+
+    final double time_to_react = 3.0;
 
     RelativeLayout rel_Backround;
 
     int btnColor;
 
     public int testcounter = 0;
+    private TextView countDown;
+
+    public double time = time_to_react;
 
     boolean gameover = false;
 
@@ -38,6 +46,7 @@ public class TTB_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // Set the game activity content view!
         setContentView(R.layout.touchtheblock);
+        countDown = findViewById(R.id.countdown_text);
 
 
         Display display = getWindowManager().getDefaultDisplay();
@@ -60,9 +69,9 @@ public class TTB_Activity extends AppCompatActivity {
 
         btn.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-
                 if(!gameover)
                 {
+                    time = time_to_react;
                     resizeBtn(v);
                     realignBtn(v);
                     addPoints();
@@ -75,16 +84,9 @@ public class TTB_Activity extends AppCompatActivity {
         rel_Backround.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btn.setBackgroundColor(Color.RED);
-                final Button btn = (Button)findViewById(R.id.bt_block);
-                deductPoints();
-                TextView txtView = (TextView)findViewById(R.id.textView);
-                String hello = "Sorry you lost!";
-                txtView.setText(hello);
-                gameover = true;
+                gameOver();
             }
         });
-
 
         final FloatingActionButton btnColor = findViewById(R.id.bt_changeColor);
 
@@ -101,7 +103,6 @@ public class TTB_Activity extends AppCompatActivity {
     }
 
     private void opencolorpicker() {
-        // source: https://stackoverflow.com/questions/6980906/android-color-picker
 
         final ColorPicker cp = new ColorPicker(this);
 
@@ -120,6 +121,7 @@ public class TTB_Activity extends AppCompatActivity {
                 cp.dismiss();
             }
         });
+        timer();
     }
 
     public void realignBtn(View v){
@@ -146,7 +148,6 @@ public class TTB_Activity extends AppCompatActivity {
         testcounter++;
     }
 
-
     public void addPoints(){
 
         testcounter += 5;
@@ -155,5 +156,46 @@ public class TTB_Activity extends AppCompatActivity {
     public void deductPoints(){
 
         testcounter -= 5;
+    }
+
+    public void timer(){
+
+        countDown = findViewById(R.id.countdown_text);
+
+        new CountDownTimer(30000, 10)
+        {
+            public void onTick(long millisUntilFinished){
+                DecimalFormat df = new DecimalFormat("#.##");
+                countDown.setText(String.valueOf(df.format(time)));
+                time = time - 0.01;
+                double timer_buffer = time;
+                if(Math.abs(timer_buffer-1.0) <= 0.01)
+                {
+                    MediaPlayer ring = MediaPlayer.create(TTB_Activity.this,R.raw.bing_sound);
+                    ring.start();
+                    TextView txtView = (TextView)findViewById(R.id.textView);
+                }
+                if(time < 0.0)
+                {
+                    gameOver();
+                    return;
+                }
+            }
+            public  void onFinish(){
+                countDown.setText("You lost");
+            }
+        }.start();
+    }
+
+    public void gameOver()
+    {
+        final Button btn = (Button)findViewById(R.id.bt_block);
+        btn.setBackgroundColor(Color.RED);
+        deductPoints();
+        TextView txtView = (TextView)findViewById(R.id.textView);
+        String hello = "Sorry you lost!";
+        txtView.setText(hello);
+        time = 0.0;
+        gameover = true;
     }
 }
