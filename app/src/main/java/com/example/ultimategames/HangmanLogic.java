@@ -1,7 +1,6 @@
 package com.example.ultimategames;
 
 import android.os.Handler;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -14,7 +13,7 @@ public class HangmanLogic
     private ArrayList<String> mWord_collection;
     private int mFailCounter = 0;
     private int mGuessedLetter = 0;
-    private int mPoints = 0; //Total Points user has scored
+    //private int mPoints = 0; //Total Points user has scored
 
     public HangmanLogic(GameHangman game, DatabaseHelper databaseHelper)
     {
@@ -28,7 +27,7 @@ public class HangmanLogic
         mWord_collection.add("YOU");
 
         setRandomWord();
-        mGameHangman.UpdateStats(mPoints, mFailCounter);
+        mGameHangman.UpdateStats(WelcomeScreenActivity.global_score, mFailCounter);
         mGameHangman.CreateWordView(mSolution.length());
     }
 
@@ -62,8 +61,8 @@ public class HangmanLogic
         // Check if word was completed successfully
         if(mGuessedLetter == mWord.length)
         {
-            mPoints++;
-            mGameHangman.UpdateStats(mPoints, mFailCounter);
+            WelcomeScreenActivity.global_score++;
+            mGameHangman.UpdateStats(WelcomeScreenActivity.global_score, mFailCounter);
             mGameHangman.Win();
 
             // Reset the game screen with small delay (allows for the tap to end)
@@ -80,12 +79,12 @@ public class HangmanLogic
     {
         // Increment fail counter
         mFailCounter++;
-        mGameHangman.UpdateStats(mPoints, mFailCounter);
+        mGameHangman.UpdateStats(WelcomeScreenActivity.global_score, mFailCounter);
 
         // Game Over after 8 failed guesses
         if (mFailCounter >= 8)
         {
-            mPoints -= 2;
+            WelcomeScreenActivity.global_score -= 2;
             mGameHangman.Lose();
             (new Handler()).postDelayed(new Runnable() {
                 @Override
@@ -103,7 +102,7 @@ public class HangmanLogic
         mGameHangman.ResetView();
         mWord = null;
         setRandomWord();
-        mGameHangman.UpdateStats(mPoints, mFailCounter);
+        mGameHangman.UpdateStats(WelcomeScreenActivity.global_score, mFailCounter);
         mGameHangman.CreateWordView(mSolution.length());
     }
 }

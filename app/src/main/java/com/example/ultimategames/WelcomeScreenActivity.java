@@ -13,7 +13,7 @@ import com.example.ultimategames.TouchTheBlock.TTB_Activity;
 
 public class WelcomeScreenActivity extends AppCompatActivity {
 
-    public int global_score = 0;
+    public static int global_score = 0;
 
 
     Button buttonTicTacToe;
@@ -59,6 +59,13 @@ public class WelcomeScreenActivity extends AppCompatActivity {
             }
         });
 
+        UpdateScore();
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
         UpdateScore();
     }
 

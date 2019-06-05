@@ -20,51 +20,68 @@ public class ExtendWords extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_extend_words);
 
-        // Buttons
         Button addWordBtn = findViewById(R.id.addWordBtn);
-        // Edit Text
+        Button removeWordBtn = findViewById(R.id.removeWordBtn);
+
         editTextNewWord = (EditText) findViewById(R.id.newWord);
-        // Database Helper
+
         mDatabaseHelper = new DatabaseHelper(this);
 
         addWordBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Get Name from EditTextView
                 String newEntry = editTextNewWord.getText().toString();
 
-                // Check Eintrag
                 if(editTextNewWord.length() != 0)
                 {
-                    // In this case we want to add entry to database
                     addWord(newEntry);
-                    editTextNewWord.setText(""); // Und den Textview wieder auf leer setzten
+                    editTextNewWord.setText("");
                 }else
                 {
-                    toastMessage("You must put something in the text field");
+                    toastMessage("Please enter a word into the text field");
                 }
             }
+        });
 
+        removeWordBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String newEntry = editTextNewWord.getText().toString();
+
+                if(editTextNewWord.length() != 0)
+                {
+                    removeWord(newEntry);
+                    editTextNewWord.setText("");
+                }else
+                {
+                    toastMessage("Please enter a word into the text field");
+                }
+            }
         });
     }
 
     public void addWord(String newWord)
     {
-        Log.d("MYLOG", "MyLog addWord");
-        // Rückgabewert beim Einfügen eines Wertes == boolean
-        // Aufruf des Database helprs
-        boolean insertData = mDatabaseHelper.addData(newWord);
+        boolean insertData = mDatabaseHelper.addData(newWord.toLowerCase());
 
-        // Ausgabe wenn erfolgreich eingefügt
         if(insertData)
         {
-            toastMessage("Data Successfully Inserted!");
-            // Toast.makeText(this, "Word added to bla", Toast.LENGTH_LONG).show();
+            toastMessage("Word added.");
         }else{
-            toastMessage("Something went wrong");
+            toastMessage("Word already exists.");
         }
+    }
 
-
+    public void removeWord(String word)
+    {
+        if (mDatabaseHelper.deleteWord(word))
+        {
+            toastMessage("Word removed.");
+        }
+        else
+        {
+            toastMessage("Word doesn't exist.");
+        }
     }
 
     private void toastMessage(String message){
