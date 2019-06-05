@@ -1,24 +1,23 @@
 package com.example.ultimategames;
 
-        import android.support.test.espresso.ViewAction;
+        import android.graphics.drawable.Drawable;
         import android.support.test.rule.ActivityTestRule;
         import android.support.test.runner.AndroidJUnit4;
         import android.widget.Button;
-        import android.widget.TextView;
 
         import org.junit.Rule;
         import org.junit.Test;
         import org.junit.runner.RunWith;
-
         import static android.support.test.espresso.Espresso.onView;
         import static android.support.test.espresso.action.ViewActions.click;
         import static android.support.test.espresso.assertion.ViewAssertions.matches;
         import static android.support.test.espresso.matcher.ViewMatchers.isClickable;
         import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
         import static android.support.test.espresso.matcher.ViewMatchers.withId;
-        import static android.support.test.espresso.matcher.ViewMatchers.withText;
-        import static org.hamcrest.Matchers.not;
         import com.example.ultimategames.TouchTheBlock.TTB_Activity;
+        import static android.support.test.espresso.matcher.ViewMatchers.hasBackground;
+        import static org.hamcrest.core.IsNot.not;
+
 
 @RunWith(AndroidJUnit4.class)
 public class TTBEspressoTest {
@@ -60,5 +59,16 @@ public class TTBEspressoTest {
         // After Clicking the Button should Stay Visible and not disapear
             onView(withId(R.id.bt_Backround)).perform(click());
             onView(withId(R.id.textView)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void colorPickerShouldBeDisplayedjustWhenNeeded()
+    {
+        onView(withId(R.id.bt_changeColor)).perform(click());
+        onView(withId(R.id.okColorButton)).check(matches(isDisplayed()));
+
+        onView(withId(R.id.okColorButton)).perform(click());
+        onView(withId(R.id.okColorButton)).check( matches(not(isDisplayed())));
+
     }
 }

@@ -25,14 +25,12 @@ public class HangmanSelScreen extends AppCompatActivity {
                 startActivity(playHangman);
             }
         });
-
         enterWordBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
               startActivity(extendWords);
             }
         });
-        //New comment
     }
 
 

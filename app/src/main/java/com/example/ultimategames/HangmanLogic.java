@@ -20,6 +20,7 @@ public class HangmanLogic
         mDatabaseHelper = databaseHelper;
 
         mWord_collection = mDatabaseHelper.getAllWords();
+
         mWord_collection.add("WHAT");
         mWord_collection.add("TAKE");
         mWord_collection.add("BASTARD");
@@ -27,6 +28,7 @@ public class HangmanLogic
 
         setRandomWord();
         mGameHangman.UpdateStats(WelcomeScreenActivity.global_score, mFailCounter);
+
         mGameHangman.CreateWordView(mSolution.length());
     }
 
@@ -62,6 +64,7 @@ public class HangmanLogic
         {
             WelcomeScreenActivity.global_score++;
             mGameHangman.UpdateStats(WelcomeScreenActivity.global_score, mFailCounter);
+
             mGameHangman.Win();
 
             // Reset the game screen with small delay (allows for the tap to end)
@@ -74,16 +77,18 @@ public class HangmanLogic
         }
     }
 
-    public void letterFailed()
+    private void letterFailed()
     {
         // Increment fail counter
         mFailCounter++;
         mGameHangman.UpdateStats(WelcomeScreenActivity.global_score, mFailCounter);
 
+
         // Game Over after 8 failed guesses
         if (mFailCounter >= 8)
         {
             WelcomeScreenActivity.global_score -= 2;
+
             mGameHangman.Lose();
             (new Handler()).postDelayed(new Runnable() {
                 @Override
@@ -102,6 +107,7 @@ public class HangmanLogic
         mWord = null;
         setRandomWord();
         mGameHangman.UpdateStats(WelcomeScreenActivity.global_score, mFailCounter);
+
         mGameHangman.CreateWordView(mSolution.length());
     }
 }

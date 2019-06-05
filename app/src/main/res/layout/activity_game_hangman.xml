@@ -7,7 +7,6 @@
     tools:context=".GameHangman"
     android:orientation="vertical">
 
-    <!-- Word display -->
     <LinearLayout
         android:id="@+id/word"
         android:layout_width="match_parent"
@@ -38,7 +37,7 @@
 
     </LinearLayout>
 
-    <!-- Score display and Number of guesses -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -109,24 +108,7 @@
 
     </LinearLayout>
 
-    <!-- Hint button -->
-    <!--
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:text="@string/btn_need_hint" />
-    </LinearLayout>
-    -->
-
-    <!-- Keypad display -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

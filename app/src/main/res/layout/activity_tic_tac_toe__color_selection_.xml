@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.TicTacToe.TicTacToe_ColorSelection_Activity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/welcomeColorSelection"
+        android:textAlignment="center"
+        android:textColor="#4265f4"
+        android:layout_marginBottom="50sp"
+        android:textSize="30sp"
+        android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="30sp"
+        android:padding="10dp">
+
+
+        <TextView
+            android:layout_width="130sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:layout_marginBottom="5dp"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="#000"
+            android:gravity="center"
+            android:text="@string/sign_selection" />
+
+        <Spinner
+            android:id="@+id/sign_spinner"
+            android:layout_width="130sp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="30sp"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="130sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:layout_marginBottom="5dp"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="#000"
+            android:gravity="center"
+            android:text="@string/color_selection" />
+
+        <Spinner
+            android:id="@+id/color_spinner"
+            android:layout_width="130sp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp" />
+
+        <Button
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:padding="25dp"
+            android:textSize="15sp"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:id="@+id/buttonContinue"
+            android:text="@string/btn_continue"/>
+
+    </LinearLayout>
+</LinearLayout>
