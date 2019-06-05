@@ -161,15 +161,5 @@ public class TTB_Activity extends AppCompatActivity {
         txtView.setText(hello);
         time = 0.0;
         gameover = true;
-
-        while (!restart)
-        {
-            if(txtView.isPressed())
-            {
-                restart = true;
-                gameover = false;
-                reStart();
-            }
-        }
     }
 }
