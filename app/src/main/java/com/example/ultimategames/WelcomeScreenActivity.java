@@ -62,6 +62,13 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         UpdateScore();
     }
 
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        UpdateScore();
+    }
+
     private void UpdateScore()
     {
         TextView tvScore = (TextView) findViewById(R.id.text_score);

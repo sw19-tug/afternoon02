@@ -11,6 +11,8 @@
     <string name="select_game">Please select the game you want to play:</string>
     <string name="hangman_title">Hangman</string>
     <string name="move_number">Your moves: </string>
+    <string name="label_enter_new_word">Enter a new Word:</string>
+    <string name="label_max_characters">(max. 8 characters)</string>
     <string name="color_selection">Choose color:</string>
     <string name="sign_selection">Choose sign:</string>
     <string name="btn_continue">Continue</string>

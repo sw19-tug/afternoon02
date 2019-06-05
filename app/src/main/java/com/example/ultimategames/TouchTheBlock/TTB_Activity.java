@@ -40,6 +40,8 @@ public class TTB_Activity extends AppCompatActivity {
 
     boolean gameover = false;
 
+    boolean gameover = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

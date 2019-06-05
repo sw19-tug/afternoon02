@@ -18,20 +18,21 @@ public class GameHangman extends AppCompatActivity implements View.OnClickListen
 
     private HashMap<Integer, String> keyvalues = new HashMap<Integer, String>(26);
     private HangmanLogic hangman_logic;
+    private DatabaseHelper database_helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_hangman);
 
-        hangman_logic = new HangmanLogic(this);
+        database_helper = new DatabaseHelper(this);
+        hangman_logic = new HangmanLogic(this, database_helper);
 
         initButtons();
     }
 
     @Override
     public void onClick(View view) {
-
         int id = view.getId();
         Button clicked = findViewById(id);
         clicked.setEnabled(false);
