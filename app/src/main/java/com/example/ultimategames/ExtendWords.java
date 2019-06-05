@@ -60,6 +60,7 @@ public class ExtendWords extends AppCompatActivity {
         {
             toastMessage("Data Successfully Inserted!");
             // Toast.makeText(this, "Word added to bla", Toast.LENGTH_LONG).show();
+            Log.d("MYLOG", "Word inserted sucessfully [RKB]");
         }else{
             toastMessage("Something went wrong");
         }

@@ -1,7 +1,9 @@
 package com.example.ultimategames;
 
+import android.media.Image;
 import android.os.Handler;
 import android.util.Log;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -38,6 +40,8 @@ public class HangmanLogic
 
         mSolution = mWord_collection.get(randomNumber);
         mWord = mSolution.split("(?!^)");
+        // Log.d("LOGRKB", "Selected word" + mWord);
+
     }
 
     public void checkLetter(String guessed_letter)
@@ -94,6 +98,21 @@ public class HangmanLogic
                 }
             }, 500);
         }
+
+        // RKB 20190605 - START
+        // Get Image view "Galgen"
+        ImageView imageViewHangmanPic = (ImageView) mGameHangman.findViewById(R.id.imageViewHangmanPic);
+
+        // Set the next image of "Galgen" abhängig von der Anzahl der Fails (mit switch danach machen)
+        if(mFailCounter == 1){
+            // First Fail, First Picture
+            imageViewHangmanPic.setImageResource(R.drawable.hangdroid_1);
+        }else if (mFailCounter == 2)
+        {
+            // Second Fail, Second Picture
+            imageViewHangmanPic.setImageResource(R.drawable.hangdroid_2);
+        }
+        // RKB 20190605 - END
     }
 
     private void Reset()
