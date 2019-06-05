@@ -13,7 +13,6 @@ public class HangmanLogic
     private ArrayList<String> mWord_collection;
     private int mFailCounter = 0;
     private int mGuessedLetter = 0;
-    //private int mPoints = 0; //Total Points user has scored
 
     public HangmanLogic(GameHangman game, DatabaseHelper databaseHelper)
     {

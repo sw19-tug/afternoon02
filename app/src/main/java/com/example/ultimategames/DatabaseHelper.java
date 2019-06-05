@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -72,7 +71,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do
             {
                 wordList.add(query.getString(1));
-                Log.d("WORD_LIST", query.getString(1));
             }
             while (query.moveToNext());
         }

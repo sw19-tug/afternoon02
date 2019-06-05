@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 public class ExtendWords extends AppCompatActivity {
 
-    // Database Helper
     DatabaseHelper mDatabaseHelper;
     private EditText editTextNewWord;
 
