@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="132dp"
+        android:layout_marginLeft="132dp"
+        android:layout_marginTop="432dp"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="@+id/Rel_Backround"
+        app:layout_constraintTop_toTopOf="@+id/Rel_Backround" />
 
     <TextView
         android:id="@+id/textView2"
@@ -49,13 +59,14 @@
         android:gravity="center"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"></LinearLayout>
+        tools:layout_editor_absoluteY="0dp">
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/Rel_Backround"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteX="-16dp"
         tools:layout_editor_absoluteY="0dp">
 
         <Button
