@@ -61,4 +61,14 @@ public class TTBEspressoTest {
             onView(withId(R.id.bt_Backround)).perform(click());
             onView(withId(R.id.textView)).check(matches(isDisplayed()));
     }
+
+    @Test
+    public void RestartButtonShouldBeDisplayedAfrerBGClick()
+    {
+        // After Clicking the Button should Stay Visible and not disapear
+        onView(withId(R.id.bt_Backround)).perform(click());
+        onView(withId(R.id.bt_Restart)).check(matches(isDisplayed()));
+    }
+
+
 }
