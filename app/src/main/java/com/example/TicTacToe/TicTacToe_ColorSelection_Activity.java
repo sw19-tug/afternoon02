@@ -34,9 +34,17 @@ public class TicTacToe_ColorSelection_Activity extends AppCompatActivity impleme
 
         colorCategories.add ("Blue");
         colorCategories.add ("Red");
+        colorCategories.add ("Black");
+        colorCategories.add ("Green");
+        colorCategories.add ("Purple");
 
         signCategories.add("X");
         signCategories.add("O");
+        signCategories.add("-");
+        signCategories.add("!");
+        signCategories.add("+");
+        signCategories.add("*");
+        signCategories.add("=");
 
         ArrayAdapter<String> signAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, signCategories);
         signAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
