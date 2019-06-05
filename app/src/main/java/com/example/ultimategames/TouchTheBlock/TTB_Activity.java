@@ -3,6 +3,7 @@ package com.example.ultimategames.TouchTheBlock;
 import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -15,10 +16,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.os.CountDownTimer;
 
+import com.example.ultimategames.MainActivity;
 import com.example.ultimategames.R;
+import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
 
-import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Random;
+import java.text.DecimalFormat;
 
 
 public class TTB_Activity extends AppCompatActivity {
@@ -26,6 +30,8 @@ public class TTB_Activity extends AppCompatActivity {
     final double time_to_react = 3.0;
 
     RelativeLayout rel_Backround;
+
+    int btnColor;
 
     public int testcounter = 0;
     private TextView countDown;
@@ -82,9 +88,42 @@ public class TTB_Activity extends AppCompatActivity {
             }
         });
 
-        timer();
+        final FloatingActionButton btnColor = findViewById(R.id.bt_changeColor);
+
+        btnColor.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                opencolorpicker();
+            }
+        });
+
+
+
 
     }
+
+    private void opencolorpicker() {
+
+        final ColorPicker cp = new ColorPicker(this);
+
+        cp.show();
+
+        Button okColor = (Button)cp.findViewById(R.id.okColorButton);
+
+        okColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                btnColor = cp.getColor();
+                final Button btn = (Button)findViewById(R.id.bt_block);
+                btn.setBackgroundColor(btnColor);
+
+                cp.dismiss();
+            }
+        });
+        timer();
+    }
+
     public void realignBtn(View v){
         RelativeLayout gameLayout =  findViewById(R.id.Rel_Backround);
         int Layoutwidth  = gameLayout.getWidth();

@@ -24,4 +24,5 @@
     <string name="title_activity_hangman_welcome_screen">Hangman</string>
     <string name="title_activity_color_selection">Sign and Color selection</string>
     <string name="hangman_wrong">Wrong guesses:</string>
+    <string name="ttb_changeBlockColor">Change Color!</string>
 </resources>
