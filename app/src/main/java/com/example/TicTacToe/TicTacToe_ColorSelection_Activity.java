@@ -87,7 +87,7 @@ public class TicTacToe_ColorSelection_Activity extends AppCompatActivity impleme
 
                         String[] colors = {color_one, color_two};
                         intent.putExtra("colors",colors);
-
+                        intent.putExtra("invokedFromActivity",true);
                         TicTacToe_ColorSelection_Activity.this.startActivity(intent);
                     }
 
