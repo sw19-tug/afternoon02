@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.os.CountDownTimer;
 
 import com.example.ultimategames.R;
+import com.example.ultimategames.WelcomeScreenActivity;
 
 import java.text.DecimalFormat;
 import java.util.Random;
@@ -50,17 +51,22 @@ public class TTB_Activity extends AppCompatActivity {
         Log.e("Width", "" + width);
         Log.e("height", "" + height);
 
-        final Button btn = (Button)findViewById(R.id.bt_block);
+        final Button btn_block = (Button)findViewById(R.id.bt_block);
+        final Button btn_restart = (Button)findViewById(R.id.bt_Restart);
+        rel_Backround = (RelativeLayout) findViewById (R.id.Rel_Backround);
 
-        btn.setBackgroundColor(Color.BLACK);
+        btn_block.setBackgroundColor(Color.BLACK);
 
-        ViewGroup.LayoutParams params = btn.getLayoutParams();
+        ViewGroup.LayoutParams params = btn_block.getLayoutParams();
         params.height = height/2;
         params.width = width/2;
-        btn.setLayoutParams(params);
+        btn_block.setLayoutParams(params);
+
+        btn_restart.setVisibility(View.INVISIBLE);
 
 
-        btn.setOnClickListener(new Button.OnClickListener() {
+
+        btn_block.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 if(!gameover)
                 {
@@ -72,12 +78,21 @@ public class TTB_Activity extends AppCompatActivity {
             }
         });
 
-        rel_Backround = (RelativeLayout) findViewById (R.id.Rel_Backround);
+        btn_restart.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                if(gameover)
+                {
+                    reStart();
+                }
+            }
+        });
+
 
         rel_Backround.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 gameOver();
+                btn_restart.setVisibility(View.VISIBLE);
             }
         });
 
@@ -119,6 +134,15 @@ public class TTB_Activity extends AppCompatActivity {
     }
 
     public void reStart(){
+        //TextView tvScore = (TextView) findViewById(R.id.text_score);
+        int global_score = WelcomeScreenActivity.global_score;
+        if(global_score <=10)
+            return;
+        else {
+            WelcomeScreenActivity.global_score = global_score - 10;
+
+            this.recreate();
+        }
 
     }
 
