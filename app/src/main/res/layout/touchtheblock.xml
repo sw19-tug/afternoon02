@@ -18,15 +18,8 @@
             android:id="@+id/bt_block"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="80dp"
-            android:layout_marginLeft="80dp"
-            android:layout_marginBottom="238dp"
             android:background="#000000"
-            tools:layout_editor_absoluteX="105dp"
-            tools:layout_editor_absoluteY="265dp" />
+            android:layout_centerInParent="true" />
     </RelativeLayout>
 
     <RelativeLayout
