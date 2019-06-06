@@ -14,13 +14,10 @@ import android.widget.Button;
 import android.graphics.Color;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.os.CountDownTimer;
 
-import com.example.ultimategames.MainActivity;
 import com.example.ultimategames.R;
 import com.pes.androidmaterialcolorpickerdialog.ColorPicker;
 
-import java.util.ArrayList;
 import java.util.Random;
 import java.text.DecimalFormat;
 
@@ -37,8 +34,6 @@ public class TTB_Activity extends AppCompatActivity {
     private TextView countDown;
 
     public double time = time_to_react;
-
-    boolean gameover = false;
 
     boolean gameover = false;
 
@@ -98,10 +93,6 @@ public class TTB_Activity extends AppCompatActivity {
                 opencolorpicker();
             }
         });
-
-
-
-
     }
 
     private void opencolorpicker() {

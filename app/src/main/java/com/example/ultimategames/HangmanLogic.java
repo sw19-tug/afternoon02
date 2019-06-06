@@ -40,6 +40,42 @@ public class HangmanLogic
         mWord = mSolution.split("(?!^)");
     }
 
+    public void getHint()
+    {
+        int index = mGameHangman.GetFirstHiddenLetterIndex();
+        String letter = mWord[index];
+
+        for( int i = 0; i < mWord.length; i++)
+        {
+            if(mWord[i].toUpperCase().equals(letter.toUpperCase()))
+            {
+                mGameHangman.ShowLetterAtPosition(letter, i);
+                mGuessedLetter++;
+            }
+        }
+
+        WelcomeScreenActivity.global_score -= 3;
+        mGameHangman.UpdateStats(WelcomeScreenActivity.global_score, mFailCounter);
+        mGameHangman.ShowLetterAtPosition(mWord[index], index);
+
+        // Check if word was completed successfully
+        if(mGuessedLetter == mWord.length)
+        {
+            WelcomeScreenActivity.global_score++;
+            mGameHangman.UpdateStats(WelcomeScreenActivity.global_score, mFailCounter);
+
+            mGameHangman.Win();
+
+            // Reset the game screen with small delay (allows for the tap to end)
+            (new Handler()).postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Reset();
+                }
+            }, 500);
+        }
+    }
+
     public void checkLetter(String guessed_letter)
     {
         boolean letterGuessed = false;
