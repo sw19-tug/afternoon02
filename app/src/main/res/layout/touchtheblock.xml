@@ -31,7 +31,7 @@
             android:id="@+id/TTB_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@string/score" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/bt_Restart"
