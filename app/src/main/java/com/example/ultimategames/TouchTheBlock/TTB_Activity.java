@@ -91,7 +91,7 @@ public class TTB_Activity extends AppCompatActivity {
 
         btn_restart.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                if (gameover || !gameover) {
+                if (gameover) {
                     reStart();
                 }
             }
