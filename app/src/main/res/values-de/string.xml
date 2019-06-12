@@ -20,4 +20,7 @@
     <string name="title_activity_touch_the_block">Touch the Block</string>
     <string name="title_activity_hangman_welcome_screen">Hangman</string>
     <string name="hangman_wrong">Falsche Vermutungen:</string>
+    <string name="restartTTB">Sie hast nicht genug Punkte um das Spiel neu zu starten</string>
+    <string name="lostTTB">Sie haben verloren. Versuchen Sie es noch einmal</string>
+
 </resources>
