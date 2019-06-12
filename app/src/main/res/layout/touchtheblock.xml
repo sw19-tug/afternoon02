@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/bt_Restart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,7 +36,10 @@
             android:layout_marginStart="21dp"
             android:layout_marginLeft="21dp"
             android:layout_marginTop="237dp"
-            android:text="Restart" />
+            android:src="@android:drawable/ic_menu_revert"
+            android:text="Restart"
+            android:tint="#E6D9D9"
+            app:backgroundTint="#2E742F" />
 
         <TextView
             android:id="@+id/textView"

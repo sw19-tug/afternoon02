@@ -4,6 +4,7 @@ import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Display;
@@ -53,7 +54,7 @@ public class TTB_Activity extends AppCompatActivity {
         Log.e("height", "" + height);
 
         final Button btn_block = (Button) findViewById(R.id.bt_block);
-        final Button btn_restart = (Button) findViewById(R.id.bt_Restart);
+        final FloatingActionButton btn_restart = (FloatingActionButton) findViewById(R.id.bt_Restart);
         rel_Backround = (RelativeLayout) findViewById(R.id.Rel_Backround);
 
         btn_block.setBackgroundColor(Color.BLACK);
