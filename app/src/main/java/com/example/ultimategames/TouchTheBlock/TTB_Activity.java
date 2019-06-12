@@ -177,7 +177,7 @@ public class TTB_Activity extends AppCompatActivity {
         //TextView tvScore = (TextView) findViewById(R.id.text_score);
         int global_score = WelcomeScreenActivity.global_score;
         if (global_score <= 10) {
-            Toast.makeText(getApplicationContext(),R.string.not_enough_points ,Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),R.string.restartTTB ,Toast.LENGTH_LONG).show();
             return;
         }
         else {
