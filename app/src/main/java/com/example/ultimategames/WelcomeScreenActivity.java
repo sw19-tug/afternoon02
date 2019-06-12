@@ -24,7 +24,7 @@ import java.util.Locale;
 
 public class WelcomeScreenActivity extends AppCompatActivity {
 
-    public int global_score = 0;
+    public static int global_score = 0;
 
 
     Button buttonTicTacToe;
@@ -134,6 +134,13 @@ public class WelcomeScreenActivity extends AppCompatActivity {
 
 
 
+        UpdateScore();
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
         UpdateScore();
     }
 

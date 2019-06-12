@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ultimategames.R;
+import com.example.ultimategames.WelcomeScreenActivity;
 
 import java.util.Random;
 
@@ -21,11 +22,13 @@ public class PvC extends AppCompatActivity {
 
     int player = 1;
 
-    String[] signs = {"X","O"};
-
+    String[] signs, colors;
+    int[] color_ints = {0,0};
     int result;
 
     TextView result_text;
+
+    TextView textViewScore;
 
     Button restartGame;
 
@@ -35,10 +38,15 @@ public class PvC extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tictactoepvc);
+        textViewScore = findViewById(R.id.textViewScore);
+        String s = getString(R.string.score) + "  "  + WelcomeScreenActivity.global_score;
+        textViewScore.setText(s);
 
+        signs = getIntent().getStringArrayExtra("characters");
+        colors = getIntent().getStringArrayExtra("colors");
+        color_ints[0] = getResources().getColor(getResources().getIdentifier(colors[0],"color",getPackageName()));
+        color_ints[1] = getResources().getColor(getResources().getIdentifier(colors[1],"color",getPackageName()));
         result_text = findViewById(R.id.result);
-
-        Assign_Sign_Player();
 
         restartGame = findViewById(R.id.restartGame);
         restartGame.setOnClickListener(new View.OnClickListener() {
@@ -57,8 +65,12 @@ public class PvC extends AppCompatActivity {
 
                 if (index_lock[0] == 0) {
                     b00.setText(signs[player-1]);
+                    b00.setTextColor(color_ints[0]);
                     result = ticTacToe.changeField(0,0, player);
                     Show_Result(result);
+                    if(result != -1){
+                        return;
+                    }
                     player = 3 - player;
                     index_lock[0] = 1;
                     result = Computer_Turn(false, 0, 0);
@@ -74,8 +86,12 @@ public class PvC extends AppCompatActivity {
 
                 if (index_lock[1] == 0) {
                     b01.setText(signs[player-1]);
+                    b01.setTextColor(color_ints[0]);
                     result = ticTacToe.changeField(0,1, player);
                     Show_Result(result);
+                    if(result != -1){
+                        return;
+                    }
                     player = 3 - player;
                     index_lock[1] = 1;
                     result = Computer_Turn(false, 0, 0);
@@ -90,8 +106,12 @@ public class PvC extends AppCompatActivity {
             public void onClick(View view) {
                 if (index_lock[2] == 0) {
                     b02.setText(signs[player-1]);
+                    b02.setTextColor(color_ints[0]);
                     result = ticTacToe.changeField(0,2, player);
                     Show_Result(result);
+                    if(result != -1){
+                        return;
+                    }
                     player = 3 - player;
                     index_lock[2] = 1;
                     result = Computer_Turn(false, 0, 0);
@@ -106,8 +126,12 @@ public class PvC extends AppCompatActivity {
             public void onClick(View view) {
                 if (index_lock[3] == 0) {
                     b10.setText(signs[player-1]);
+                    b10.setTextColor(color_ints[0]);
                     result = ticTacToe.changeField(1,0, player);
                     Show_Result(result);
+                    if(result != -1){
+                        return;
+                    }
                     player = 3 - player;
                     index_lock[3] = 1;
                     result = Computer_Turn(false, 0, 0);
@@ -122,8 +146,12 @@ public class PvC extends AppCompatActivity {
             public void onClick(View view) {
                 if (index_lock[4] == 0) {
                     b11.setText(signs[player-1]);
+                    b11.setTextColor(color_ints[0]);
                     result = ticTacToe.changeField(1,1, player);
                     Show_Result(result);
+                    if(result != -1){
+                        return;
+                    }
                     player = 3 - player;
                     index_lock[4] = 1;
                     result = Computer_Turn(false, 0, 0);
@@ -138,8 +166,12 @@ public class PvC extends AppCompatActivity {
             public void onClick(View view) {
                 if (index_lock[5] == 0) {
                     b12.setText(signs[player-1]);
+                    b12.setTextColor(color_ints[0]);
                     result = ticTacToe.changeField(1,2, player);
                     Show_Result(result);
+                    if(result != -1){
+                        return;
+                    }
                     player = 3 - player;
                     index_lock[5] = 1;
                     result = Computer_Turn(false, 0, 0);
@@ -154,8 +186,12 @@ public class PvC extends AppCompatActivity {
             public void onClick(View view) {
                 if (index_lock[6] == 0) {
                     b20.setText(signs[player-1]);
+                    b20.setTextColor(color_ints[0]);
                     result = ticTacToe.changeField(2,0, player);
                     Show_Result(result);
+                    if(result != -1){
+                        return;
+                    }
                     player = 3 - player;
                     index_lock[6] = 1;
                     result = Computer_Turn(false, 0, 0);
@@ -170,8 +206,12 @@ public class PvC extends AppCompatActivity {
             public void onClick(View view) {
                 if (index_lock[7] == 0) {
                     b21.setText(signs[player-1]);
+                    b21.setTextColor(color_ints[0]);
                     result = ticTacToe.changeField(2,1, player);
                     Show_Result(result);
+                    if(result != -1){
+                        return;
+                    }
                     player = 3 - player;
                     index_lock[7] = 1;
                     result = Computer_Turn(false, 0, 0);
@@ -186,8 +226,12 @@ public class PvC extends AppCompatActivity {
             public void onClick(View view) {
                 if (index_lock[8] == 0) {
                     b22.setText(signs[player-1]);
+                    b22.setTextColor(color_ints[0]);
                     result = ticTacToe.changeField(2,2, player);
                     Show_Result(result);
+                    if(result != -1){
+                        return;
+                    }
                     player = 3 - player;
                     index_lock[8] = 1;
                     result = Computer_Turn(false, 0, 0);
@@ -209,8 +253,6 @@ public class PvC extends AppCompatActivity {
 
     public void Assign_Sign_Player () {
 
-        signs[0] = "X";
-        signs[1] = "0";
     }
 
     public int Computer_Turn (boolean test, int a, int b) {
@@ -225,31 +267,25 @@ public class PvC extends AppCompatActivity {
         boolean found = false;
 
 
-        if (found && test) {
-            return i;
-        }
+        Random rand = new Random();
 
 
-        if (found == false) {
-            Random rand = new Random();
-
-
-            while (true) {
-                i = rand.nextInt(8);
-                boolean isLast=true;
-                for (int counter =0;counter<9;counter++){
-                    if(index_lock[counter]==0){
-                        isLast=false;
-                        break;
-                    }
-                }
-                if(isLast==true) return 3;
-                if (index_lock[i] == 0) {
+        while (true) {
+            i = rand.nextInt(8);
+            boolean isLast=true;
+            for (int counter =0;counter<9;counter++){
+                if(index_lock[counter]==0){
+                    isLast=false;
                     break;
                 }
             }
-            index_lock[i] = 1;
+            if(isLast) return 3;
+            if (index_lock[i] == 0) {
+                break;
+            }
         }
+        index_lock[i] = 1;
+
 
 
         int x = 0, y = 0;
@@ -274,30 +310,29 @@ public class PvC extends AppCompatActivity {
             y = 2;
         }
         box[i].setText(signs[player-1]);
+        box[i].setTextColor(color_ints[1]);
         int r = ticTacToe.changeField(x, y, player);
         player = 3 - player;
         return r;
 
     }
     void Show_Result (int result) {
-
-        if (result == -1) {
-        }
-
         if (result == 0) {
             restartGame.setVisibility(View.VISIBLE);
             result_text.setText(R.string.draw);
-
         }
-
         if (result == 1) {
             restartGame.setVisibility(View.VISIBLE);
             result_text.setText(R.string.playerOneWon);
+            WelcomeScreenActivity.global_score=WelcomeScreenActivity.global_score + 2;
         }
-
         if (result == 2) {
             restartGame.setVisibility(View.VISIBLE);
             result_text.setText(R.string.playerTwoWon);
+            WelcomeScreenActivity.global_score--;
         }
+
+        String s = getString(R.string.score) + "  "  + WelcomeScreenActivity.global_score;
+        textViewScore.setText(s);
     }
 }
