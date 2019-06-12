@@ -63,7 +63,7 @@ public class TTB_Activity extends AppCompatActivity {
         rel_Backround = (RelativeLayout) findViewById(R.id.Rel_Backround);
 
         score = findViewById(R.id.TTB_score);
-        score.setText(R.string.score + WelcomeScreenActivity.global_score);
+        score.setText( getResources().getString(R.string.score) + " " + Integer.toString(WelcomeScreenActivity.global_score));
 
 
         btn_block.setBackgroundColor(Color.BLACK);
@@ -85,8 +85,13 @@ public class TTB_Activity extends AppCompatActivity {
                     resizeBtn(v);
                     realignBtn(v);
                     addPoints();
-                    WelcomeScreenActivity.global_score ++;
-                    score.setText(R.string.score + WelcomeScreenActivity.global_score);
+                    WelcomeScreenActivity.global_score += 1;
+                    //String score = R.string.score;
+                    //score.setText(Integer.toString(R.string.score) + WelcomeScreenActivity.global_score);
+                    TextView tvScore = (TextView) findViewById(R.id.TTB_score);
+                    String textScore =  getResources().getString(R.string.score) + " " + Integer.toString(WelcomeScreenActivity.global_score);
+
+                    tvScore.setText(textScore);
                 }
             }
         });
