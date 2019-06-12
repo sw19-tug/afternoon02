@@ -14,6 +14,7 @@ import android.graphics.Color;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.os.CountDownTimer;
+import android.widget.Toast;
 
 import com.example.ultimategames.R;
 import com.example.ultimategames.WelcomeScreenActivity;
@@ -72,13 +73,14 @@ public class TTB_Activity extends AppCompatActivity {
                     resizeBtn(v);
                     realignBtn(v);
                     addPoints();
+                    WelcomeScreenActivity.global_score ++;
                 }
             }
         });
 
         btn_restart.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                if (gameover) {
+                if (gameover || !gameover) {
                     reStart();
                 }
             }
@@ -134,8 +136,10 @@ public class TTB_Activity extends AppCompatActivity {
     public void reStart() {
         //TextView tvScore = (TextView) findViewById(R.id.text_score);
         int global_score = WelcomeScreenActivity.global_score;
-        if (global_score <= 10)
+        if (global_score <= 10) {
+            Toast.makeText(getApplicationContext(),"You have not enough points to restart!",Toast.LENGTH_LONG).show();
             return;
+        }
         else {
             WelcomeScreenActivity.global_score = global_score - 10;
 
