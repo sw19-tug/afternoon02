@@ -27,4 +27,5 @@
     <string name="title_activity_color_selection">Sign and Color selection</string>
     <string name="hangman_wrong">Wrong guesses:</string>
     <string name="ttb_changeBlockColor">Change Color!</string>
+    <string name="not_enough_points">You have not enough points to restart!</string>
 </resources>

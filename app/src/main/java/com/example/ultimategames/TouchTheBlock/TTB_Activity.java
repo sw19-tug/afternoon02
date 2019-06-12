@@ -63,7 +63,8 @@ public class TTB_Activity extends AppCompatActivity {
         rel_Backround = (RelativeLayout) findViewById(R.id.Rel_Backround);
 
         score = findViewById(R.id.TTB_score);
-        score.setText("Score: "+ WelcomeScreenActivity.global_score);
+        String txtScore = R.string.score + Integer.toString(WelcomeScreenActivity.global_score);
+        //score.setText(R.string.score);
 
 
         btn_block.setBackgroundColor(Color.BLACK);
@@ -84,7 +85,8 @@ public class TTB_Activity extends AppCompatActivity {
                     realignBtn(v);
                     addPoints();
                     WelcomeScreenActivity.global_score ++;
-                    score.setText("Score: "+ WelcomeScreenActivity.global_score);
+                    //String txtScore = R.string.score + " " + Integer.toString(WelcomeScreenActivity.global_score);
+                    score.setText(WelcomeScreenActivity.global_score);
                 }
             }
         });
@@ -177,7 +179,7 @@ public class TTB_Activity extends AppCompatActivity {
         //TextView tvScore = (TextView) findViewById(R.id.text_score);
         int global_score = WelcomeScreenActivity.global_score;
         if (global_score <= 10) {
-            Toast.makeText(getApplicationContext(),"You have not enough points to restart!",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),R.string.not_enough_points ,Toast.LENGTH_LONG).show();
             return;
         }
         else {
