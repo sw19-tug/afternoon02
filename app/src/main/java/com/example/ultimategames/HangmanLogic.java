@@ -159,7 +159,7 @@ public class HangmanLogic
         }
         else if (mFailCounter == 6)
         {
-            imageViewHangmanPic.setImageResource(R.drawable.hangman_6);
+            imageViewHangmanPic.setImageResource(R.drawable.hangman_7);
         }
         else if (mFailCounter == 7)
         {
