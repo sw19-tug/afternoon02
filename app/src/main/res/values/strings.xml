@@ -30,5 +30,11 @@
     <string name="restartTTB">You do not have enough points to restart!</string>
     <string name="lostTTB">Sorry you lost! Press to try again</string>
     <string name="youLost">You lost!</string>
+    <string name="resetScore">Reset the score</string>
+    <string name="blue_color">Blue</string>
+    <string name="red_color">Red</string>
+    <string name="black_color">Black</string>
+    <string name="green_color">Green</string>
+    <string name="purple_color">Blue</string>
 
 </resources>

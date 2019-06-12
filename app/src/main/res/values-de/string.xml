@@ -23,6 +23,10 @@
     <string name="restartTTB">Sie hast nicht genug Punkte um das Spiel neu zu starten</string>
     <string name="lostTTB">Sie haben verloren. Versuchen Sie es noch einmal</string>
     <string name="youLost">Sie haben verloren</string>
-
-
+    <string name="resetScore">Punkte zurück setzen</string>
+    <string name="blue_color">Blue</string>
+    <string name="red_color">Red</string>
+    <string name="black_color">Black</string>
+    <string name="green_color">Green</string>
+    <string name="purple_color">Purple</string>
 </resources>
