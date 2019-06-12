@@ -74,8 +74,10 @@ public class TTB_Activity extends AppCompatActivity {
         btn_block.setLayoutParams(params);
 
         btn_restart.setVisibility(View.INVISIBLE);
+        btn_block.setVisibility(View.INVISIBLE);
+
         final FloatingActionButton btnColor = findViewById(R.id.bt_changeColor);
-        timer();
+        final FloatingActionButton btnStart = findViewById(R.id.bt_Start);
 
 
         btn_block.setOnClickListener(new Button.OnClickListener() {
@@ -118,6 +120,17 @@ public class TTB_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 opencolorpicker();
+            }
+        });
+
+        btnStart.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnStart.setVisibility(View.INVISIBLE);
+                btn_block.setVisibility(View.VISIBLE);
+                btnColor.setVisibility(View.INVISIBLE);
+                timer();
+
             }
         });
     }
@@ -217,6 +230,9 @@ public class TTB_Activity extends AppCompatActivity {
 
     public void gameOver() {
         final Button btn = (Button) findViewById(R.id.bt_block);
+        final FloatingActionButton btn_restart = (FloatingActionButton) findViewById(R.id.bt_Restart);
+        btn_restart.setVisibility(View.VISIBLE);
+
         btn.setBackgroundColor(Color.RED);
         deductPoints();
         TextView txtView = (TextView) findViewById(R.id.textView);
