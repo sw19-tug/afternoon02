@@ -31,6 +31,7 @@ public class TTB_Activity extends AppCompatActivity {
 
     public int testcounter = 0;
     private TextView countDown;
+    private TextView score;
 
     public double time = time_to_react;
 
@@ -57,6 +58,10 @@ public class TTB_Activity extends AppCompatActivity {
         final FloatingActionButton btn_restart = (FloatingActionButton) findViewById(R.id.bt_Restart);
         rel_Backround = (RelativeLayout) findViewById(R.id.Rel_Backround);
 
+        score = findViewById(R.id.TTB_score);
+        score.setText("Score: "+ WelcomeScreenActivity.global_score);
+
+
         btn_block.setBackgroundColor(Color.BLACK);
 
         ViewGroup.LayoutParams params = btn_block.getLayoutParams();
@@ -75,6 +80,7 @@ public class TTB_Activity extends AppCompatActivity {
                     realignBtn(v);
                     addPoints();
                     WelcomeScreenActivity.global_score ++;
+
                 }
             }
         });
