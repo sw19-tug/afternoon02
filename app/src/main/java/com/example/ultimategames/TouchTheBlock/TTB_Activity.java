@@ -5,7 +5,6 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.os.CountDownTimer;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Display;
@@ -15,7 +14,6 @@ import android.widget.Button;
 import android.graphics.Color;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.os.CountDownTimer;
 import android.widget.Toast;
 
 import com.example.ultimategames.R;
@@ -41,6 +39,9 @@ public class TTB_Activity extends AppCompatActivity {
 
     boolean gameover = false;
     boolean restart = false;
+
+    CountDownTimer Timer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +95,8 @@ public class TTB_Activity extends AppCompatActivity {
                     String textScore =  getResources().getString(R.string.score) + " " + Integer.toString(WelcomeScreenActivity.global_score);
 
                     tvScore.setText(textScore);
+                    Timer.start();
+
                 }
             }
         });
@@ -129,7 +132,7 @@ public class TTB_Activity extends AppCompatActivity {
                 btnStart.setVisibility(View.INVISIBLE);
                 btn_block.setVisibility(View.VISIBLE);
                 btnColor.setVisibility(View.INVISIBLE);
-                timer();
+                InitTimer();
 
             }
         });
@@ -206,21 +209,22 @@ public class TTB_Activity extends AppCompatActivity {
 
     }
 
-    public void timer() {
+    public void InitTimer() {
 
         countDown = findViewById(R.id.countdown_text);
 
-        new CountDownTimer(3000, 10) {
+        Timer = new CountDownTimer(3000, 10) {
             public void onTick(long millisUntilFinished) {
                 DecimalFormat df = new DecimalFormat("#.##");
-                countDown.setText(String.valueOf(df.format(time)));
-                double time = millisUntilFinished;
+                countDown.setText(""+millisUntilFinished / 1000);
+                time = millisUntilFinished;
                 if (millisUntilFinished <= 0.01) {
                     MediaPlayer ring = MediaPlayer.create(TTB_Activity.this, R.raw.bing_sound);
                     ring.start();
                     TextView txtView = (TextView) findViewById(R.id.textView);
                 }
             }
+
             public void onFinish() {
                 countDown.setText(R.string.youLost);
                 gameOver();
