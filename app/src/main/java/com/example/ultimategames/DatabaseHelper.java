@@ -60,7 +60,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public ArrayList<String> getAllWords()
     {
-        ArrayList wordList = new ArrayList<String>();
+        ArrayList<String> wordList = new ArrayList<String>();
         String selectQuery = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + COL_WORD + " DESC";
 
         SQLiteDatabase db = this.getReadableDatabase();
