@@ -20,4 +20,10 @@
     <string name="title_activity_touch_the_block">Touch the Block</string>
     <string name="title_activity_hangman_welcome_screen">Hangman</string>
     <string name="hangman_wrong">Falsche Vermutungen:</string>
+    <string name="resetScore">Punkte zurück setzen</string>
+    <string name="blue_color">Blue</string>
+    <string name="red_color">Red</string>
+    <string name="black_color">Black</string>
+    <string name="green_color">Green</string>
+    <string name="purple_color">Purple</string>
 </resources>

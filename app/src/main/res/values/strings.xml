@@ -27,4 +27,11 @@
     <string name="title_activity_color_selection">Sign and Color selection</string>
     <string name="hangman_wrong">Wrong guesses:</string>
     <string name="ttb_changeBlockColor">Change Color!</string>
+    <string name="resetScore">Reset the score</string>
+    <string name="blue_color">Blue</string>
+    <string name="red_color">Red</string>
+    <string name="black_color">Black</string>
+    <string name="green_color">Green</string>
+    <string name="purple_color">Blue</string>
+
 </resources>

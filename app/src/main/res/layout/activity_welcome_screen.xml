@@ -136,11 +136,11 @@
         android:layout_alignParentBottom="true"
         android:layout_marginRight="20sp"
         android:layout_marginBottom="20sp"
-        android:padding="15sp"
         android:gravity="center"
-        android:text="Reset the score"
+        android:padding="15sp"
         android:textAlignment="center"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:text="@string/resetScore" />
 
     <LinearLayout
         android:id="@+id/languagemenu"
