@@ -15,12 +15,20 @@ public class HangmanSelScreen extends AppCompatActivity {
         setContentView(R.layout.activity_hangman_selscreen);
 
         Button playHMBtn = findViewById(R.id.playHMBtn);
+        Button enterWordBtn = findViewById(R.id.enterWordBtn);
         final Intent playHangman = new Intent(this, GameHangman.class);
+        final Intent extendWords = new Intent(this, ExtendWords.class);
 
         playHMBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(playHangman);
+            }
+        });
+        enterWordBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              startActivity(extendWords);
             }
         });
     }

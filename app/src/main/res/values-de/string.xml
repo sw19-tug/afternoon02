@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">UltimateGames</string>
+    <string name="welcome">Herzlich willkommen!</string>
+    <string name="restartTicTacToe">Spiel nochmal</string>
+    <string name="playerOneWon">Spieler eins GEWONNEN!</string>
+    <string name="playerTwoWon">Spieler zwei GEWONNEN!</string>
+    <string name="draw">Unentschieden</string>
+    <string name="welcomeTicTacToe">Willkommen bei Tic-Tac-Toe!</string>
+    <string name="score">Ergebnis: </string>
+    <string name="select_game">Bitte wählen Sie das Spiel aus, das Sie spielen möchten:</string>
+    <string name="hangman_title">Hangman</string>
+    <string name="move_number">Deine Bewegungen: </string>
+    <string name="btn_playhangman">Spielen Hangman</string>
+    <string name="btn_enter_word">Geben Sie ein neues Wort ein</string>
+    <string name="btn_need_hint">Brauche einen Hinweis? (Kosten: 3 Punkte)</string>
+    <string name="title_activity_tic_tac_toe__welcome_screen">Tic-Tac-Toe</string>
+    <string name="title_activity_tic_tac_toe_pvp">Tic-Tac-Toe PvP</string>
+    <string name="title_activity_tic_tac_toe_pvc">Tic-Tac-Toe PvC</string>
+    <string name="title_activity_touch_the_block">Touch the Block</string>
+    <string name="title_activity_hangman_welcome_screen">Hangman</string>
+    <string name="hangman_wrong">Falsche Vermutungen:</string>
+</resources>

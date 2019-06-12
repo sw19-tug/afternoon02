@@ -3,7 +3,6 @@ package com.example.ultimategames;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -16,30 +15,42 @@ public class GameHangman extends AppCompatActivity implements View.OnClickListen
     private Button btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnJ, btnK, btnL, btnM,
                    btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnV, btnW, btnX, btnY, btnZ;
 
+    private Button btnHint;
     private HashMap<Integer, String> keyvalues = new HashMap<Integer, String>(26);
     private HangmanLogic hangman_logic;
+    private DatabaseHelper database_helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_hangman);
 
-        hangman_logic = new HangmanLogic(this);
+        database_helper = new DatabaseHelper(this);
+        hangman_logic = new HangmanLogic(this, database_helper);
 
         initButtons();
     }
 
     @Override
     public void onClick(View view) {
-
         int id = view.getId();
         Button clicked = findViewById(id);
+
+        if (clicked.getId() == btnHint.getId())
+        {
+            hangman_logic.getHint();
+            return;
+        }
+
         clicked.setEnabled(false);
         hangman_logic.checkLetter(keyvalues.get(id));
     }
 
     private void initButtons()
     {
+        btnHint = findViewById(R.id.btn_needhint);
+        btnHint.setOnClickListener(this);
+
         btnA = findViewById(R.id.button_a);
         btnA.setOnClickListener(this);
         btnB = findViewById(R.id.button_b);
@@ -165,6 +176,26 @@ public class GameHangman extends AppCompatActivity implements View.OnClickListen
             letter.setPadding(dpToPx(2), 0, dpToPx(2), 0);
             word.addView(letter);
         }
+    }
+
+    public int GetFirstHiddenLetterIndex()
+    {
+        int index = 0;
+        LinearLayout word = findViewById(R.id.word);
+        if (word != null)
+        {
+            for (int i = 0; i < word.getChildCount(); i++)
+            {
+                TextView letter = (TextView)word.getChildAt(i);
+                if (letter.getText().equals("_"))
+                {
+                    index = i;
+                    break;
+                }
+            }
+        }
+
+        return index;
     }
 
     public int dpToPx(int dp) {

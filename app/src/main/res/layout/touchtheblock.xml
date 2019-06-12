@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".TouchTheBlock.TTB_Activity">
+
 
     <RelativeLayout
         android:id="@+id/Rel_Backround"
@@ -75,6 +76,17 @@
             android:layout_marginBottom="-75dp"
             android:text="10:00"
             android:textSize="30sp" />
+
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/bt_changeColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:clickable="true"
+            app:srcCompat="@android:drawable/ic_menu_edit" />
 
     </RelativeLayout>
 
