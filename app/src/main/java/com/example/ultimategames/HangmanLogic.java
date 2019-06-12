@@ -135,10 +135,9 @@ public class HangmanLogic
             }, 500);
         }
 
-        // Get Image view "Galgen"
+        // Set picture according to number of fails
         ImageView imageViewHangmanPic = (ImageView) mGameHangman.findViewById(R.id.imageViewHangmanPic);
 
-        // Set the next image of "Galgen" abhängig von der Anzahl der Fails (mit switch danach machen)
         if(mFailCounter == 1){
             imageViewHangmanPic.setImageResource(R.drawable.hangman_1);
         }else if (mFailCounter == 2)
@@ -180,9 +179,8 @@ public class HangmanLogic
         setRandomWord();
 
         // Reset Hangman Picture as well
-        // Get Image view "Galgen"
         ImageView imageViewHangmanPic = (ImageView) mGameHangman.findViewById(R.id.imageViewHangmanPic);
-        imageViewHangmanPic.setImageResource(R.drawable.hangman_1);
+        imageViewHangmanPic.setImageResource(R.drawable.hangman);
 
         mGameHangman.UpdateStats(WelcomeScreenActivity.global_score, mFailCounter);
 
