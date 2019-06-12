@@ -22,5 +22,7 @@
     <string name="hangman_wrong">Falsche Vermutungen:</string>
     <string name="restartTTB">Sie hast nicht genug Punkte um das Spiel neu zu starten</string>
     <string name="lostTTB">Sie haben verloren. Versuchen Sie es noch einmal</string>
+    <string name="youLost">Sie haben verloren</string>
+
 
 </resources>

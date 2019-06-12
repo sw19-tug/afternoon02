@@ -22,4 +22,6 @@
     <string name="hangman_wrong">Wrong guesses:</string>
     <string name="restartTTB">You do not have enough points to restart</string>
     <string name="lostTTB">Sorry you lost! Press to try again</string>
+    <string name="youLost">You lost!</string>
+
 </resources>

@@ -210,7 +210,7 @@ public class TTB_Activity extends AppCompatActivity {
             }
 
             public void onFinish() {
-                countDown.setText("You lost");
+                countDown.setText(R.string.youLost);
             }
         }.start();
     }
