@@ -80,7 +80,7 @@ public class TTB_Activity extends AppCompatActivity {
                     realignBtn(v);
                     addPoints();
                     WelcomeScreenActivity.global_score ++;
-
+                    score.setText("Score: "+ WelcomeScreenActivity.global_score);
                 }
             }
         });
