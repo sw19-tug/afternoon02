@@ -38,7 +38,7 @@ public class TTB_Activity extends AppCompatActivity {
     public double time = time_to_react;
 
     boolean gameover = false;
-    boolean restart = false;
+    boolean running = false;
 
     CountDownTimer Timer;
 
@@ -113,8 +113,11 @@ public class TTB_Activity extends AppCompatActivity {
         rel_Backround.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gameOver();
-                btn_restart.setVisibility(View.VISIBLE);
+                if (running) {
+                    Timer.cancel();
+                    gameOver();
+                    btn_restart.setVisibility(View.VISIBLE);
+                }
             }
         });
 
@@ -132,7 +135,9 @@ public class TTB_Activity extends AppCompatActivity {
                 btnStart.setVisibility(View.INVISIBLE);
                 btn_block.setVisibility(View.VISIBLE);
                 btnColor.setVisibility(View.INVISIBLE);
+                btnColor.setVisibility(View.INVISIBLE);
                 InitTimer();
+                running = true;
 
             }
         });
@@ -216,7 +221,7 @@ public class TTB_Activity extends AppCompatActivity {
         Timer = new CountDownTimer(3000, 10) {
             public void onTick(long millisUntilFinished) {
                 DecimalFormat df = new DecimalFormat("#.##");
-                countDown.setText(""+millisUntilFinished / 1000);
+                countDown.setText(""+millisUntilFinished / 1000+ "." + millisUntilFinished%10);
                 time = millisUntilFinished;
                 if (millisUntilFinished <= 0.01) {
                     MediaPlayer ring = MediaPlayer.create(TTB_Activity.this, R.raw.bing_sound);
@@ -226,7 +231,6 @@ public class TTB_Activity extends AppCompatActivity {
             }
 
             public void onFinish() {
-                countDown.setText(R.string.youLost);
                 gameOver();
             }
         }.start();
@@ -236,6 +240,8 @@ public class TTB_Activity extends AppCompatActivity {
         final Button btn = (Button) findViewById(R.id.bt_block);
         final FloatingActionButton btn_restart = (FloatingActionButton) findViewById(R.id.bt_Restart);
         btn_restart.setVisibility(View.VISIBLE);
+
+        countDown.setText(R.string.youLost);
 
         btn.setBackgroundColor(Color.RED);
         deductPoints();
