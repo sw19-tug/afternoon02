@@ -197,25 +197,20 @@ public class TTB_Activity extends AppCompatActivity {
 
         countDown = findViewById(R.id.countdown_text);
 
-        new CountDownTimer(30000, 10) {
+        new CountDownTimer(3000, 10) {
             public void onTick(long millisUntilFinished) {
                 DecimalFormat df = new DecimalFormat("#.##");
                 countDown.setText(String.valueOf(df.format(time)));
-                time = time - 0.01;
-                double timer_buffer = time;
-                if (Math.abs(timer_buffer - 1.0) <= 0.01) {
+                double time = millisUntilFinished;
+                if (millisUntilFinished <= 0.01) {
                     MediaPlayer ring = MediaPlayer.create(TTB_Activity.this, R.raw.bing_sound);
                     ring.start();
                     TextView txtView = (TextView) findViewById(R.id.textView);
                 }
-                if (time < 0.0) {
-                    gameOver();
-                    return;
-                }
             }
-
             public void onFinish() {
                 countDown.setText(R.string.youLost);
+                gameOver();
             }
         }.start();
     }
