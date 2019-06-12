@@ -42,7 +42,7 @@
             android:layout_weight="1"
             android:ems="10"
             android:gravity="center"
-            android:hint="New Word"
+            android:hint="@string/word_new"
             android:inputType="text"
             android:maxLength="8"
             android:textSize="36sp" />
@@ -52,14 +52,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Add Word" />
+            android:text="@string/word_add" />
 
         <Button
             android:id="@+id/removeWordBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Remove Word" />
+            android:text="@string/word_remove" />
     </LinearLayout>
 
 </LinearLayout>

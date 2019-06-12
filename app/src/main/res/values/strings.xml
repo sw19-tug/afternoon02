@@ -27,4 +27,17 @@
     <string name="title_activity_color_selection">Sign and Color selection</string>
     <string name="hangman_wrong">Wrong guesses:</string>
     <string name="ttb_changeBlockColor">Change Color!</string>
+    <string name="err_enter_new_word">Please enter a word into the text field</string>
+    <string name="word_new">New word</string>
+    <string name="word_add">Add word</string>
+    <string name="word_added">Word added.</string>
+    <string name="err_word_exist">Word already exists.</string>
+    <string name="word_remove">Remove word</string>
+    <string name="word_removed">Word removed.</string>
+    <string name="err_word_not_exist">Word doesn\'t exist.</string>
+    <string name="you_win">You win!</string>
+    <string name="you_lose">You lose!</string>
+    <string name="ttt_restart">Would you like to restart the game?</string>
+    <string name="dialog_yes">Yes</string>
+    <string name="dialog_no">No</string>
 </resources>
