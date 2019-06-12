@@ -74,6 +74,8 @@ public class TTB_Activity extends AppCompatActivity {
         btn_block.setLayoutParams(params);
 
         btn_restart.setVisibility(View.INVISIBLE);
+        final FloatingActionButton btnColor = findViewById(R.id.bt_changeColor);
+        timer();
 
 
         btn_block.setOnClickListener(new Button.OnClickListener() {
@@ -106,7 +108,6 @@ public class TTB_Activity extends AppCompatActivity {
             }
         });
 
-        final FloatingActionButton btnColor = findViewById(R.id.bt_changeColor);
 
         btnColor.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -136,7 +137,6 @@ public class TTB_Activity extends AppCompatActivity {
                 cp.dismiss();
             }
         });
-        timer();
     }
 
     public void realignBtn(View v){
