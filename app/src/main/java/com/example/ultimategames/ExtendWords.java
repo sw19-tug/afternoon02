@@ -37,7 +37,7 @@ public class ExtendWords extends AppCompatActivity {
                     editTextNewWord.setText("");
                 }else
                 {
-                    toastMessage("Please enter a word into the text field");
+                    toastMessage(getResources().getString(R.string.err_enter_new_word));
                 }
             }
         });
@@ -53,7 +53,7 @@ public class ExtendWords extends AppCompatActivity {
                     editTextNewWord.setText("");
                 }else
                 {
-                    toastMessage("Please enter a word into the text field");
+                    toastMessage(getResources().getString(R.string.err_enter_new_word));
                 }
             }
         });
@@ -65,9 +65,9 @@ public class ExtendWords extends AppCompatActivity {
 
         if(insertData)
         {
-            toastMessage("Word added.");
+            toastMessage(getResources().getString(R.string.word_added));
         }else{
-            toastMessage("Word already exists.");
+            toastMessage(getResources().getString(R.string.err_word_exist));
         }
     }
 
@@ -75,11 +75,11 @@ public class ExtendWords extends AppCompatActivity {
     {
         if (mDatabaseHelper.deleteWord(word))
         {
-            toastMessage("Word removed.");
+            toastMessage(getResources().getString(R.string.word_removed));
         }
         else
         {
-            toastMessage("Word doesn't exist.");
+            toastMessage(getResources().getString(R.string.err_word_not_exist));
         }
     }
 

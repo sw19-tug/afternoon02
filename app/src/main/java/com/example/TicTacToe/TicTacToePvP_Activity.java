@@ -59,8 +59,8 @@ public class TicTacToePvP_Activity extends AppCompatActivity {
         if(invokedFromActivity && (score_player_two!=0 || score_player_one!=0)) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setCancelable(true);
-            builder.setMessage("Would you like to restart the game?");
-            builder.setPositiveButton("Yes",
+            builder.setMessage(getResources().getString(R.string.ttt_restart));
+            builder.setPositiveButton(getResources().getString(R.string.dialog_yes),
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -72,7 +72,7 @@ public class TicTacToePvP_Activity extends AppCompatActivity {
                             overridePendingTransition(0,0);
                         }
                     });
-            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            builder.setNegativeButton(getResources().getString(R.string.dialog_no), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                 }
