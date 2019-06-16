@@ -29,4 +29,6 @@
     <string name="black_color">Black</string>
     <string name="green_color">Green</string>
     <string name="purple_color">Purple</string>
+    <string name="change_bg_color">Hintergrundfarbe Ändern</string>
+    <string name="change_block_color">Blockfarbe Ändern</string>
 </resources>

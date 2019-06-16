@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Layout;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.graphics.Color;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -148,17 +150,45 @@ public class TTB_Activity extends AppCompatActivity {
 
         final ColorPicker cp = new ColorPicker(this);
 
+
         cp.show();
 
-        Button okColor = (Button)cp.findViewById(R.id.okColorButton);
+        Button okColorBlock = (Button)cp.findViewById(R.id.okColorButton);
 
-        okColor.setOnClickListener(new View.OnClickListener() {
+        okColorBlock.setText(R.string.change_block_color);
+
+        RelativeLayout cpLayout = (RelativeLayout) okColorBlock.getParent();
+
+        Button okColorBg = new Button(this);
+        okColorBg.setText(R.string.change_bg_color);
+        okColorBg.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        okColorBg.setY(498);
+        okColorBg.setX(-5);
+
+        cp.findViewById(R.id.textView).setVisibility(View.INVISIBLE);
+
+        cpLayout.addView(okColorBg);
+
+        okColorBlock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 btnColor = cp.getColor();
                 final Button btn = (Button)findViewById(R.id.bt_block);
                 btn.setBackgroundColor(btnColor);
+
+                cp.dismiss();
+            }
+        });
+
+
+        okColorBg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                btnColor = cp.getColor();
+                //final Button btn = (Button)findViewById(R.id.bt_block);
+                rel_Backround.setBackgroundColor(btnColor);
 
                 cp.dismiss();
             }

@@ -36,5 +36,7 @@
     <string name="black_color">Black</string>
     <string name="green_color">Green</string>
     <string name="purple_color">Blue</string>
+    <string name="change_bg_color">Change Background Color</string>
+    <string name="change_block_color">Change Button Color</string>
 
 </resources>

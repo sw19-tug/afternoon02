@@ -29,4 +29,6 @@
     <string name="black_color">Black</string>
     <string name="green_color">Green</string>
     <string name="purple_color">Purple</string>
+    <string name="change_bg_color">Set Background</string>
+    <string name="change_block_color">Set Block</string>
 </resources>
