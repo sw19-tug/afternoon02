@@ -27,6 +27,9 @@
     <string name="title_activity_color_selection">Sign and Color selection</string>
     <string name="hangman_wrong">Wrong guesses:</string>
     <string name="ttb_changeBlockColor">Change Color!</string>
+    <string name="restartTTB">You do not have enough points to restart!</string>
+    <string name="lostTTB">Sorry you lost! Press to try again</string>
+    <string name="youLost">You lost!</string>
     <string name="err_enter_new_word">Please enter a word into the text field</string>
     <string name="word_new">New word</string>
     <string name="word_add">Add word</string>
@@ -46,5 +49,8 @@
     <string name="black_color">Black</string>
     <string name="green_color">Green</string>
     <string name="purple_color">Blue</string>
+    <string name="change_bg_color">Set Background</string>
+    <string name="change_block_color">Set Block</string>
+    <string name="same_color">You can not set same color for block and background</string>
 
 </resources>

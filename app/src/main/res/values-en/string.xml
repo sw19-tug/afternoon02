@@ -20,6 +20,9 @@
     <string name="title_activity_touch_the_block">Touch The Block</string>
     <string name="title_activity_hangman_welcome_screen">Hangman</string>
     <string name="hangman_wrong">Wrong guesses:</string>
+    <string name="restartTTB">You do not have enough points to restart</string>
+    <string name="lostTTB">Sorry you lost! Press to try again</string>
+    <string name="youLost">You lost!</string>
     <string name="welcomeColorSelection">Welcome to sign and color selection!</string>
     <string name="label_enter_new_word">Enter a new Word:</string>
     <string name="label_max_characters">(max. 8 characters)</string>
@@ -47,4 +50,7 @@
     <string name="black_color">Black</string>
     <string name="green_color">Green</string>
     <string name="purple_color">Purple</string>
+    <string name="change_bg_color">Set Background</string>
+    <string name="change_block_color">Set Block</string>
+    <string name="same_color">You can not set same color for block and background</string>
 </resources>

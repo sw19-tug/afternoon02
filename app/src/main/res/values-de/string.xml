@@ -19,6 +19,9 @@
     <string name="title_activity_tic_tac_toe_pvc">Tic-Tac-Toe PvC</string>
     <string name="title_activity_touch_the_block">Touch the Block</string>
     <string name="title_activity_hangman_welcome_screen">Hangman</string>
+    <string name="restartTTB">Sie hast nicht genug Punkte um das Spiel neu zu starten</string>
+    <string name="lostTTB">Sie haben verloren. Versuchen Sie es noch einmal</string>
+    <string name="youLost">Sie haben verloren</string>
     <string name="hangman_wrong">Fehlversuche:</string>
     <string name="welcomeColorSelection">Willkommen bei der Farbauswahl!</string>
     <string name="label_enter_new_word">Gib ein neues Wort ein:</string>
@@ -47,4 +50,7 @@
     <string name="black_color">Schwarz</string>
     <string name="green_color">Grün</string>
     <string name="purple_color">Lila</string>
+    <string name="change_bg_color">Hintergrundfarbe</string>
+    <string name="change_block_color">Blockfarbe</string>
+    <string name="same_color">Sie können nicht die gleiche Farbe für Block und Hintergrund festlegen</string>
 </resources>

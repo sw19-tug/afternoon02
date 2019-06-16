@@ -7,65 +7,102 @@
     tools:context=".TouchTheBlock.TTB_Activity">
 
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Touch the block game"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.072" />
-
-    <TextView
-        android:id="@+id/countdown_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="10:00"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.044" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginLeft="136dp"
-        android:layout_marginTop="364dp"
-        android:text=""
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <LinearLayout
-        android:id="@+id/bt_Backround"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"></LinearLayout>
-
     <RelativeLayout
         android:id="@+id/Rel_Backround"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="0dp">
+
 
         <Button
             android:id="@+id/bt_block"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:background="#000000"
-            tools:layout_editor_absoluteX="105dp"
-            tools:layout_editor_absoluteY="265dp" />
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/TTB_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/score" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/bt_Restart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/countdown_text"
+            android:layout_alignStart="@+id/textView2"
+            android:layout_alignLeft="@+id/textView2"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="370dp"
+            android:src="@android:drawable/ic_menu_revert"
+            android:text="Restart"
+            android:tint="#E6D9D9"
+            app:backgroundTint="#2E742F" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/bt_Continue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/countdown_text"
+            android:layout_alignStart="@+id/textView2"
+            android:layout_alignLeft="@+id/textView2"
+            android:layout_marginStart="90dp"
+            android:layout_marginLeft="90dp"
+            android:layout_marginTop="370dp"
+            android:src="@android:drawable/ic_media_play"
+            android:text="Continue"
+            android:tint="#E6D9D9"
+            app:backgroundTint="#2E742F" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/bt_Start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/countdown_text"
+            android:layout_alignStart="@+id/textView2"
+            android:layout_alignLeft="@+id/textView2"
+            android:layout_marginStart="41dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="370dp"
+            android:src="@android:drawable/ic_media_play"
+            android:text="Restart"
+            android:tint="#E6D9D9"
+            app:backgroundTint="#2E742F" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+
+            android:text="Touch the block game" />
+
+        <TextView
+            android:id="@+id/countdown_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView2"
+            android:layout_marginBottom="-75dp"
+            android:gravity="center"
+            android:text="3.0"
+            android:textSize="30sp" />
 
 
 
@@ -80,6 +117,15 @@
 
     </RelativeLayout>
 
+    <LinearLayout
+        android:id="@+id/bt_Backround"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="0dp">
+    </LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>

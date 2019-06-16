@@ -15,4 +15,9 @@
     <color name="Purple">#800080</color>
     <color name="Black">#000000</color>
     <color name="Green">#008000</color>
+    <color name="Blau">#0500da</color>
+    <color name="Rot">#ff1e1a</color>
+    <color name="Lila">#800080</color>
+    <color name="Schwarz">#000000</color>
+    <color name="Grün">#008000</color>
 </resources>
