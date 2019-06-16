@@ -1,6 +1,7 @@
 package com.example.ultimategames;
 
 import android.os.Handler;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -127,6 +128,40 @@ public class HangmanLogic
                 }
             }, 500);
         }
+
+        // Set picture according to number of fails
+        ImageView imageViewHangmanPic = (ImageView) mGameHangman.findViewById(R.id.imageViewHangmanPic);
+
+        if(mFailCounter == 1){
+            imageViewHangmanPic.setImageResource(R.drawable.hangman_1);
+        }else if (mFailCounter == 2)
+        {
+            imageViewHangmanPic.setImageResource(R.drawable.hangman_2);
+        }
+        else if (mFailCounter == 3)
+        {
+            imageViewHangmanPic.setImageResource(R.drawable.hangman_3);
+        }
+        else if (mFailCounter == 4)
+        {
+            imageViewHangmanPic.setImageResource(R.drawable.hangman_4);
+        }
+        else if (mFailCounter == 5)
+        {
+            imageViewHangmanPic.setImageResource(R.drawable.hangman_5);
+        }
+        else if (mFailCounter == 6)
+        {
+            imageViewHangmanPic.setImageResource(R.drawable.hangman_6);
+        }
+        else if (mFailCounter == 7)
+        {
+            imageViewHangmanPic.setImageResource(R.drawable.hangman_7);
+        }
+        else if (mFailCounter == 8)
+        {
+            imageViewHangmanPic.setImageResource(R.drawable.hangman_8);
+        }
     }
 
     private void Reset()
@@ -136,6 +171,11 @@ public class HangmanLogic
         mGameHangman.ResetView();
         mWord = null;
         setRandomWord();
+
+        // Reset Hangman Picture as well
+        ImageView imageViewHangmanPic = (ImageView) mGameHangman.findViewById(R.id.imageViewHangmanPic);
+        imageViewHangmanPic.setImageResource(R.drawable.hangman);
+
         mGameHangman.UpdateStats(WelcomeScreenActivity.global_score, mFailCounter);
 
         mGameHangman.CreateWordView(mSolution.length());

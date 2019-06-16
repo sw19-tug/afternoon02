@@ -220,11 +220,11 @@ public class GameHangman extends AppCompatActivity implements View.OnClickListen
 
     public void Win()
     {
-        Toast.makeText(this, "You win!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getResources().getString(R.string.you_win), Toast.LENGTH_SHORT).show();
     }
 
     public void Lose()
     {
-        Toast.makeText(this, "You lose!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getResources().getString(R.string.you_lose), Toast.LENGTH_SHORT).show();
     }
 }
