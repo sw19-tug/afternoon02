@@ -19,17 +19,16 @@
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:layout_weight="65"
-            android:orientation="vertical"
-            android:layout_marginTop="20sp">
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="15dp"
                 android:text="@string/welcome"
                 android:textAlignment="center"
                 android:textColor="#4265f4"
                 android:textSize="30sp"
-                android:padding="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -44,10 +43,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
+                    android:padding="5dp"
                     android:text="@string/score"
-                    android:textSize="20sp"
-                    android:padding="5dp"/>
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/text_score"
@@ -60,15 +59,14 @@
             </LinearLayout>
 
 
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="15dp"
                 android:text="@string/select_game"
                 android:textAlignment="center"
                 android:textColor="#000"
                 android:textSize="24sp"
-                android:padding="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -79,37 +77,37 @@
         <LinearLayout
             android:id="@+id/gametitlewelcomescreen"
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="585dp"
             android:layout_weight="35"
             android:orientation="vertical"
             android:paddingHorizontal="30dp">
 
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="30dp"
-                android:layout_marginBottom="30dp"
-                android:textAlignment="center"
                 android:id="@+id/btn_tictactoe"
-                android:text="Tic-Tac-Toe"/>
-
-            <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="30dp"
                 android:layout_marginBottom="30dp"
-                android:textAlignment="center"
+                android:padding="25dp"
+                android:text="Tic-Tac-Toe"
+                android:textAlignment="center" />
+
+            <Button
                 android:id="@+id/btn_hangman"
-                android:text="Hangman"/>
-
-            <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="30dp"
                 android:layout_marginBottom="30dp"
-                android:textAlignment="center"
+                android:padding="25dp"
+                android:text="Hangman"
+                android:textAlignment="center" />
+
+            <Button
                 android:id="@+id/btn_block"
-                android:text="Touch the Block"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:padding="25dp"
+                android:text="Touch the Block"
+                android:textAlignment="center" />
 
         </LinearLayout>
 
@@ -129,6 +127,20 @@
         android:textSize="20sp"
         android:layout_marginBottom="20sp"
         android:layout_marginLeft="20sp"/>
+
+    <Button
+        android:id="@+id/btn_resetScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="20sp"
+        android:layout_marginBottom="20sp"
+        android:gravity="center"
+        android:padding="15sp"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:text="@string/resetScore" />
 
     <LinearLayout
         android:id="@+id/languagemenu"

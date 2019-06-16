@@ -41,4 +41,10 @@
     <string name="ttt_restart">Möchtest du das Spiel neu starten?</string>
     <string name="dialog_yes">Ja</string>
     <string name="dialog_no">Nein</string>
+    <string name="resetScore">Punkte zurück setzen</string>
+    <string name="blue_color">Blau</string>
+    <string name="red_color">Rot</string>
+    <string name="black_color">Schwarz</string>
+    <string name="green_color">Grün</string>
+    <string name="purple_color">Lila</string>
 </resources>

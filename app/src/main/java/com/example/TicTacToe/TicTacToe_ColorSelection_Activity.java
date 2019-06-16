@@ -32,11 +32,11 @@ public class TicTacToe_ColorSelection_Activity extends AppCompatActivity impleme
         List<String> signCategories = new ArrayList<String>();
         List<String> colorCategories = new ArrayList<String>();
 
-        colorCategories.add ("Blue");
-        colorCategories.add ("Red");
-        colorCategories.add ("Black");
-        colorCategories.add ("Green");
-        colorCategories.add ("Purple");
+        colorCategories.add (getString(R.string.blue_color));
+        colorCategories.add (getString(R.string.red_color));
+        colorCategories.add (getString(R.string.black_color));
+        colorCategories.add (getString(R.string.green_color));
+        colorCategories.add (getString(R.string.purple_color));
 
         signCategories.add("X");
         signCategories.add("O");

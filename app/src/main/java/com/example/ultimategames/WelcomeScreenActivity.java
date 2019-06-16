@@ -20,7 +20,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
 
     public static int global_score = 0;
 
-
+    Button buttonResetScore;
     Button buttonTicTacToe;
     Button buttonHangman;
     Button buttonTouchBlock;
@@ -46,10 +46,16 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         buttonEnglish = findViewById(R.id.btn_englishlanguage);
         buttonGerman = findViewById(R.id.btn_germanlanguage);
         buttoncancel = findViewById(R.id.btn_languagecancel);
-
+        buttonResetScore = findViewById(R.id.btn_resetScore);
         final Context context = this;
 
-
+        buttonResetScore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                global_score = 0;
+                UpdateScore();
+            }
+        });
 
         buttonTicTacToe.setOnClickListener(new View.OnClickListener() {
             @Override
