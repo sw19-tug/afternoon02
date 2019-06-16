@@ -24,11 +24,12 @@
     <string name="lostTTB">Sie haben verloren. Versuchen Sie es noch einmal</string>
     <string name="youLost">Sie haben verloren</string>
     <string name="resetScore">Punkte zurück setzen</string>
-    <string name="blue_color">Blue</string>
-    <string name="red_color">Red</string>
-    <string name="black_color">Black</string>
-    <string name="green_color">Green</string>
-    <string name="purple_color">Purple</string>
-    <string name="change_bg_color">Hintergrundfarbe Ändern</string>
-    <string name="change_block_color">Blockfarbe Ändern</string>
+    <string name="blue_color">Blau</string>
+    <string name="red_color">Rot</string>
+    <string name="black_color">Schwarz</string>
+    <string name="green_color">Grün</string>
+    <string name="purple_color">Lila</string>
+    <string name="change_bg_color">Hintergrundfarbe</string>
+    <string name="change_block_color">Blockfarbe</string>
+    <string name="same_color">Sie können nicht die gleiche Farbe für Block und Hintergrund festlegen</string>
 </resources>

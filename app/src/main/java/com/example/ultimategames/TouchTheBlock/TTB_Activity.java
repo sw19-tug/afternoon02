@@ -1,5 +1,6 @@
 package com.example.ultimategames.TouchTheBlock;
 
+import android.content.Intent;
 import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -53,16 +54,16 @@ public class TTB_Activity extends AppCompatActivity {
         setContentView(R.layout.touchtheblock);
         countDown = findViewById(R.id.countdown_text);
 
+        btnColor = 0;
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
         int width = size.x;
         int height = size.y;
-        Log.e("Width", "" + width);
-        Log.e("height", "" + height);
 
         final Button btn_block = (Button) findViewById(R.id.bt_block);
         final FloatingActionButton btn_restart = (FloatingActionButton) findViewById(R.id.bt_Restart);
+        final FloatingActionButton btn_continue = (FloatingActionButton) findViewById(R.id.bt_Continue);
         rel_Backround = (RelativeLayout) findViewById(R.id.Rel_Backround);
 
         score = findViewById(R.id.TTB_score);
@@ -78,7 +79,7 @@ public class TTB_Activity extends AppCompatActivity {
 
         btn_restart.setVisibility(View.INVISIBLE);
         btn_block.setVisibility(View.INVISIBLE);
-
+        btn_continue.setVisibility(View.INVISIBLE);
         final FloatingActionButton btnColor = findViewById(R.id.bt_changeColor);
         final FloatingActionButton btnStart = findViewById(R.id.bt_Start);
 
@@ -99,6 +100,16 @@ public class TTB_Activity extends AppCompatActivity {
                     tvScore.setText(textScore);
                     Timer.start();
 
+                }
+            }
+        });
+
+        btn_continue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = getIntent();
+                if(intent.resolveActivity(getPackageManager())!=null){
+                    TTB_Activity.this.startActivity(intent);
                 }
             }
         });
@@ -150,33 +161,40 @@ public class TTB_Activity extends AppCompatActivity {
 
         final ColorPicker cp = new ColorPicker(this);
 
-
         cp.show();
 
-        Button okColorBlock = (Button)cp.findViewById(R.id.okColorButton);
 
+        Button okColorBlock = new Button(this);
+        okColorBlock.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        okColorBlock.setY(600);
+        okColorBlock.setX(460);
         okColorBlock.setText(R.string.change_block_color);
 
-        RelativeLayout cpLayout = (RelativeLayout) okColorBlock.getParent();
+        RelativeLayout cpLayout = (RelativeLayout) cp.findViewById(R.id.okColorButton).getParent();
 
         Button okColorBg = new Button(this);
         okColorBg.setText(R.string.change_bg_color);
         okColorBg.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        okColorBg.setY(498);
+        okColorBg.setY(600);
         okColorBg.setX(-5);
 
         cp.findViewById(R.id.textView).setVisibility(View.INVISIBLE);
-
+        cp.findViewById(R.id.okColorButton).setVisibility(View.INVISIBLE);
+        cp.findViewById(R.id.codHex).setVisibility(View.INVISIBLE);
+        cpLayout.setMinimumHeight(900);
         cpLayout.addView(okColorBg);
+        cpLayout.addView(okColorBlock);
 
         okColorBlock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(btnColor == cp.getColor() || cp.getColor() == -1 && btnColor == 0){
+                    Toast.makeText(getApplicationContext(),getString(R.string.same_color),Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 btnColor = cp.getColor();
                 final Button btn = (Button)findViewById(R.id.bt_block);
                 btn.setBackgroundColor(btnColor);
-
                 cp.dismiss();
             }
         });
@@ -185,7 +203,10 @@ public class TTB_Activity extends AppCompatActivity {
         okColorBg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(btnColor == cp.getColor() || cp.getColor() == -16777216 && btnColor == 0){
+                    Toast.makeText(getApplicationContext(),getString(R.string.same_color),Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 btnColor = cp.getColor();
                 //final Button btn = (Button)findViewById(R.id.bt_block);
                 rel_Backround.setBackgroundColor(btnColor);
@@ -269,8 +290,9 @@ public class TTB_Activity extends AppCompatActivity {
     public void gameOver() {
         final Button btn = (Button) findViewById(R.id.bt_block);
         final FloatingActionButton btn_restart = (FloatingActionButton) findViewById(R.id.bt_Restart);
+        final FloatingActionButton btn_continue = (FloatingActionButton) findViewById(R.id.bt_Continue);
         btn_restart.setVisibility(View.VISIBLE);
-
+        btn_continue.setVisibility(View.VISIBLE);
         countDown.setText(R.string.youLost);
 
         btn.setBackgroundColor(Color.RED);

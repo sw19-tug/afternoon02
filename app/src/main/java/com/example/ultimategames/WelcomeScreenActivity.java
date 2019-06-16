@@ -96,6 +96,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         buttonlanguage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                buttonResetScore.setVisibility(View.INVISIBLE);
                 languagemenu.setVisibility(View.VISIBLE);
                 languagemenu.setClickable(true);
             }
@@ -134,6 +135,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         buttoncancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                buttonResetScore.setVisibility(View.VISIBLE);
                 languagemenu.setVisibility(View.GONE);
             }
         });
