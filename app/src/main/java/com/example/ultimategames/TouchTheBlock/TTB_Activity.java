@@ -2,6 +2,7 @@ package com.example.ultimategames.TouchTheBlock;
 
 import android.content.Intent;
 import android.graphics.Point;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -32,7 +33,9 @@ public class TTB_Activity extends AppCompatActivity {
 
     RelativeLayout rel_Backround;
 
-    int btnColor;
+    int btn_Color,bg_color;
+
+    int btnX,btnY;
 
     public int testcounter = 0;
     private TextView countDown;
@@ -50,11 +53,11 @@ public class TTB_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        // Set the game activity content view!
         setContentView(R.layout.touchtheblock);
         countDown = findViewById(R.id.countdown_text);
 
-        btnColor = 0;
+        btn_Color = 0;
+        bg_color = 0;
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
@@ -62,6 +65,22 @@ public class TTB_Activity extends AppCompatActivity {
         int height = size.y;
 
         final Button btn_block = (Button) findViewById(R.id.bt_block);
+        Intent intent2 = getIntent();
+        int extras = intent2.getIntExtra("continueGame",0);
+        if(getIntent().hasExtra("continueGame")){
+            ViewGroup.LayoutParams params = btn_block.getLayoutParams();
+            params.width = getIntent().getIntExtra("btnWidth",0);
+            params.height = getIntent().getIntExtra("btnHeight",0);
+            btn_block.setLayoutParams(params);
+            btn_block.setX(getIntent().getFloatExtra("btnX",0));
+            btn_block.setY(getIntent().getFloatExtra("btnY",0));
+        }
+        else{
+            ViewGroup.LayoutParams params = btn_block.getLayoutParams();
+            params.height = height / 2;
+            params.width = width / 2;
+            btn_block.setLayoutParams(params);
+        }
         final FloatingActionButton btn_restart = (FloatingActionButton) findViewById(R.id.bt_Restart);
         final FloatingActionButton btn_continue = (FloatingActionButton) findViewById(R.id.bt_Continue);
         rel_Backround = (RelativeLayout) findViewById(R.id.Rel_Backround);
@@ -72,10 +91,7 @@ public class TTB_Activity extends AppCompatActivity {
 
         btn_block.setBackgroundColor(Color.BLACK);
 
-        ViewGroup.LayoutParams params = btn_block.getLayoutParams();
-        params.height = height / 2;
-        params.width = width / 2;
-        btn_block.setLayoutParams(params);
+
 
         btn_restart.setVisibility(View.INVISIBLE);
         btn_block.setVisibility(View.INVISIBLE);
@@ -92,8 +108,6 @@ public class TTB_Activity extends AppCompatActivity {
                     realignBtn(v);
                     addPoints();
                     WelcomeScreenActivity.global_score += 1;
-                    //String score = R.string.score;
-                    //score.setText(Integer.toString(R.string.score) + WelcomeScreenActivity.global_score);
                     TextView tvScore = (TextView) findViewById(R.id.TTB_score);
                     String textScore =  getResources().getString(R.string.score) + " " + Integer.toString(WelcomeScreenActivity.global_score);
 
@@ -104,20 +118,35 @@ public class TTB_Activity extends AppCompatActivity {
             }
         });
 
-        btn_continue.setOnClickListener(new View.OnClickListener() {
+        btn_restart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = getIntent();
-                if(intent.resolveActivity(getPackageManager())!=null){
-                    TTB_Activity.this.startActivity(intent);
+                if (gameover) {
+                    reStart();
                 }
             }
         });
 
-        btn_restart.setOnClickListener(new Button.OnClickListener() {
+        btn_continue.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                if (gameover) {
-                    reStart();
+                int global_score = WelcomeScreenActivity.global_score;
+                if (global_score <= 10) {
+                    Toast.makeText(getApplicationContext(),R.string.restartTTB ,Toast.LENGTH_LONG).show();
+                    return;
+                }
+                else {
+                    WelcomeScreenActivity.global_score = global_score - 10;
+                }
+                Intent intent = getIntent();
+
+                ViewGroup.LayoutParams params = btn_block.getLayoutParams();
+                intent.putExtra("continueGame",1);
+                intent.putExtra("btnWidth",params.width);
+                intent.putExtra("btnHeight",params.height);
+                intent.putExtra("btnX",btnX);
+                intent.putExtra("btnY",btnY);
+                if(intent.resolveActivity(getPackageManager())!=null){
+                    TTB_Activity.this.startActivity(intent);
                 }
             }
         });
@@ -188,13 +217,13 @@ public class TTB_Activity extends AppCompatActivity {
         okColorBlock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(btnColor == cp.getColor() || cp.getColor() == -1 && btnColor == 0){
+                if(btn_Color == cp.getColor() || cp.getColor() == -1 && btn_Color == 0){
                     Toast.makeText(getApplicationContext(),getString(R.string.same_color),Toast.LENGTH_SHORT).show();
                     return;
                 }
-                btnColor = cp.getColor();
+                btn_Color = cp.getColor();
                 final Button btn = (Button)findViewById(R.id.bt_block);
-                btn.setBackgroundColor(btnColor);
+                btn.setBackgroundColor(btn_Color);
                 cp.dismiss();
             }
         });
@@ -203,13 +232,12 @@ public class TTB_Activity extends AppCompatActivity {
         okColorBg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(btnColor == cp.getColor() || cp.getColor() == -16777216 && btnColor == 0){
+                if(bg_color == cp.getColor() || cp.getColor() == -16777216 && bg_color == 0){
                     Toast.makeText(getApplicationContext(),getString(R.string.same_color),Toast.LENGTH_SHORT).show();
                     return;
                 }
-                btnColor = cp.getColor();
-                //final Button btn = (Button)findViewById(R.id.bt_block);
-                rel_Backround.setBackgroundColor(btnColor);
+                bg_color = cp.getColor();
+                rel_Backround.setBackgroundColor(bg_color);
 
                 cp.dismiss();
             }
@@ -223,9 +251,10 @@ public class TTB_Activity extends AppCompatActivity {
 
         Button btn = (Button) v;
         Random buttonPlace = new Random();
-        // Random Number in Bound
         int buttonX = buttonPlace.nextInt(Layoutwidth - btn.getWidth());
         int buttonY = buttonPlace.nextInt(Layoutheight - btn.getHeight());
+        btnX = buttonX;
+        btnY = buttonY;
         btn.setX(buttonX);
         btn.setY(buttonY);
     }
@@ -251,18 +280,8 @@ public class TTB_Activity extends AppCompatActivity {
     }
 
     public void reStart() {
-        //TextView tvScore = (TextView) findViewById(R.id.text_score);
-        int global_score = WelcomeScreenActivity.global_score;
-        if (global_score <= 10) {
-            Toast.makeText(getApplicationContext(),R.string.restartTTB ,Toast.LENGTH_LONG).show();
-            return;
-        }
-        else {
-            WelcomeScreenActivity.global_score = global_score - 10;
-
-            this.recreate();
-        }
-
+        getIntent().removeExtra("continueGame");
+        this.recreate();
     }
 
     public void InitTimer() {

@@ -58,7 +58,6 @@ public class HangmanLogic
         mGameHangman.UpdateStats(WelcomeScreenActivity.global_score, mFailCounter);
         mGameHangman.ShowLetterAtPosition(mWord[index], index);
 
-        // Check if word was completed successfully
         if(mGuessedLetter == mWord.length)
         {
             WelcomeScreenActivity.global_score++;
@@ -66,7 +65,6 @@ public class HangmanLogic
 
             mGameHangman.Win();
 
-            // Reset the game screen with small delay (allows for the tap to end)
             (new Handler()).postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -95,7 +93,6 @@ public class HangmanLogic
             letterFailed();
         }
 
-        // Check if word was completed successfully
         if(mGuessedLetter == mWord.length)
         {
             WelcomeScreenActivity.global_score++;
@@ -103,8 +100,7 @@ public class HangmanLogic
 
             mGameHangman.Win();
 
-            // Reset the game screen with small delay (allows for the tap to end)
-            (new Handler()).postDelayed(new Runnable() {
+           (new Handler()).postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     Reset();
@@ -115,12 +111,10 @@ public class HangmanLogic
 
     private void letterFailed()
     {
-        // Increment fail counter
         mFailCounter++;
         mGameHangman.UpdateStats(WelcomeScreenActivity.global_score, mFailCounter);
 
 
-        // Game Over after 8 failed guesses
         if (mFailCounter >= 8)
         {
             WelcomeScreenActivity.global_score -= 2;

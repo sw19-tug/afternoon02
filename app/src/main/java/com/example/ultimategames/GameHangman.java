@@ -166,10 +166,8 @@ public class GameHangman extends AppCompatActivity implements View.OnClickListen
     {
         LinearLayout word = findViewById(R.id.word);
 
-        // Remove existing TextViews
         word.removeAllViews();
 
-        // Create new TextViews
         for (int i = 0; i < length; i++)
         {
             TextView letter = (TextView)getLayoutInflater().inflate(R.layout.character_textview_template, null);
