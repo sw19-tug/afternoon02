@@ -1,6 +1,8 @@
 package com.example.TicTacToe;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -8,6 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.ultimategames.R;
+
+import org.w3c.dom.Text;
 
 public class TicTacToePvP_Activity extends AppCompatActivity {
     TextView textView00;
@@ -20,15 +24,25 @@ public class TicTacToePvP_Activity extends AppCompatActivity {
     TextView textView21;
     TextView textView22;
     TextView result;
+    TextView resultTextView;
     Button restartGame;
-    String[] strings = {"X", "O"};
+    String[] strings,colors;
+    int[] color_ints = {0,0};
+    static int score_player_one;
+    static int score_player_two;
     int switchPlayer = 1;
+    boolean invokedFromActivity=false;
     TicTacToe ticTacToe = new TicTacToe();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tic_tac_toe_pvp);
+        strings = getIntent().getStringArrayExtra("characters");
+        colors = getIntent().getStringArrayExtra("colors");
+        invokedFromActivity=getIntent().getBooleanExtra("invokedFromActivity", false);
+        color_ints[0] = getResources().getColor(getResources().getIdentifier(colors[0],"color",getPackageName()));
+        color_ints[1] = getResources().getColor(getResources().getIdentifier(colors[1],"color",getPackageName()));
         restartGame = findViewById(R.id.restartGame);
         textView00 = (TextView) findViewById(R.id.b00);
         textView01 = (TextView) findViewById(R.id.b01);
@@ -40,28 +54,41 @@ public class TicTacToePvP_Activity extends AppCompatActivity {
         textView21 = (TextView) findViewById(R.id.b21);
         textView22 = (TextView) findViewById(R.id.b22);
         result = findViewById(R.id.result);
+        resultTextView = findViewById(R.id.score);
+        resultTextView.setText(score_player_one+":"+score_player_two);
+        if(invokedFromActivity && (score_player_two!=0 || score_player_one!=0)) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setCancelable(true);
+            builder.setMessage(getResources().getString(R.string.ttt_restart));
+            builder.setPositiveButton(getResources().getString(R.string.dialog_yes),
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            score_player_two = 0;
+                            score_player_one = 0;
+                            getIntent().putExtra("invokedFromActivity",false);
+                            startActivity(getIntent());
+                            finish();
+                            overridePendingTransition(0,0);
+                        }
+                    });
+            builder.setNegativeButton(getResources().getString(R.string.dialog_no), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
         textView00.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 textView00.setClickable(false);
                 int resultOfGame = ticTacToe.changeField(0,0,switchPlayer);
                 textView00.setText(strings[switchPlayer-1]);
+                textView00.setTextColor(color_ints[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
-                if(resultOfGame == 1){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.playerOneWon);
-                    removeListeners();
-                }
-                else if(resultOfGame == 2){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.playerTwoWon);
-                    removeListeners();
-                }
-                else if(resultOfGame == 0){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.draw);
-                    removeListeners();
-                }
+                processEndOfTheGame(resultOfGame);
             }
         });
 
@@ -71,22 +98,9 @@ public class TicTacToePvP_Activity extends AppCompatActivity {
                 textView01.setClickable(false);
                 int resultOfGame = ticTacToe.changeField(0,1,switchPlayer);
                 textView01.setText(strings[switchPlayer-1]);
+                textView01.setTextColor(color_ints[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
-                if(resultOfGame == 1){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.playerOneWon);
-                    removeListeners();
-                }
-                else if(resultOfGame == 2){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.playerTwoWon);
-                    removeListeners();
-                }
-                else if(resultOfGame == 0){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.draw);
-                    removeListeners();
-                }
+                processEndOfTheGame(resultOfGame);
             }
         });
 
@@ -96,47 +110,21 @@ public class TicTacToePvP_Activity extends AppCompatActivity {
                 textView02.setClickable(false);
                 int resultOfGame = ticTacToe.changeField(0,2,switchPlayer);
                 textView02.setText(strings[switchPlayer-1]);
+                textView02.setTextColor(color_ints[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
-                if(resultOfGame == 1){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.playerOneWon);
-                    removeListeners();
-                }
-                else if(resultOfGame == 2){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.playerTwoWon);
-                    removeListeners();
-                }
-                else if(resultOfGame == 0){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.draw);
-                    removeListeners();
-                }
+                processEndOfTheGame(resultOfGame);
             }
         });
 
         textView10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView10.setClickable(false);
+                textView10.setClickable(false   );
                 int resultOfGame = ticTacToe.changeField(1,0,switchPlayer);
                 textView10.setText(strings[switchPlayer-1]);
+                textView10.setTextColor(color_ints[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
-                if(resultOfGame == 1){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.playerOneWon);
-                    removeListeners();
-                }
-                else if(resultOfGame == 2){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.playerTwoWon);
-                    removeListeners();
-                }
-                else if(resultOfGame == 0){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.draw);
-                    removeListeners();
-                }
+                processEndOfTheGame(resultOfGame);
             }
         });
 
@@ -146,22 +134,9 @@ public class TicTacToePvP_Activity extends AppCompatActivity {
                 textView11.setClickable(false);
                 int resultOfGame = ticTacToe.changeField(1,1,switchPlayer);
                 textView11.setText(strings[switchPlayer-1]);
+                textView11.setTextColor(color_ints[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
-                if(resultOfGame == 1){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.playerOneWon);
-                    removeListeners();
-                }
-                else if(resultOfGame == 2){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.playerTwoWon);
-                    removeListeners();
-                }
-                else if(resultOfGame == 0){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.draw);
-                    removeListeners();
-                }
+                processEndOfTheGame(resultOfGame);
             }
         });
 
@@ -171,22 +146,9 @@ public class TicTacToePvP_Activity extends AppCompatActivity {
                 textView12.setClickable(false);
                 int resultOfGame = ticTacToe.changeField(1,2,switchPlayer);
                 textView12.setText(strings[switchPlayer-1]);
+                textView12.setTextColor(color_ints[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
-                if(resultOfGame == 1){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.playerOneWon);
-                    removeListeners();
-                }
-                else if(resultOfGame == 2){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.playerTwoWon);
-                    removeListeners();
-                }
-                else if(resultOfGame == 0){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.draw);
-                    removeListeners();
-                }
+                processEndOfTheGame(resultOfGame);
             }
         });
 
@@ -196,22 +158,9 @@ public class TicTacToePvP_Activity extends AppCompatActivity {
                 textView20.setClickable(false);
                 int resultOfGame = ticTacToe.changeField(2,0,switchPlayer);
                 textView20.setText(strings[switchPlayer-1]);
+                textView20.setTextColor(color_ints[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
-                if(resultOfGame == 1){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.playerOneWon);
-                    removeListeners();
-                }
-                else if(resultOfGame == 2){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.playerTwoWon);
-                    removeListeners();
-                }
-                else if(resultOfGame == 0){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.draw);
-                    removeListeners();
-                }
+                processEndOfTheGame(resultOfGame);
             }
         });
 
@@ -221,22 +170,9 @@ public class TicTacToePvP_Activity extends AppCompatActivity {
                 textView21.setClickable(false);
                 int resultOfGame = ticTacToe.changeField(2,1,switchPlayer);
                 textView21.setText(strings[switchPlayer-1]);
+                textView21.setTextColor(color_ints[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
-                if(resultOfGame == 1){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.playerOneWon);
-                    removeListeners();
-                }
-                else if(resultOfGame == 2){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.playerTwoWon);
-                    removeListeners();
-                }
-                else if(resultOfGame == 0){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.draw);
-                    removeListeners();
-                }
+                processEndOfTheGame(resultOfGame);
             }
         });
 
@@ -246,34 +182,44 @@ public class TicTacToePvP_Activity extends AppCompatActivity {
                 textView22.setClickable(false);
                 int resultOfGame = ticTacToe.changeField(2,2,switchPlayer);
                 textView22.setText(strings[switchPlayer-1]);
+                textView22.setTextColor(color_ints[switchPlayer-1]);
                 switchPlayer = 3 - switchPlayer;
-                if(resultOfGame == 1){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.playerOneWon);
-                    removeListeners();
-                }
-                else if(resultOfGame == 2){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.playerTwoWon);
-                    removeListeners();
-                }
-                else if(resultOfGame == 0){
-                    restartGame.setVisibility(View.VISIBLE);
-                    result.setText(R.string.draw);
-                    removeListeners();
-                }
+                processEndOfTheGame(resultOfGame);
             }
         });
 
         restartGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                getIntent().putExtra("invokedFromActivity",false);
                 startActivity(getIntent());
                 finish();
                 overridePendingTransition(0,0);
             }
         });
 
+
+    }
+
+    private void processEndOfTheGame(int result_of_game){
+        if(result_of_game == 1){
+            score_player_one++;
+            restartGame.setVisibility(View.VISIBLE);
+            result.setText(R.string.playerOneWon);
+            removeListeners();
+        }
+        else if(result_of_game == 2){
+            score_player_two++;
+            restartGame.setVisibility(View.VISIBLE);
+            result.setText(R.string.playerTwoWon);
+            removeListeners();
+        }
+        else if(result_of_game == 0){
+            restartGame.setVisibility(View.VISIBLE);
+            result.setText(R.string.draw);
+            removeListeners();
+        }
     }
 
     private void removeListeners(){

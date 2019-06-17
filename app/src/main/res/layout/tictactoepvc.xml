@@ -7,8 +7,17 @@
     tools:context="com.example.TicTacToe.PvC">
 
     <TextView
+        android:id="@+id/textViewScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginLeft="15sp"
+        android:layout_marginTop="15sp"
+        android:text="@string/score" />
+
+    <TextView
         android:id="@+id/result"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="46dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35pt"

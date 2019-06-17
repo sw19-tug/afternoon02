@@ -2,6 +2,7 @@ package com.example.ultimategames;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -14,84 +15,42 @@ public class GameHangman extends AppCompatActivity implements View.OnClickListen
     private Button btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnJ, btnK, btnL, btnM,
                    btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnV, btnW, btnX, btnY, btnZ;
 
+    private Button btnHint;
     private HashMap<Integer, String> keyvalues = new HashMap<Integer, String>(26);
     private HangmanLogic hangman_logic;
+    private DatabaseHelper database_helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_hangman);
 
-        hangman_logic = new HangmanLogic(this);
+        database_helper = new DatabaseHelper(this);
+        hangman_logic = new HangmanLogic(this, database_helper);
 
         initButtons();
     }
 
     @Override
     public void onClick(View view) {
-
         int id = view.getId();
         Button clicked = findViewById(id);
 
-        hangman_logic.checkLetter(keyvalues.get(id));
-
-        if (id == R.id.button_a) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_b) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_c) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_d) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_e) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_f) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_g) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_h) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_i) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_j) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_k) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_l) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_m) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_n) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_o) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_p) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_q) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_r) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_s) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_t) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_u) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_v) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_w) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_x) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_y) {
-            clicked.setEnabled(false);
-        } else if (id == R.id.button_z) {
-            clicked.setEnabled(false);
+        if (clicked.getId() == btnHint.getId())
+        {
+            hangman_logic.getHint();
+            return;
         }
+
+        clicked.setEnabled(false);
+        hangman_logic.checkLetter(keyvalues.get(id));
     }
 
     private void initButtons()
     {
+        btnHint = findViewById(R.id.btn_needhint);
+        btnHint.setOnClickListener(this);
+
         btnA = findViewById(R.id.button_a);
         btnA.setOnClickListener(this);
         btnB = findViewById(R.id.button_b);
@@ -175,13 +134,6 @@ public class GameHangman extends AppCompatActivity implements View.OnClickListen
 
     public void ResetView()
     {
-        LinearLayout word = findViewById(R.id.word);
-        for (int i = 0; i < word.getChildCount(); i++)
-        {
-            TextView letter = (TextView)word.getChildAt(i);
-            letter.setText("_");
-        }
-
         btnA.setEnabled(true);
         btnB.setEnabled(true);
         btnC.setEnabled(true);
@@ -210,6 +162,45 @@ public class GameHangman extends AppCompatActivity implements View.OnClickListen
         btnZ.setEnabled(true);
     }
 
+    public void CreateWordView(int length)
+    {
+        LinearLayout word = findViewById(R.id.word);
+
+        word.removeAllViews();
+
+        for (int i = 0; i < length; i++)
+        {
+            TextView letter = (TextView)getLayoutInflater().inflate(R.layout.character_textview_template, null);
+            letter.setPadding(dpToPx(2), 0, dpToPx(2), 0);
+            word.addView(letter);
+        }
+    }
+
+    public int GetFirstHiddenLetterIndex()
+    {
+        int index = 0;
+        LinearLayout word = findViewById(R.id.word);
+        if (word != null)
+        {
+            for (int i = 0; i < word.getChildCount(); i++)
+            {
+                TextView letter = (TextView)word.getChildAt(i);
+                if (letter.getText().equals("_"))
+                {
+                    index = i;
+                    break;
+                }
+            }
+        }
+
+        return index;
+    }
+
+    public int dpToPx(int dp) {
+        DisplayMetrics displayMetrics = this.getResources().getDisplayMetrics();
+        return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+    }
+
     public void ShowLetterAtPosition(String letter, int position)
     {
         LinearLayout word = findViewById(R.id.word);
@@ -229,11 +220,11 @@ public class GameHangman extends AppCompatActivity implements View.OnClickListen
 
     public void Win()
     {
-        Toast.makeText(this, "You win!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getResources().getString(R.string.you_win), Toast.LENGTH_SHORT).show();
     }
 
     public void Lose()
     {
-        Toast.makeText(this, "You lose!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getResources().getString(R.string.you_lose), Toast.LENGTH_SHORT).show();
     }
 }
