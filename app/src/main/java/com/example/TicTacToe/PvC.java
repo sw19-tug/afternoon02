@@ -323,12 +323,12 @@ public class PvC extends AppCompatActivity {
         }
         if (result == 1) {
             restartGame.setVisibility(View.VISIBLE);
-            result_text.setText(R.string.playerOneWon);
+            result_text.setText(R.string.playerWon);
             WelcomeScreenActivity.global_score=WelcomeScreenActivity.global_score + 2;
         }
         if (result == 2) {
             restartGame.setVisibility(View.VISIBLE);
-            result_text.setText(R.string.playerTwoWon);
+            result_text.setText(R.string.computerWon);
             WelcomeScreenActivity.global_score--;
         }
 

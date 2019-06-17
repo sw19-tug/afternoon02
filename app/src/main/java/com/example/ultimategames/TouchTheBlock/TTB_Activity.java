@@ -217,7 +217,7 @@ public class TTB_Activity extends AppCompatActivity {
         okColorBlock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(btn_Color == cp.getColor() || cp.getColor() == -1 && btn_Color == 0){
+                if(bg_color == cp.getColor() || cp.getColor() == -1 && btn_Color == 0){
                     Toast.makeText(getApplicationContext(),getString(R.string.same_color),Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -232,7 +232,7 @@ public class TTB_Activity extends AppCompatActivity {
         okColorBg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(bg_color == cp.getColor() || cp.getColor() == -16777216 && bg_color == 0){
+                if(btn_Color == cp.getColor() || cp.getColor() == -16777216 && bg_color == 0){
                     Toast.makeText(getApplicationContext(),getString(R.string.same_color),Toast.LENGTH_SHORT).show();
                     return;
                 }

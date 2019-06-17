@@ -5,6 +5,8 @@
     <string name="restartTicTacToe">Play again</string>
     <string name="playerOneWon">Player one WON!</string>
     <string name="playerTwoWon">Player two WON!</string>
+    <string name="playerWon">Player WON!</string>
+    <string name="computerWon">Computer WON!</string>
     <string name="draw">DRAW</string>
     <string name="welcomeTicTacToe">Welcome to Tic-Tac-Toe!</string>
     <string name="score">Score: </string>
