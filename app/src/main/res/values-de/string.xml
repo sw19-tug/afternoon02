@@ -5,6 +5,8 @@
     <string name="restartTicTacToe">Erneut spielen</string>
     <string name="playerOneWon">Spieler Eins GEWINNT!</string>
     <string name="playerTwoWon">Spieler zwei GEWINNT!</string>
+    <string name="playerWon">Spieler GEWINNT!</string>
+    <string name="computerWon">Computer GEWINNT!</string>
     <string name="draw">Unentschieden</string>
     <string name="welcomeTicTacToe">Willkommen bei Tic-Tac-Toe!</string>
     <string name="score">Punkte: </string>
